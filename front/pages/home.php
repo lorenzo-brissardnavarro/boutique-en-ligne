@@ -51,7 +51,7 @@
         <article>
             <div>
                 <img src="" alt="">
-                <p>Bijoux</p>
+                <span>Bijoux</span>
             </div>
             <div>
                 <p>Boucles d'oreilles poisson argent</p>
@@ -76,7 +76,7 @@
         <article>
             <div>
                 <img src="" alt="">
-                <p>Accessoires</p>
+                <span>Accessoires</span>
             </div>
             <div>
                 <p>Trousse M Verte</p>
