@@ -39,5 +39,9 @@
         </div>
         <input type="submit" value="CRÉER MON COMPTE" />
     </form>
+    <div>
+        <p>Vous avez déjà un compte ?</p>
+        <a href="">Se connecter</a>
+    </div>
 
 </section>
