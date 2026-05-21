@@ -1,3 +1,7 @@
+<?php
+require_once "layout/header.php";
+?>
+
 <section>
     <img src="" alt="">
     <h1>Créer un compte</h1>
@@ -45,3 +49,7 @@
     </div>
 
 </section>
+
+<?php
+require_once "layout/footer.php";
+?>

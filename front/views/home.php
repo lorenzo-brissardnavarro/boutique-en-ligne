@@ -1,3 +1,7 @@
+<?php
+require_once "layout/header.php";
+?>
+
 <section>
     <div>
         <div>
@@ -153,3 +157,7 @@
         <input type="submit" value="S'inscrire" />
     </form>
 </section>
+
+<?php
+require_once "layout/footer.php";
+?>

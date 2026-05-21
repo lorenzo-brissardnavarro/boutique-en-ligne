@@ -1,3 +1,7 @@
+<?php
+require_once "layout/header.php";
+?>
+
 <section>
     <h1>Notre boutique</h1>
     <p>Découvrez toutes nos créations artisanales</p>
@@ -55,3 +59,7 @@
         </div>
     </div>
 </section>
+
+<?php
+require_once "layout/footer.php";
+?>

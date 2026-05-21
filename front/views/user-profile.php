@@ -1,3 +1,7 @@
+<?php
+require_once "layout/header.php";
+?>
+
 <section>
     <h1>Mon compte</h1>
     <section>
@@ -62,6 +66,8 @@
             </div>
         </article>
       </section>
-
-    
 </section>
+
+<?php
+require_once "layout/footer.php";
+?>

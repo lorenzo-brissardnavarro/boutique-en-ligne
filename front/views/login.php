@@ -1,3 +1,7 @@
+<?php
+require_once "layout/header.php";
+?>
+
 <section>
     <img src="" alt="">
     <h1>Bon retour !</h1>
@@ -22,3 +26,7 @@
     </div>
 
 </section>
+
+<?php
+require_once "layout/footer.php";
+?>

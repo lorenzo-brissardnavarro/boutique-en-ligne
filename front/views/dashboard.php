@@ -1,3 +1,7 @@
+<?php
+require_once "layout/header.php";
+?>
+
 <section>
     <h1>Dashboard admin</h1>
     <section>
@@ -55,3 +59,7 @@
         </div>
     </section>
 </section>
+
+<?php
+require_once "layout/footer.php";
+?>
