@@ -1,3 +1,7 @@
+<?php
+require_once "layout/header.php";
+?>
+
 <section>
     <h1>Erreur 404</h1>
 
@@ -13,3 +17,7 @@
         <button>RETOUR À LA BOUTIQUE</button>
     </a>
 </section>
+
+<?php
+require_once "layout/footer.php";
+?>

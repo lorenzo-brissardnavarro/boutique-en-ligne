@@ -1,3 +1,7 @@
+<?php
+require_once "layout/header.php";
+?>
+
 <section>
 
     <a href="#">
@@ -54,3 +58,7 @@
         </div>
     </div>
 </section>
+
+<?php
+require_once "layout/footer.php";
+?>

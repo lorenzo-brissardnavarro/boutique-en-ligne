@@ -1,3 +1,7 @@
+<?php
+require_once "layout/header.php";
+?>
+
 <section>
     <h1>Mon panier</h1>
 
@@ -58,3 +62,7 @@
       </aside>
     </div>
 </section>
+
+<?php
+require_once "layout/footer.php";
+?>
