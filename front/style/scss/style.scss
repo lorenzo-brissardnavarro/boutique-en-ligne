@@ -1,9 +1,59 @@
-$primary: #3498db;
+// Color Variables
+
+$color-primary: #F8F6F4;
+$color-secondary: #1F2A3A;
+
+$color-accent-gold: #C6A86E;
+$color-accent-pink: #E8B7C0;
+$color-accent-grey: #70757E;
+
+$black: #000000;
+$white: #FFFFFF;
+
+$playfair: "Playfair Display", sans-serif;
+
+// Responsive size
+
+$tablet: 768px;
+$desktop: 1024px;
+
+// Basic Reset
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
 
 body {
-  background: $primary;
+  font-family: 'Montserrat', sans-serif;
+  background-color: $color-primary;
+  color: $color-secondary;
+}
 
-  h1 {
-    color: white;
-  }
+a {
+  text-decoration: none;
+  color: inherit;
 }
