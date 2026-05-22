@@ -2,160 +2,259 @@
 require_once "layout/header.php";
 ?>
 
-<section>
-    <div>
-        <div>
-            <div></div>
-            <p>MAISON ARTISANALE</p>
-        </div>
-        <h1>Des créations artisanales inspirées de l’Asie</h1>
-        <p>Pochettes brodées, sacs sashiko, foulards en soie, accessoires cheveux — chaque pièce est imaginée et cousue à la main dans notre atelier, avec des tissus choisis pour leur beauté et leur tenue dans le temps.</p>
-        <a href="">
-            <div>
-                <p>DÉCOUVRIR LA BOUTIQUE</p>
-                <i class="fa-solid fa-arrow-right-long"></i>
+<section class="hero">
+    <div class="container hero__content">
+
+        <div class="hero__text">
+            <div class="hero__subtitle">
+                <div></div>
+                <p>MAISON ARTISANALE</p>
             </div>
-        </a>
-    </div>
-    <div>
-        <img src="" alt="">
-    </div>
-</section>
 
-<section>
-    <article>
-        <i class="fa-regular fa-heart"></i>
-        <p>Fait Main</p>
-        <p>Chaque pièce est unique</p>
-    </article>
+            <h1>Des créations artisanales <span>inspirées de l’Asie</span></h1>
+            <p>Pochettes brodées, sacs sashiko, foulards en soie, accessoires cheveux : chaque pièce est imaginée et cousue à la main dans notre atelier, avec des tissus choisis pour leur beauté et leur tenue dans le temps.</p>
 
-    <article>
-        <i class="fa-solid fa-shield"></i>
-        <p>Qualité premium</p>
-        <p>Matériaux sélectionnés</p>
-    </article>
-
-    <article>
-        <i class="fa-regular fa-truck"></i>
-        <p>Livraison soignée</p>
-        <p>Emballage élégant</p>
-    </article>
-
-    <article>
-        <i class="fa-regular fa-star"></i>
-        <p>Satisfaction garantie</p>
-        <p>Service client dédié</p>
-    </article>
-</section>
-
-<section>
-    <h2>Produits phares</h2>
-    <p>Découvrez nos créations les plus appréciées par notre communauté</p>
-    <div>
-        <article>
-            <div>
-                <img src="" alt="">
-                <span>Bijoux</span>
-            </div>
-            <div>
-                <p>Boucles d'oreilles poisson argent</p>
+            <a href="" class="hero__btn">
                 <div>
-                    <p>24.99 €</p>
-                    <i class="fa-solid fa-cart-shopping"></i>
+                    <p>DÉCOUVRIR LA BOUTIQUE</p>
+                    <i class="fa-solid fa-arrow-right-long"></i>
                 </div>
-            </div>
-        </article>
-    </div>
-    <a href="">
-        <div>
-            <p>Voir toute la boutique</p>
+            </a>
         </div>
-    </a>
+
+        <div class="hero__image">
+            <img src="../images/hero.png" alt="Image illustrant l'univers et les produits proposés par l'entreprise">
+        </div>
+
+    </div>
 </section>
 
-<section>
-    <h2>Nouveautés</h2>
-    <p>Les dernières créations ajoutées à notre collection</p>
-    <div>
-        <article>
-            <div>
-                <img src="" alt="">
-                <span>Accessoires</span>
+
+<section class="services">
+    <div class="container services__grid">
+
+        <article class="services__item">
+            <div class="icon">
+                <i class="fa-regular fa-heart"></i>
             </div>
-            <div>
-                <p>Trousse M Verte</p>
-                <div>
-                    <p>15.99 €</p>
-                    <i class="fa-solid fa-cart-shopping"></i>
+
+            <h3>Fait Main</h3>
+            <p>Chaque pièce est unique</p>
+        </article>
+
+        <article class="services__item">
+            <div class="icon">
+                <i class="fa-solid fa-shield"></i>
+            </div>
+
+            <h3>Qualité premium</h3>
+            <p>Matériaux sélectionnés</p>
+        </article>
+
+        <article class="services__item">
+            <div class="icon">
+                <i class="fa-solid fa-truck"></i>
+            </div>
+
+            <h3>Livraison soignée</h3>
+            <p>Emballage élégant</p>
+        </article>
+
+        <article class="services__item">
+            <div class="icon">
+                <i class="fa-regular fa-star"></i>
+            </div>
+
+            <h3>Satisfaction garantie</h3>
+            <p>Service client dédié</p>
+        </article>
+
+    </div>
+</section>
+
+
+<section class="products">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Produits phares</h2>
+            <p>Découvrez nos créations les plus appréciées par notre communauté</p>
+        </div>
+
+        <div class="products__grid">
+
+            <article class="product-card">
+
+                <div class="product-card__badge">
+                    Bijoux
                 </div>
-            </div>
-        </article>
-    </div>
-    <a href="">
-        <div>
-            <p>Voir toute la boutique</p>
+
+                <div class="product-card__image">
+                    <img src="" alt="">
+                </div>
+
+                <div class="product-card__content">
+
+                    <h3>Boucles d'oreilles poisson argent</h3>
+
+                    <div class="product-card__bottom">
+                        <p class="product-card__price">24.99 €</p>
+
+                        <button class="product-card__cart">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </article>
+
         </div>
-    </a>
-</section>
 
-<section>
-    <div>
-        <p>LA MAISON SAKURA MOON</p>
-        <h2>L'art de la lenteur, <span>cousu à la main.</span></h2>
-    </div>
-    <div>
-        <p>Sakura Moon Créations est née d'une passion pour l'art asiatique traditionnel et le travail minutieux de la couture. Chaque pièce est conçue avec soin, tout en y apportant une touche moderne.</p>
-        <p>Notre mission est de partager la beauté et l'élégance de la culture asiatique à travers des créations uniques et durables, faites avec amour.</p>
+        <div class="products__button">
+            <a href="">Voir toute la boutique</a>
+        </div>
+
     </div>
 </section>
 
-<section>
-    <h2>Avis clients</h2>
-    <p>Ce que nos clients disent de nos créations</p>
-    <div>
-        <article>
-            <div>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-            </div>
-            <p>« La pochette est encore plus belle en vrai. Le travail de broderie est incroyable, on sent l'amour mis dans chaque détail. »</p>
-            <p>Marie L</p>
-        </article>
-        <article>
-            <div>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-            </div>
-            <p>« L'attention aux détails est impressionnante. Chaque pièce est unique et soigneusement confectionnée. »</p>
-            <p>Sophie D</p>
-        </article>
-        <article>
-            <div>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-            </div>
-            <p>« Un vrai coup de cœur pour cette boutique ! Les produits sont authentiques et le service impeccable. »</p>
-            <p>Amélie R</p>
-        </article>
+
+<section class="news">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Nouveautés</h2>
+            <p>Les dernières créations ajoutées à notre collection</p>
+        </div>
+
+        <div class="products__grid">
+
+            <article class="product-card">
+
+                <div class="product-card__badge">
+                    Accessoires
+                </div>
+
+                <div class="product-card__image">
+                    <img src="" alt="">
+                </div>
+
+                <div class="product-card__content product-card__content--beige">
+
+                    <h3>Trousse M Verte</h3>
+
+                    <div class="product-card__bottom">
+                        <p class="product-card__price">15.99 €</p>
+
+                        <button class="product-card__cart">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </button>
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
     </div>
 </section>
 
-<section>
-    <h2>Recevez nos nouveautés en avant-première</h2>
-    <p>Inscrivez-vous à notre newsletter pour recevoir en avant-première nos nouvelles créations et offres exclusives</p>
-    <form action="" method="get" class="form-example">
-        <input type="email" name="email" id="email" placeholder="Votre adresse mail" />
-        <input type="submit" value="S'inscrire" />
-    </form>
+
+<section class="brand">
+    <div class="container brand__content">
+
+        <div class="brand__left">
+            <span class="brand__left--content">LA MAISON SAKURA MOON</span>
+
+            <h2>L'art de la lenteur, <span class="brand__left--title">cousu à la main.</span></h2>
+        </div>
+
+        <div class="brand__right">
+            <p>Sakura Moon Créations est née d'une passion pour l'art asiatique traditionnel et le travail minutieux de la couture. Chaque pièce est conçue avec soin, tout en y apportant une touche moderne.</p>
+
+            <p>Notre mission est de partager la beauté et l'élégance de la culture asiatique à travers des créations uniques et durables, faites avec amour.</p>
+        </div>
+
+    </div>
+</section>
+
+
+<section class="reviews">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Avis clients</h2>
+            <p>Ce que nos clients disent de nos créations</p>
+        </div>
+
+        <div class="reviews__grid">
+
+            <article class="review-card">
+
+                <div class="review-card__stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+
+                <p>« La pochette est encore plus belle en vrai. Le travail de broderie est incroyable, on sent l'amour mis dans chaque détail. »</p>
+
+                <strong>Marie L</strong>
+
+            </article>
+
+            <article class="review-card">
+
+                <div class="review-card__stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+
+                <p>« L'attention aux détails est impressionnante. Chaque pièce est unique et soigneusement confectionnée. »</p>
+
+                <strong>Sophie D</strong>
+
+            </article>
+
+            <article class="review-card">
+
+                <div class="review-card__stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+
+                <p>« Un vrai coup de cœur pour cette boutique ! Les produits sont authentiques et le service impeccable. »</p>
+
+                <strong>Amélie R</strong>
+
+            </article>
+
+        </div>
+
+    </div>
+</section>
+
+<section class="newsletter">
+    <div class="container">
+
+        <h2>Recevez nos nouveautés en avant-première</h2>
+
+        <p>Inscrivez-vous à notre newsletter pour recevoir en avant-première nos nouvelles créations et offres exclusives</p>
+
+        <form action="" method="get">
+            <input type="email" name="email" id="email" placeholder="Votre adresse mail"/>
+            <button type="submit">S'inscrire</button>
+        </form>
+
+    </div>
 </section>
 
 <?php

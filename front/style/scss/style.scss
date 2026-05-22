@@ -58,14 +58,24 @@ a {
   color: inherit;
 }
 
-// Navbar
+////////////////////////////////////////////////////////////////// Navbar /////////////////////////////////////////////////////////////////
 
 .header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid $color-accent-gold;
     background: $color-primary;
+
+    &::after {
+        content: "";
+        position: fixed;
+        top: 150px;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: $color-accent-gold;
+        z-index: 2000;
+    }
 
     &__bar {
         display: flex;
@@ -83,10 +93,10 @@ a {
 }
 
 .menu {
-    height: 0;
+    max-height: 0;
     width: 100%;
     overflow: hidden;
-    transition: all 3s ease;
+    transition: all .4s ease;
     z-index: 1000;
 
     &__logo {
@@ -111,7 +121,7 @@ a {
             padding: 15px 20px;
 
             li {
-                border-bottom: 1px solid #EFE1C5;
+                border-bottom: 1px solid #f3e7ce;
             }
         }
 
@@ -123,10 +133,9 @@ a {
     }
 
     &--is-open {
-        height: auto;
+        max-height: 500px;
     }
 }
-
 
 @media (min-width: $tablet) {
 
@@ -158,9 +167,663 @@ a {
             }
 
             a {
+                position: relative;
                 padding: 10px 0;
                 font-size: 1.1em;
+                color: $black;
+                transition: color .3s ease;
+            }
+            a::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: -3px;
+                width: 0;
+                height: 2px;
+                background: $color-accent-gold;
+                transition: width .3s ease;
+            }
+            a:hover {
+                color: $color-accent-gold;
+            }
+            a:hover::after {
+                width: 100%;
             }
         }
     }
+}
+
+////////////////////////////////////////////////////////////// Footer ///////////////////////////////////////////////////////////
+
+.footer {
+  background: $color-primary;
+  padding: 4rem 1.5rem;
+
+  &__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  &__logo {
+    width: 90px;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: $color-accent-gold;
+    font-family: $playfair;
+    margin-bottom: 1rem;
+  }
+
+  p,
+  li a {
+    font-size: 0.9rem;
+    color: $color-secondary;
+  }
+
+  li {
+    margin-bottom: 0.7rem;
+  }
+  li a i {
+    font-size: 1.2rem;
+  }
+
+  a:hover {
+    color: $color-accent-gold;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
+
+  &__socials {
+    display: flex;
+    gap: 1.1rem;
+
+    a {
+      font-size: 1rem;
+      color: $color-secondary;
+
+      &:hover {
+        color: $color-accent-gold;
+      }
+    }
+  }
+}
+
+
+/////////////////////////////////////////////////////////////////////// Page home /////////////////////////////////////////////////////////////////
+
+.container {
+  width: 90%;
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+.hero {
+  padding: 3rem 0;
+  background: $color-primary;
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  &__subtitle {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    color: $color-accent-gold;
+    margin-bottom: 1.5rem;
+
+    div {
+      width: 60px;
+      height: 1px;
+      background: #C6A86E;
+    }
+  }
+
+  h1 {
+    font-family: $playfair;
+    font-size: 2.5rem;
+    line-height: 1.1;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    max-width: 290px;
+
+    span {
+      color: $color-accent-gold;
+    }
+  }
+
+  p {
+    max-width: 520px;
+    font-size: 0.95rem;
+  }
+
+  &__btn {
+    display: inline-block;
+    background: $color-secondary;
+    color: $white;
+    padding: 1rem 1.8rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    margin-top: 3em;
+    transition: 0.3s ease;
+
+    &:hover {
+      transform: translateY(-3px);
+      background: lighten($color-secondary, 5%);
+    }
+
+    div {
+        display: flex;
+        align-items: baseline;
+        gap: 1em;
+        padding: 0.5em 0;
+    }
+  }
+
+  &__image {
+    overflow: hidden;
+    border-radius: 12px;
+    max-height: 700px;
+
+    img {
+        width: 100%;
+        transition: 0.5s ease;
+    }
+
+    &:hover img {
+        transform: scale(1.03);
+    }
+  }
+}
+
+.services {
+  padding: 2rem 0 3rem;
+  background: $white;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7rem;
+
+    .icon {
+      width: 52px;
+      height: 52px;
+      background: $color-accent-pink;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $color-secondary;
+      font-size: 1rem;
+    }
+
+    h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 0.75rem;
+      color: $color-accent-grey;
+    }
+  }
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+
+  h2 {
+    font-family: $playfair;
+    font-size: 1.8rem;
+    color: $color-accent-gold;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  p {
+    color: $color-accent-grey;
+    font-size: 1rem;
+  }
+}
+
+.products {
+  padding: 5rem 0;
+  background: $color-primary;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  &__button {
+    text-align: center;
+    margin-top: 2.5rem;
+
+    a {
+      border: 1px solid $color-secondary;
+      padding: 0.9rem 1.5rem;
+      border-radius: 5px;
+      color: $color-secondary;
+      transition: 0.3s ease;
+
+      &:hover {
+        background: $color-secondary;
+        color: $white;
+      }
+    }
+  }
+}
+
+.news {
+    background: $white;
+    padding: 5rem 0;
+}
+
+.product-card {
+  background: $white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  transition: 0.3s ease;
+  position: relative;
+
+  &:hover {
+    transform: translateY(-6px);
+  }
+
+  &__badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: $color-accent-pink;
+    border-radius: 30px;
+    padding: 0.35rem 0.8rem;
+    font-size: 0.9rem;
+    z-index: 10;
+  }
+
+  &__image {
+    height: 260px;
+    overflow: hidden;
+
+    img {
+      height: 100%;
+      transition: 0.5s ease;
+    }
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+  }
+
+  &__content {
+    padding: 1rem;
+
+    &--beige {
+        background: $color-primary;
+    }
+  }
+
+  h3 {
+    font-family: $playfair;
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__price {
+    color: $color-accent-gold;
+    font-size: 1.2em;
+    font-weight: 600;
+  }
+
+  &__cart {
+    border: 1px solid $color-secondary;
+    background: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+
+    i {
+        padding: 0.5em;
+    }
+
+    &:hover {
+      background: $color-secondary;
+      color: $white;
+    }
+  }
+}
+
+.brand {
+  background: $color-secondary;
+  padding: 5rem 0;
+  color: $white;
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  &__left {
+    &--content {
+      color: $color-accent-gold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.8rem;
+    }
+
+    h2, &--title {
+      font-family: $playfair;
+      font-size: 2rem;
+      font-style: italic;
+      margin-top: 1rem;
+      line-height: 1.3;
+    }
+
+    &--title {
+        color: $color-accent-pink;
+    }
+  }
+
+  &__right {
+    p {
+      color: $white;
+      margin-bottom: 1.2rem;
+      font-weight: 300;
+      font-size: 0.9em;
+    }
+  }
+}
+
+.reviews {
+  padding: 5rem 0;
+  background: $white;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.review-card {
+  background: $color-primary;
+  border-radius: 12px;
+  padding: 1.8rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+
+  &__stars {
+    color: $color-accent-gold;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    color: $black;
+  }
+
+  strong {
+    font-size: 0.85rem;
+  }
+}
+
+.newsletter {
+  background: $color-accent-pink;
+  padding: 4rem 0;
+  text-align: center;
+
+  h2 {
+    font-family: $playfair;
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
+    color: $color-secondary;
+    font-weight: 100;
+  }
+
+  p {
+    color: $color-secondary;
+    margin-bottom: 2rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  input {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+  }
+
+  button {
+    background: $color-secondary;
+    color: $white;
+    border: none;
+    padding: 1rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+
+    &:hover {
+      background: lighten($color-secondary, 5%);
+    }
+  }
+}
+
+
+@media (min-width: $tablet) {
+
+  .hero {
+    padding: 3rem 0;
+
+    &__content {
+      grid-template-columns: 1fr;
+    }
+
+    h1 {
+      font-size: 3rem;
+      max-width: 310px;
+    }
+
+    p {
+        font-size: 1.1rem;
+    }
+  }
+
+  .services {
+    &__item {
+        .icon {
+            width: 70px;
+            height: 70px;
+            font-size: 1.4rem;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+        }
+
+        p {
+            font-size: 0.9rem;
+        }
+    }
+  }
+
+  .section-title {
+    h2 {
+        font-size: 2.2rem;
+    }
+    
+    p {
+        font-size: 1.2rem;
+    }
+  }
+
+  .product-card {
+    &__price {
+        font-size: 1.4rem;
+    }
+
+    &__cart i {
+        font-size: 1.2rem;
+    }
+  }
+
+  .products__grid,
+  .services__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .brand {
+    &__left {
+        &--content {
+            font-size: 1rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+    }
+
+    &__right {
+        font-size: 1.1rem;
+    }
+  }
+
+  .review-card {
+    &__stars i {
+        font-size: 1.2rem;
+    }
+
+    p {
+        font-size: 1.05rem;
+    }
+
+    strong {
+        font-size: 1.15rem;
+    }
+  }
+
+  .newsletter {
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    p {
+        font-size: 1.2rem;
+    }
+
+    form {
+        flex-direction: row;
+        align-items: center;
+    }
+  }
+}
+
+@media (min-width: $desktop) {
+    .hero {
+        &__content {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        h1 {
+            font-size: 3.4rem;
+            max-width: 350px;
+        }
+    }
+
+    .services {
+        padding: 4rem 0 3rem;
+    }
+
+    .products__grid,
+    .services__grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .brand{
+        &__content {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        &__left {
+            h2 {
+                max-width: 300px;
+            }
+        }
+
+        &__right {
+            text-align: end;
+        }
+    }
+
+    .reviews__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .newsletter form {
+        width: 50%;
+        margin-inline: auto;
+    }
+
+    .footer {
+        max-width: 1350px;
+        margin-inline: auto;
+        &__logo {
+            width: 120px;
+        }
+        &__grid {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: 5em;
+        }
+        &__links {
+            flex-direction: row;
+            gap: 5em;
+        }
+        p {
+            max-width: 390px;
+        }
+    }
+
+
 }
