@@ -11,11 +11,49 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style/css/style.css">
     <link rel="icon" type="image/png" href="">
+    <script src="../js/menu.js" defer></script>
 </head>
 
 <body>
-<header>
+    <header class="header">
+        <nav class="header__bar">
+            <a href="../../index.php" class="menu__logo">
+                <img src="../images/logo.png" alt="Logo">
+            </a>
 
-</header>
+            <i class="fa-solid fa-bars" id="toggler"></i>
+
+            <ul class="menu__listing menu__listing--none">
+                <li>
+                    <a href="/">Accueil</a>
+                </li>
+                <li>
+                    <a href="/">Boutique</a>
+                </li>
+                <li>
+                    <a href="/">S'inscrire</a>
+                </li>
+                <li>
+                    <a href="/">Se connecter</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="menu" id="menu">
+            <ul class="menu__listing menu__listing--burger">
+                <li>
+                    <a href="/">Accueil</a>
+                </li>
+                <li>
+                    <a href="/">Boutique</a>
+                </li>
+                <li>
+                    <a href="/">S'inscrire</a>
+                </li>
+                <li>
+                    <a href="/">Se connecter</a>
+                </li>
+            </ul>
+        </div>
+    </header>
 
 <main>
