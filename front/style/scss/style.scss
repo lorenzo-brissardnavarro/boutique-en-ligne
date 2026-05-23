@@ -2,7 +2,7 @@
 
 $color-primary: #F8F6F4;
 $color-secondary: #1F2A3A;
-
+$color-secondary-hover: #263347;
 $color-accent-gold: #C6A86E;
 $color-accent-pink: #E8B7C0;
 $color-accent-grey: #70757E;
@@ -198,6 +198,19 @@ a {
 .footer {
   background: $color-primary;
   padding: 4rem 1.5rem;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100vw;
+    height: 1px;
+    background: $color-accent-gold;
+    transform: translateX(-50%);
+    z-index: 2000;
+  }
 
   &__grid {
     display: flex;
@@ -325,7 +338,7 @@ a {
 
     &:hover {
       transform: translateY(-3px);
-      background: lighten($color-secondary, 5%);
+      background: $color-secondary-hover;
     }
 
     div {
@@ -645,7 +658,7 @@ a {
     transition: 0.3s ease;
 
     &:hover {
-      background: lighten($color-secondary, 5%);
+      background: $color-secondary-hover;
     }
   }
 }
@@ -826,4 +839,147 @@ a {
     }
 
 
+}
+
+
+////////////////////////////////////////////////////////////// Page Inscription ///////////////////////////////////////////////////////////////////////
+
+.auth-page {
+  padding: 48px 24px 64px;
+  display: flex;
+  justify-content: center;
+
+  &__card {
+    width: 100%;
+    max-width: 480px;
+  }
+
+  &__logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 12px;
+
+    img {
+      width: 92px;
+      height: 92px;
+    }
+  }
+
+  &__title {
+    font-family: $playfair;
+    font-size: 1.5rem;
+    color: $color-accent-gold;
+    text-align: center;
+    margin-bottom: 6px;
+    font-weight: 100;
+  }
+
+  &__subtitle {
+    font-size: 0.95rem;
+    color: lighten($color-secondary, 30%);
+    text-align: center;
+    margin-bottom: 28px;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+
+  label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: $color-secondary;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="date"],
+  input[type="password"] {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 0.82rem;
+    color: $color-secondary;
+    background-color: $color-primary;
+    border: 1px solid $color-secondary;
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.2s;
+
+    &:focus {
+      border-color: $color-accent-gold; 
+    }
+    &::placeholder { 
+      color: $color-secondary-hover; 
+    }
+  }
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-link {
+  font-size: 0.75rem;
+  color: $color-secondary;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+
+  a {
+    color: $color-accent-gold;
+
+    &:hover { 
+      text-decoration: underline; 
+    }
+  }
+}
+
+.input-button {
+  background: $color-secondary;
+  color: $white;
+  border: none;
+  padding: 1rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  width: 100%;
+  font-weight: 300;
+
+  &:hover {
+    background: $color-secondary-hover;
+  }
+}
+
+// variante
+.input-password {
+  position: relative;
+
+  input { padding-right: 40px; }
+
+  &__toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: lighten($color-secondary, 30%);
+    font-size: 1rem;
+    padding: 0;
+
+    &:hover { color: $color-secondary; }
+  }
 }
