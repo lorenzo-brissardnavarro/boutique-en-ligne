@@ -16,6 +16,7 @@ $playfair: "Playfair Display", sans-serif;
 
 $tablet: 768px;
 $desktop: 1024px;
+$large-screen : 1300px;
 
 // Basic Reset
 
@@ -842,7 +843,7 @@ a {
 }
 
 
-////////////////////////////////////////////////////////////// Page Inscription ///////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////// Page Inscription et Connexion ///////////////////////////////////////////////////////////////////////
 
 .auth-page {
   padding: 48px 24px 64px;
@@ -985,5 +986,218 @@ a {
     &:hover { 
       color: $color-secondary; 
     }
+  }
+}
+
+/////////////////////////////////////////////////////////////// Page boutique ////////////////////////////////////////////////////////////////
+
+//  PAGE BOUTIQUE
+.shop-page {
+  padding: 40px 0 64px;
+
+  &__header { 
+    margin-bottom: 28px; 
+  }
+
+  &__title {
+    font-family: $playfair;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: $color-secondary;
+    margin-bottom: 6px;
+  }
+
+  &__desc {
+    font-size: 0.82rem;
+    color: $color-accent-grey;
+  }
+
+  &__toolbar {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  &__search {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    background-color: #fff;
+    border: 1px solid $color-secondary;
+    border-radius: 10px;
+
+    input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 0.82rem;
+      color: $color-secondary;
+      background: transparent;
+
+      &::placeholder { 
+        color: $color-accent-grey; 
+      }
+    }
+
+    i { 
+      color: $color-secondary; 
+      font-size: 1rem; 
+    }
+  }
+
+  &__sort {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: #fff;
+    border: 1px solid $color-secondary;
+    font-size: 0.82rem;
+    color: $color-secondary;
+    cursor: pointer;
+    white-space: nowrap;
+    border-radius: 10px;
+  }
+
+  &__layout {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 28px;
+    align-items: start;
+  }
+}
+
+
+.filters {
+  background-color: $white;
+  border-radius: 10px;
+  padding: 24px;
+
+  &__section {
+    padding-bottom: 1.5em;
+    margin-bottom: 24px;
+    border-bottom: 1px solid $color-secondary;
+    &:last-child { 
+      margin-bottom: 0; 
+      padding-bottom: 0;
+      border: none;
+    }
+  }
+
+  &__title {
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: $color-secondary;
+    margin-bottom: 14px;
+  }
+
+  &__tags {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__tag {
+    max-width: 400px;
+    font-size: 0.8rem;
+    color: $color-secondary;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.2s, color 0.2s;
+
+    &--active,
+    &:hover {
+      background-color: $color-secondary;
+      color: $color-primary;
+    }
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    input {
+      width: 130px;
+      border-radius: 10px;
+      padding: 8px 10px;
+      border: 1px solid $color-secondary;
+      font-size: 0.78rem;
+      color: $color-secondary;
+      outline: none;
+
+      &:focus { 
+        border-color: $color-accent-gold; 
+      }
+      &::placeholder { 
+        color: $color-secondary; 
+      }
+    }
+
+    span { 
+      color: $color-secondary; 
+      font-size: 0.75rem; }
+  }
+
+  &__checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    cursor: pointer;
+
+    input[type="checkbox"] {
+      width: 14px;
+      height: 14px;
+      accent-color: $color-secondary;
+    }
+  }
+}
+
+// Grille boutique
+.shop-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  width: 100%;
+}
+
+@media (min-width: $tablet) {
+  .shop-page {
+    &__toolbar {
+      flex-direction: row;
+    }
+    &__layout {
+      display: flex;
+      gap: 1em;
+    }
+  }
+  .filters {
+    max-width: 300px;
+    &__price {
+      input {
+        width: 100px;
+      }
+    }
+  }
+}
+
+@media (min-width: $desktop) {
+  .shop-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: $large-screen) {
+  .shop-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
