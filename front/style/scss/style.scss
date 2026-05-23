@@ -878,7 +878,7 @@ a {
 
   &__subtitle {
     font-size: 0.95rem;
-    color: lighten($color-secondary, 30%);
+    color: $color-secondary-hover;
     text-align: center;
     margin-bottom: 28px;
   }
@@ -966,20 +966,24 @@ a {
 .input-password {
   position: relative;
 
-  input { padding-right: 40px; }
+  input { 
+    padding-right: 40px; 
+  }
 
   &__toggle {
     position: absolute;
     right: 12px;
-    top: 50%;
+    top: 67%;
     transform: translateY(-50%);
     background: none;
     border: none;
     cursor: pointer;
-    color: lighten($color-secondary, 30%);
+    color: $color-secondary;
     font-size: 1rem;
     padding: 0;
 
-    &:hover { color: $color-secondary; }
+    &:hover { 
+      color: $color-secondary; 
+    }
   }
 }

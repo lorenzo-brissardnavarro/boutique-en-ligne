@@ -704,7 +704,7 @@ a {
 }
 .auth-page__subtitle {
   font-size: 0.95rem;
-  color: rgb(84.2921348315, 114.202247191, 157.7078651685);
+  color: #263347;
   text-align: center;
   margin-bottom: 28px;
 }
@@ -798,12 +798,12 @@ a {
 .input-password__toggle {
   position: absolute;
   right: 12px;
-  top: 50%;
+  top: 67%;
   transform: translateY(-50%);
   background: none;
   border: none;
   cursor: pointer;
-  color: rgb(84.2921348315, 114.202247191, 157.7078651685);
+  color: #1F2A3A;
   font-size: 1rem;
   padding: 0;
 }
