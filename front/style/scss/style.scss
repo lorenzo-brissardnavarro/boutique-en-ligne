@@ -59,6 +59,19 @@ a {
   color: inherit;
 }
 
+input{
+
+	&::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin:0;
+	}
+ 
+  &::-o-inner-spin-button {
+		-o-appearance: none;
+		margin: 0; 
+	}
+}
+
 ////////////////////////////////////////////////////////////////// Navbar /////////////////////////////////////////////////////////////////
 
 .header {
@@ -1644,6 +1657,199 @@ a {
 
     &__info div {
       gap: 15px;
+    }
+  }
+}
+
+///////////////////////////////////////////////////////////////// Page profil utilisateur ////////////////////////////////////////////////////////
+
+.profile-page {
+  padding: 24px 0 64px;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 2em;
+  }
+}
+
+.profile-sidebar {
+  background-color: $white;
+  border-radius: 15px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  text-align: center;
+
+  &__avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background-color: $color-accent-pink;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-secondary;
+    font-size: 1.8rem;
+  }
+
+  &__name {
+    font-family: $playfair;
+    font-size: 1.1rem;
+    color: $color-secondary;
+    font-weight: 500;
+    margin-top: 1em;
+  }
+
+  &__email {
+    font-size: 0.75rem;
+    color: $color-accent-grey;
+  }
+
+  &__nav {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-top: 1px solid $color-secondary;
+    padding-top: 1em;
+    margin-top: 1em;
+
+    button {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      font-size: 0.8rem;
+      color: $color-secondary;
+      border-radius: 10px;
+      background: transparent;
+      border: none;
+      transition: background-color 0.2s;
+
+      i {
+        font-size: 1rem;
+      }
+
+      &:hover,
+      &.active {
+        background-color: $color-secondary;
+        color: $color-primary;
+        border-color: $color-secondary;
+      }
+    }
+  }
+}
+
+
+.orders {
+  
+  &__title {
+    font-family: "Playfair Display", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #1F2A3A;
+    margin-bottom: 1.5em;
+  }
+}
+
+.order-item {
+  background-color: $white;
+  border-radius: 15px;
+  padding: 24px 20px;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid $color-secondary;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+
+  &__num {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: $color-secondary;
+  }
+
+  &__count {
+    font-size: 0.75rem;
+    color: $color-accent-grey;
+  }
+
+  &__lines {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  &__line {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.8rem;
+    color: $color-secondary;
+
+    p {
+      flex: 1;
+    }
+
+    span {
+      white-space: nowrap;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: $color-accent-gold;
+    }
+  }
+
+  &__total {
+    font-weight: 700;
+    color: $color-accent-gold;
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: $tablet) {
+
+  .profile-page {
+
+    &__title {
+      font-size: 2rem;
+      margin-bottom: 32px;
+    }
+
+    &__inner {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 1em;
+      align-items: start;
+    }
+  }
+
+  .profile-sidebar {
+    padding: 32px 24px;
+  }
+
+  .order-item {
+
+    &__header {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    &__line {
+      flex-direction: row;
     }
   }
 }
