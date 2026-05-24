@@ -18,7 +18,7 @@
     <header class="header">
         <nav class="header__bar">
             <a href="../../index.php" class="menu__logo">
-                <img src="../images/logo.png" alt="Logo">
+                <img src="../images/logo.png" alt="Logo de l'entreprise">
             </a>
 
             <i class="fa-solid fa-bars" id="toggler"></i>

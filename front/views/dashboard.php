@@ -2,58 +2,73 @@
 require_once "layout/header.php";
 ?>
 
-<section>
-    <h1>Dashboard admin</h1>
-    <section>
-        <div>
-            <h2>Gestion des produits</h2>
-            <button>AJOUTER UN PRODUIT</button>
+<section class="container admin-page">
+    <h1 class="shop-page__title">Dashboard admin</h1>
+
+    <section class="admin-page__section">
+
+        <div class="admin-page__section-header">
+            <h2 class="admin-page__section-title">Gestion des produits</h2>
+            <button class="admin-btn">AJOUTER UN PRODUIT</button>
         </div>
 
-        <div>
-            <article>
-                <div>
-                    <div>
-                        <img src="" alt="">
-                    </div>
-                    <div>
-                        <h3>Boucles d’oreilles poisson argent</h3>
-                        <p>Bijoux - <span>24.99 €</span></p>
-                        <p>5 en stock</p>
-                    </div>
-                </div>
+        <div class="admin-products">
+            <article class="admin-product-card">
+                <img src="../images/hero.png" alt="Boucles d’oreilles poisson argent" class="admin-product-card__img">
 
-                <p>Élégantes et raffinées, ces boucles d’oreilles en forme de poisson Betta offrent un design délicat aux détails finement sculptés. Leur style poétique et artisanal apporte une touche unique et sophistiquée à toute tenue.</p>
+                <div class="admin-product-card__info">
+                    <h3 class="admin-product-card__name">Boucles d’oreilles poisson argent</h3>
+                    <p class="admin-product-card__meta">Bijoux - <span>24.99 €</span></p>
+                    <p class="admin-product-card__stock">5 en stock</p>
+                    <p class="admin-product-card__desc">Élégantes et raffinées, ces boucles d’oreilles en forme de poisson Betta offrent un design délicat aux détails finement sculptés.</p>
 
-                <div>
-                    <button><i class="fa-solid fa-pen"></i></button>
-                    <button><i class="fa-solid fa-trash-can"></i></button>
+                    <div class="admin-product-card__actions">
+                        <button class="admin-product-card__icon-btn admin-product-card__icon-btn--edit" aria-label="Modifier le produit">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+
+                        <button class="admin-product-card__icon-btn admin-product-card__icon-btn--delete" aria-label="Supprimer le produit">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+
+                    </div>
                 </div>
             </article>
         </div>
-
     </section>
 
-    <section>
-        <div>
-            <h2>Gestion des catégories</h2>
-            <button>AJOUTER UNE CATÉGORIE</button>
+    <section class="admin-page__section">
+
+        <div class="admin-page__section-header">
+            <h2 class="admin-page__section-title">Gestion des catégories</h2>
+            <button class="admin-btn">AJOUTER UNE CATÉGORIE</button>
         </div>
 
-        <div>
-            <article>
-                <h2>BIJOUX</h2>
+        <div class="admin-categories">
+
+            <article class="admin-category-tag">
+                <h3>BIJOUX</h3>
                 <div>
-                    <button><i class="fa-solid fa-pen"></i></button>
-                    <button><i class="fa-solid fa-trash-can"></i></button>
+                    <button class="admin-product-card__icon-btn admin-product-card__icon-btn--edit" aria-label="Modifier la catégorie">
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+
+                    <button class="admin-product-card__icon-btn admin-product-card__icon-btn--delete" aria-label="Supprimer la catégorie">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
                 </div>
             </article>
 
-            <article>
-                <h2>ACCESSOIRES</h2>
+            <article class="admin-category-tag">
+                <h3>ACCESSOIRES</h3>
                 <div>
-                    <button><i class="fa-solid fa-pen"></i></button>
-                    <button><i class="fa-solid fa-trash-can"></i></button>
+                    <button class="admin-product-card__icon-btn admin-product-card__icon-btn--edit" aria-label="Modifier la catégorie">
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+
+                    <button class="admin-product-card__icon-btn admin-product-card__icon-btn--delete" aria-label="Supprimer la catégorie">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
                 </div>
             </article>
         </div>

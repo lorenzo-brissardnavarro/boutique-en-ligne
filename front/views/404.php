@@ -2,20 +2,11 @@
 require_once "layout/header.php";
 ?>
 
-<section>
-    <h1>Erreur 404</h1>
-
-    <h2>Oups... cette page s'est envolée</h2>
-    <h2> sous les fleurs de sakura.</h2>
-
-    <p>
-      La page que vous cherchez n'existe plus, ou n'a peut-être jamais existé.
-      Revenez à la boutique pour découvrir nos nouvelles créations.
-    </p>
-
-    <a href="">
-        <button>RETOUR À LA BOUTIQUE</button>
-    </a>
+<section class="container page-404">
+    <p class="page-404__label">Erreur 404</p>
+    <h1 class="page-404__title">Oups... cette page s'est envolée <em>sous les fleurs de sakura.</em></h1>
+    <p class="page-404__desc">La page que vous cherchez n'existe plus, ou n'a peut-être jamais existé. Revenez à la boutique pour découvrir nos nouvelles créations.</p>
+    <a href="" class="page-404__cta">RETOUR À LA BOUTIQUE</a>
 </section>
 
 <?php
