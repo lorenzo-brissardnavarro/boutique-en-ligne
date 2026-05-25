@@ -70,6 +70,9 @@ require_once "layout/header.php";
     </div>
 </section>
 
+<script src="../js/functions.js"></script>
+<script src="../js/register.js"></script>
+
 <?php
 require_once "layout/footer.php";
 ?>

@@ -1,0 +1,17 @@
+{
+    "name": "loren/boutique_en_ligne",
+    "description": "Educational PHP project built with Composer",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "back/"
+        }
+    },
+    "authors": [
+        {
+            "name": "lorenzo-brissardnavarro",
+            "email": "lorenzo.brissardnavarro@laplateforme.io"
+        }
+    ],
+    "require": {}
+}

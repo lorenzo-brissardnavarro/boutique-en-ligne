@@ -25,32 +25,32 @@
 
             <ul class="menu__listing menu__listing--none">
                 <li>
-                    <a href="/">Accueil</a>
+                    <a href="../../index.php">Accueil</a>
                 </li>
                 <li>
-                    <a href="/">Boutique</a>
+                    <a href="shop.php">Boutique</a>
                 </li>
                 <li>
-                    <a href="/">S'inscrire</a>
+                    <a href="registration.php">S'inscrire</a>
                 </li>
                 <li>
-                    <a href="/">Se connecter</a>
+                    <a href="login.php">Se connecter</a>
                 </li>
             </ul>
         </nav>
         <div class="menu" id="menu">
             <ul class="menu__listing menu__listing--burger">
                 <li>
-                    <a href="/">Accueil</a>
+                    <a href="../../index.php">Accueil</a>
                 </li>
                 <li>
-                    <a href="/">Boutique</a>
+                    <a href="shop.php">Boutique</a>
                 </li>
                 <li>
-                    <a href="/">S'inscrire</a>
+                    <a href="registration.php">S'inscrire</a>
                 </li>
                 <li>
-                    <a href="/">Se connecter</a>
+                    <a href="login.php">Se connecter</a>
                 </li>
             </ul>
         </div>
