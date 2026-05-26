@@ -13,9 +13,12 @@ function hideError(element){
 }
 
 // Bandeau de notification pour indiquer à l'utilisateur la réussite ou l'échec de l'action
-function showNotification(message) {
+const body = document.getElementById("body");
+function showNotification(message, classe) {
     const notif = document.createElement("div");
     notif.textContent = message;
-    notif.classList.remove('hidden');
-    setTimeout(() => notif.classList.add('hidden'), 3000);
+    notif.classList.add("notification");
+    notif.classList.add(classe);
+    body.appendChild(notif);
+    setTimeout(() => notif.remove(), 2000);
 }

@@ -14,7 +14,7 @@
     <script src="../js/menu.js" defer></script>
 </head>
 
-<body>
+<body id="body">
     <header class="header">
         <nav class="header__bar">
             <a href="../../index.php" class="menu__logo">
