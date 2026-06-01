@@ -38,4 +38,15 @@ class User
         $role = $query->fetch(PDO::FETCH_ASSOC);
         return $role['id'];
     }
+
+
+    ///////////////////////////////////////////////////////// Connexion /////////////////////////////////////////////////////////////////
+
+    // Récupération des informations d'un utilisateur
+    public function findByEmail($email){
+        $sql = "SELECT * FROM user WHERE email = :email";
+        $query = $this->pdo->prepare($sql);
+        $query->execute([':email' => $email]);
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
 }

@@ -7,7 +7,7 @@ function showError(element, message){
 // Masquer l'erreur d'un formulaire si elle a été corrigée
 function hideError(element){
     const error = element.nextElementSibling;
-    if (error) {
+    if (error && error.classList.contains("error")) {
         error.remove();
     }
 }

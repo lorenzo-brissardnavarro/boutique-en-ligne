@@ -10,12 +10,11 @@ class AuthController
 
     public function __construct()
     {
-        session_start();
         $db = new Database();
         $this->user = new User($db->getConnection());
     }
 
-
+    // Inscription de l'utilisateur
     public function register(){
         $data = json_decode(file_get_contents("php://input"), true);
 
@@ -24,7 +23,7 @@ class AuthController
             return;
         }
 
-        if (empty($data["firstname"]) || empty($data["surname"]) || empty($data["email"]) || empty($data["phone"]) || empty($data["birthday"]) || empty($data["address"]) || empty($data["password"]) || empty($data["confirm"])) {
+        if (!empty($data["firstname"]) || !empty($data["surname"]) || !empty($data["email"]) || !empty($data["phone"]) || !empty($data["birthday"]) || !empty($data["address"]) || !empty($data["password"]) || !empty($data["confirm"])) {
             echo json_encode(['success' => false, 'message' => 'Champs requis manquants']);
             return;
         }
@@ -81,6 +80,36 @@ class AuthController
         
         $this->user->create($data["firstname"], $data["surname"], $data["email"], $data["phone"], $data["birthday"], $data["address"], $data["password"], $role);
         echo json_encode(['success' => true, 'message' => 'Compte créé avec succès']);
+    }
+
+    // Connexion de l'utilisateur
+    public function login() {
+        $data = json_decode(file_get_contents('php://input'), true);
+
+        if (!$data) {
+            echo json_encode(['success' => false, 'message' => 'Données invalides']);
+            return;
+        }
+
+        if (empty($data["email"]) || empty($data["password"])) {
+            echo json_encode(['success' => false, 'message' => 'Champs requis manquants']);
+            return;
+        }
+
+        $user = $this->user->findByEmail($data["email"]);
+
+        if (!$user) {
+            echo json_encode(['success' => false, 'message' => 'Identifiant ou mot de passe incorrect']);
+            return;
+        }
+
+        if (password_verify($data["password"], $user['password'])) {
+            $_SESSION['user_id'] = $user['id'];
+            echo json_encode(['success' => true, 'user' => $user['id']]);
+
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Identifiant ou mot de passe incorrect']);
+        }
     }
 
 }

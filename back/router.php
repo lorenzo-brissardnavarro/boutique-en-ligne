@@ -21,6 +21,11 @@ switch ($action) {
             $controller->register();
         }
         break;
+    case 'login':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $controller->login();
+        }
+        break;
     default:
         echo json_encode(['success' => false, 'message' => 'Action inconnue']);
 }
