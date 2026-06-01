@@ -16,6 +16,7 @@ session_start();
     <link rel="stylesheet" href="../style/css/style.css">
     <link rel="icon" type="image/png" href="">
     <script src="../js/menu.js" defer></script>
+    <script src="../js/logout.js" defer></script>
 </head>
 
 <body id="body">
@@ -48,7 +49,7 @@ session_start();
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="" id="logout">
                             <i class="fa-solid fa-arrow-right-from-bracket"></i>
                         </a>
                     </li>
@@ -94,7 +95,7 @@ session_start();
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="#" id="logout">
                             <i class="fa-solid fa-arrow-right-from-bracket"></i>
                         </a>
                     </li>

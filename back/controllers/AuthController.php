@@ -86,6 +86,10 @@ class AuthController
     public function login() {
         $data = json_decode(file_get_contents('php://input'), true);
 
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
         if (!$data) {
             echo json_encode(['success' => false, 'message' => 'Données invalides']);
             return;
@@ -110,6 +114,16 @@ class AuthController
         } else {
             echo json_encode(['success' => false, 'message' => 'Identifiant ou mot de passe incorrect']);
         }
+    }
+
+    // Déconnexion de l'utilisateur
+    public function logout() {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+        $_SESSION = [];
+        session_destroy();
+        echo json_encode(['success' => true]);
     }
 
 }

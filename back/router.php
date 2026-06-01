@@ -26,6 +26,11 @@ switch ($action) {
             $controller->login();
         }
         break;
+    case 'logout':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $controller->logout();
+        }
+        break;
     default:
         echo json_encode(['success' => false, 'message' => 'Action inconnue']);
 }
