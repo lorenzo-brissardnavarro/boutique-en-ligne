@@ -1,3 +1,7 @@
+<?php 
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -12,48 +16,110 @@
     <link rel="stylesheet" href="../style/css/style.css">
     <link rel="icon" type="image/png" href="">
     <script src="../js/menu.js" defer></script>
+    <script src="../js/logout.js" defer></script>
 </head>
 
-<body>
-    <header class="header">
+<body id="body">
+   <header class="header">
         <nav class="header__bar">
+
             <a href="../../index.php" class="menu__logo">
-                <img src="../images/logo.png" alt="Logo de l'entreprise">
+                <img src="../images/logo.png" alt="Logo de Sakura Moon">
             </a>
 
             <i class="fa-solid fa-bars" id="toggler"></i>
 
             <ul class="menu__listing menu__listing--none">
-                <li>
-                    <a href="/">Accueil</a>
-                </li>
-                <li>
-                    <a href="/">Boutique</a>
-                </li>
-                <li>
-                    <a href="/">S'inscrire</a>
-                </li>
-                <li>
-                    <a href="/">Se connecter</a>
-                </li>
+                <?php 
+                if(!empty($_SESSION['user_id'])) {
+                    echo '
+                    <li>
+                        <a href="shop.php">
+                            <i class="fa-solid fa-shop"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="user-profile.php">
+                            <i class="fa-solid fa-user"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="shopping-basket.php">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" id="logout">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        </a>
+                    </li>
+                    ';
+                } else {
+                    echo '
+                    <li>
+                        <a href="../../index.php">Accueil</a>
+                    </li>
+                    <li>
+                        <a href="shop.php">Boutique</a>
+                    </li>
+                    <li>
+                        <a href="registration.php">S\'inscrire</a>
+                    </li>
+                    <li>
+                        <a href="login.php">Se connecter</a>
+                    </li>
+                    ';
+                }
+                ?>
             </ul>
         </nav>
+
         <div class="menu" id="menu">
             <ul class="menu__listing menu__listing--burger">
-                <li>
-                    <a href="/">Accueil</a>
-                </li>
-                <li>
-                    <a href="/">Boutique</a>
-                </li>
-                <li>
-                    <a href="/">S'inscrire</a>
-                </li>
-                <li>
-                    <a href="/">Se connecter</a>
-                </li>
+                <?php
+                if(!empty($_SESSION['user_id'])) {
+                    echo '
+                    <li>
+                        <a href="shop.php">
+                            <i class="fa-solid fa-shop"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="user-profile.php">
+                            <i class="fa-solid fa-user"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="shopping-basket.php">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" id="logout">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        </a>
+                    </li>
+                    ';
+                } else {
+                    echo '
+                    <li>
+                        <a href="../../index.php">Accueil</a>
+                    </li>
+                    <li>
+                        <a href="shop.php">Boutique</a>
+                    </li>
+                    <li>
+                        <a href="registration.php">S\'inscrire</a>
+                    </li>
+                    <li>
+                        <a href="login.php">Se connecter</a>
+                    </li>
+                    ';
+                }
+                ?>
             </ul>
         </div>
+
     </header>
 
 <main>

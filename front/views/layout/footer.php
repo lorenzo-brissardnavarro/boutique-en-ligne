@@ -15,9 +15,9 @@
                 <h3>MON COMPTE</h3>
                 <nav>
                     <ul>
-                        <li><a href="#">Inscription</a></li>
-                        <li><a href="#">Connexion</a></li>
-                        <li><a href="#">Mon profil</a></li>
+                        <li><a href="registration.php">Inscription</a></li>
+                        <li><a href="login.php">Connexion</a></li>
+                        <li><a href="user-profiles.php">Mon profil</a></li>
                     </ul>
                 </nav>
             </div>
@@ -26,7 +26,7 @@
                 <h3>MAISON</h3>
                 <nav>
                     <ul>
-                        <li><a href="#">Boutique</a></li>
+                        <li><a href="shop.php">Boutique</a></li>
                         <li><a href="#">Notre histoire</a></li>
                         <li><a href="#">Contact</a></li>
                     </ul>

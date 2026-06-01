@@ -12,20 +12,20 @@ require_once "layout/header.php";
         <h1 class="auth-page__title">Bon retour !</h1>
         <p class="auth-page__subtitle">Connectez-vous à votre compte</p>
 
-        <form action="" method="get">
+        <form action="" method="get" autocomplete="on" id="loginForm">
 
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email" required />
             </div>
 
-            <div class="form-group input-password">
+            <div class="form-group input-password" id="div-password">
                 <label for="password">Mot de passe</label>
 
                 <input type="password" name="password" id="password" required />
 
                 <button type="button" class="input-password__toggle">
-                    <i class="fa-solid fa-eye-slash"></i>
+                    <i class="fa-solid fa-eye-slash" id="icon"></i>
                 </button>
             </div>
 
@@ -35,11 +35,14 @@ require_once "layout/header.php";
 
         <div class="form-link">
             <p>Vous n'avez pas de compte ?</p>
-            <a href="">S'inscrire</a>
+            <a href="registration.php">S'inscrire</a>
         </div>
 
     </div>
 </section>
+
+<script src="../js/functions.js"></script>
+<script src="../js/login.js"></script>
 
 <?php
 require_once "layout/footer.php";
