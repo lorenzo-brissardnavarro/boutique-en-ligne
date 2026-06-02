@@ -81,37 +81,12 @@ require_once "layout/header.php";
             <p>Découvrez nos créations les plus appréciées par notre communauté</p>
         </div>
 
-        <div class="products__grid">
-
-            <article class="product-card">
-
-                <div class="product-card__badge">
-                    Bijoux
-                </div>
-
-                <div class="product-card__image">
-                    <img src="" alt="">
-                </div>
-
-                <div class="product-card__content">
-
-                    <h3>Boucles d'oreilles poisson argent</h3>
-
-                    <div class="product-card__bottom">
-                        <p class="product-card__price">24.99 €</p>
-
-                        <button class="product-card__cart">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </button>
-                    </div>
-
-                </div>
-            </article>
+        <div class="products__grid" id="GridTopProducts">
 
         </div>
 
         <div class="products__button">
-            <a href="">Voir toute la boutique</a>
+            <a href="shop.php">Voir toute la boutique</a>
         </div>
 
     </div>
@@ -126,33 +101,7 @@ require_once "layout/header.php";
             <p>Les dernières créations ajoutées à notre collection</p>
         </div>
 
-        <div class="products__grid">
-
-            <article class="product-card">
-
-                <div class="product-card__badge">
-                    Accessoires
-                </div>
-
-                <div class="product-card__image">
-                    <img src="" alt="">
-                </div>
-
-                <div class="product-card__content product-card__content--beige">
-
-                    <h3>Trousse M Verte</h3>
-
-                    <div class="product-card__bottom">
-                        <p class="product-card__price">15.99 €</p>
-
-                        <button class="product-card__cart">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </button>
-                    </div>
-
-                </div>
-
-            </article>
+        <div class="products__grid" id="GridNewsProducts">
 
         </div>
 
@@ -256,6 +205,8 @@ require_once "layout/header.php";
 
     </div>
 </section>
+
+<script src="../js/home.js"></script>
 
 <?php
 require_once "layout/footer.php";

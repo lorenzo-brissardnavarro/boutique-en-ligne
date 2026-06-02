@@ -11,24 +11,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 require '../vendor/autoload.php';
 
 use App\Controllers\AuthController;
+use App\Controllers\ProductController;
 
-$controller = new AuthController();
+$Authcontroller = new AuthController();
+$Productcontroller = new ProductController();
 $action = $_GET['action'] ?? '';
 
 switch ($action) {
+    case 'home':
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $Productcontroller->home();
+        }
+        break;
     case 'register':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $controller->register();
+            $Authcontroller->register();
         }
         break;
     case 'login':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $controller->login();
+            $Authcontroller->login();
         }
         break;
     case 'logout':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $controller->logout();
+            $Authcontroller->logout();
         }
         break;
     default:

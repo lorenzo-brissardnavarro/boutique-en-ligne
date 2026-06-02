@@ -546,6 +546,9 @@ input{
 
     img {
       height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: 60% 60%;
       transition: 0.5s ease;
     }
   }
