@@ -15,9 +15,31 @@ class ProductController
     }
 
    public function home(){
-        header('Content-Type: application/json');
         $top = $this->product->topProducts();
         $news = $this->product->newProducts();
-        echo json_encode(["success" => true, "data" => ["top" => $top, "news" => $news]]);
+        require '../front/views/home.php';
+    }
+
+    public function productDetails($id){
+        header('Content-Type: application/json');
+        $details = $this->product->getById($id);
+        echo json_encode(["success" => true, "data" => $details]);
+    }
+
+    public function shop(){
+        $keyword = $_GET['keyword'] ?? '';
+        $sort = $_GET['sort'] ?? 'all';
+        $category = $_GET['category'] ?? 'all';
+        $min = $_GET['min'] ?? 'all';
+        $max = $_GET['max'] ?? 'all';
+        $availability = (int)($_GET['availability'] ?? 0);
+
+        $products = $this->product->searchAdvanced($keyword, $sort, $category, $min, $max, $availability);
+        echo json_encode(["success" => true, "data" => $products]);
+    }
+
+    public function shopView(){
+        $categories = $this->product->getAllCategories();
+        require '../front/views/shop.php';
     }
 }

@@ -14,6 +14,11 @@ class AuthController
         $this->user = new User($db->getConnection());
     }
 
+    // View de la page d'inscription
+    public function registerView(){
+        require '../front/views/registration.php';
+    }
+
     // Inscription de l'utilisateur
     public function register(){
         $data = json_decode(file_get_contents("php://input"), true);
@@ -80,6 +85,13 @@ class AuthController
         
         $this->user->create($data["firstname"], $data["surname"], $data["email"], $data["phone"], $data["birthday"], $data["address"], $data["password"], $role);
         echo json_encode(['success' => true, 'message' => 'Compte créé avec succès']);
+        require '../front/views/registration.php';
+    }
+
+
+    // View de la page de connexion
+    public function loginView(){
+        require '../front/views/login.php';
     }
 
     // Connexion de l'utilisateur

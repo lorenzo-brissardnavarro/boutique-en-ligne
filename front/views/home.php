@@ -14,7 +14,7 @@ require_once "layout/header.php";
             <h1>Des créations artisanales <span>inspirées de l’Asie</span></h1>
             <p>Pochettes brodées, sacs sashiko, foulards en soie, accessoires cheveux : chaque pièce est imaginée et cousue à la main dans notre atelier, avec des tissus choisis pour leur beauté et leur tenue dans le temps.</p>
 
-            <a href="" class="hero__btn">
+            <a href="../back/router.php?action=shop-categories" class="hero__btn">
                 <div>
                     <p>DÉCOUVRIR LA BOUTIQUE</p>
                     <i class="fa-solid fa-arrow-right-long"></i>
@@ -23,7 +23,7 @@ require_once "layout/header.php";
         </div>
 
         <div class="hero__image">
-            <img src="../images/hero.png" alt="Image illustrant l'univers et les produits proposés par l'entreprise">
+            <img src="../front/images/hero.png" alt="Image illustrant l'univers et les produits proposés par l'entreprise">
         </div>
 
     </div>
@@ -82,11 +82,39 @@ require_once "layout/header.php";
         </div>
 
         <div class="products__grid" id="GridTopProducts">
+            <?php
+            foreach ($top as $product) {
+                echo '
+                <a href="../back/router.php?action=product-details&id=' . $product['id'] . '" class="product-card">
+                    <article>
+                        <div class="product-card__badge">' . $product['category_name'] . '</div>
 
+                            <div class="product-card__image">
+                                <img src="../public/images/' . $product['image'] . '" alt="' . $product['product_name'] . '">
+                            </div>
+
+                            <div class="product-card__content product-card__content--beige">
+
+                                <h3>' . $product['product_name'] . '</h3>
+
+                                <div class="product-card__bottom">
+                                    <p class="product-card__price">' . $product['price'] . ' €</p>
+
+                                    <button class="product-card__cart" type="button">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                    </button>
+                                </div>
+
+                            </div>
+                    </article>
+                </a>
+                ';
+            }
+            ?>
         </div>
 
         <div class="products__button">
-            <a href="shop.php">Voir toute la boutique</a>
+            <a href="../back/router.php?action=shop-categories">Voir toute la boutique</a>
         </div>
 
     </div>
@@ -102,7 +130,35 @@ require_once "layout/header.php";
         </div>
 
         <div class="products__grid" id="GridNewsProducts">
+            <?php
+            foreach ($news as $product) {
+                echo '
+                <a href="../back/router.php?action=product-details&id=' . $product['id'] . '" class="product-card">
+                    <article>
+                        <div class="product-card__badge">' . $product['category_name'] . '</div>
 
+                            <div class="product-card__image">
+                                <img src="../public/images/' . $product['image'] . '" alt="' . $product['product_name'] . '">
+                            </div>
+
+                            <div class="product-card__content product-card__content--beige">
+
+                                <h3>' . $product['product_name'] . '</h3>
+
+                                <div class="product-card__bottom">
+                                    <p class="product-card__price">' . $product['price'] . ' €</p>
+
+                                    <button class="product-card__cart" type="button">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                    </button>
+                                </div>
+
+                            </div>
+                    </article>
+                </a>
+                ';
+            }
+            ?>
         </div>
 
     </div>
@@ -205,8 +261,6 @@ require_once "layout/header.php";
 
     </div>
 </section>
-
-<script src="../js/home.js"></script>
 
 <?php
 require_once "layout/footer.php";

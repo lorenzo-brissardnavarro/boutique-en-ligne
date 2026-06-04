@@ -31,7 +31,7 @@ formLogin.addEventListener("submit", async function(e) {
 
     try {
         // Appel API et envoi des données
-        const response = await fetch("../../back/router.php?action=login", {
+        const response = await fetch("../back/router.php?action=login", {
         method: "POST",
         credentials: 'same-origin',
         headers: {
@@ -45,7 +45,7 @@ formLogin.addEventListener("submit", async function(e) {
         if (result.success) {
             showNotification("Connexion réussie", "green");
             setTimeout(() => {
-                window.location.href = "shop.php";
+                window.location.href = "../back/router.php?action=shop-view";
             }, 2000);
         } else {
             showError(passwordDiv, "Identifiant ou mot de passe incorrect");

@@ -4,7 +4,7 @@
     <section class="footer__grid">
 
         <div>
-            <img src="../images/logo.png" alt="Logo de l'entreprise" class="footer__logo">
+            <img src="../front/images/logo.png" alt="Logo de l'entreprise" class="footer__logo">
             <p>
                 Créations artisanales inspirées de l'Asie. Chaque pièce est imaginée et cousue à la main dans notre atelier, avec des tissus choisis pour leur beauté et leur tenue dans le temps.
             </p>
@@ -15,8 +15,8 @@
                 <h3>MON COMPTE</h3>
                 <nav>
                     <ul>
-                        <li><a href="registration.php">Inscription</a></li>
-                        <li><a href="login.php">Connexion</a></li>
+                        <li><a href="../back/router.php?action=register-view">Inscription</a></li>
+                        <li><a href="../back/router.php?action=login-view">Connexion</a></li>
                         <li><a href="user-profiles.php">Mon profil</a></li>
                     </ul>
                 </nav>
@@ -26,7 +26,7 @@
                 <h3>MAISON</h3>
                 <nav>
                     <ul>
-                        <li><a href="shop.php">Boutique</a></li>
+                        <li><a href="../back/router.php?action=shop-view">Boutique</a></li>
                         <li><a href="#">Notre histoire</a></li>
                         <li><a href="#">Contact</a></li>
                     </ul>

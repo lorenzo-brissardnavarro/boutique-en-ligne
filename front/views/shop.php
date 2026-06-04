@@ -15,15 +15,15 @@ require_once "layout/header.php";
 
         <div class="shop-page__search">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="search" name="search" placeholder="Rechercher un produit...">
+            <input type="search" name="search" placeholder="Rechercher un produit..." id="myKeyword">
         </div>
 
-        <select name="platform" id="platform-select" class="shop-page__sort">
+        <select name="platform" id="sort-select" class="shop-page__sort">
             <option value="all">Trier</option>
-            <option value="az">Ordre alphabétique A-Z</option>
-            <option value="za">Ordre alphabétique Z-A</option>
-            <option value="croissant">Prix croissant</option>
-            <option value="decroissant">Prix décroissant</option>
+            <option value="name_asc">Nom A-Z</option>
+            <option value="name_desc">Nom Z-A</option>
+            <option value="price_asc">Prix croissant</option>
+            <option value="price_desc">Prix décroissant</option>
         </select>
     </form>
 
@@ -32,8 +32,18 @@ require_once "layout/header.php";
         <aside class="filters">
             <div class="filters__section">
                 <p class="filters__title">Catégories</p>
-                <div class="filters__tags">
-                    <button class="filters__tag filters__tag--active" data-status="all">Toutes les catégories</button>
+                <div class="filters__tags" id="categories">
+                    <button class="filters__tag filters__tag--active" data-status="all">
+                        Toutes les catégories
+                    </button>
+
+                    <?php
+                    foreach ($categories as $category) {
+                        echo '
+                        <button class="filters__tag" data-status="' . htmlspecialchars($category['category_name']) . '">' . htmlspecialchars($category['category_name']) . '</button>
+                        ';
+                    }
+                    ?>
                 </div>
             </div>
 
@@ -49,30 +59,17 @@ require_once "layout/header.php";
             <div class="filters__section">
                 <p class="filters__title">Disponibilité</p>
                 <label for="disponibilite" class="filters__checkbox">
-                    <input type="checkbox" name="disponibilite" id="disponibilite">En stock uniquement</label>
+                    <input type="checkbox" name="disponibilite" id="availability">En stock uniquement</label>
             </div>
         </aside>
 
-        <div class="shop-grid">
-            <article class="product-card">
-                <div class="product-card__badge">Bijoux</div>
-                <div class="product-card__image">
-                    <img src="" alt="">
-                </div>
-                <div class="product-card__content">
-                    <h3>Boucles d'oreilles poisson argent</h3>
-                    <div class="product-card__bottom">
-                        <p class="product-card__price">24.99 €</p>
-                        <button class="product-card__cart">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </button>
-                    </div>
-                </div>
-            </article>
-
+        <div class="shop-grid" id="shop-grid">
+            
         </div>
     </div>
 </section>
+
+<script src="../front/js/shop.js"></script>
 
 <?php
 require_once "layout/footer.php";

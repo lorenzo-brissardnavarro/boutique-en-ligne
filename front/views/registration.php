@@ -6,7 +6,7 @@ require_once "layout/header.php";
     <div class="auth-page__card">
 
         <div class="auth-page__logo">
-            <img src="../images/logo.png" alt="Logo Sakura Moon">
+            <img src="../front/images/logo.png" alt="Logo Sakura Moon">
         </div>
 
         <h1 class="auth-page__title">Créer un compte</h1>
@@ -64,14 +64,14 @@ require_once "layout/header.php";
 
         <div class="form-link">
             <p>Vous avez déjà un compte ?</p>
-            <a href="login.php">Se connecter</a>
+            <a href="../back/router.php?action=login-view">Se connecter</a>
         </div>
 
     </div>
 </section>
 
-<script src="../js/functions.js"></script>
-<script src="../js/register.js"></script>
+<script src="../front/js/functions.js"></script>
+<script src="../front/js/register.js"></script>
 
 <?php
 require_once "layout/footer.php";

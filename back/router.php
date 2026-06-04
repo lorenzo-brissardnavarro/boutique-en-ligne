@@ -23,10 +23,16 @@ switch ($action) {
             $Productcontroller->home();
         }
         break;
+    case 'register-view':
+        $Authcontroller->registerView();
+        break;
     case 'register':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $Authcontroller->register();
         }
+        break;
+    case 'login-view':
+        $Authcontroller->loginView();
         break;
     case 'login':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -37,6 +43,14 @@ switch ($action) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $Authcontroller->logout();
         }
+        break;
+    case 'shop':
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $Productcontroller->shop();
+        }
+        break;
+    case 'shop-view':
+        $Productcontroller->shopView();
         break;
     default:
         echo json_encode(['success' => false, 'message' => 'Action inconnue']);

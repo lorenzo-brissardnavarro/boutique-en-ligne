@@ -1,3 +1,3 @@
 <?php
-header('Location: front/views/home.php');
+header('Location: back/router.php?action=home');
 exit;

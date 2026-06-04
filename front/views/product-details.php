@@ -4,7 +4,7 @@ require_once "layout/header.php";
 
 <section class="container product-detail">
 
-    <a href="#" class="product-detail__back">
+    <a href="shop.php" class="product-detail__back">
         <i class="fa-solid fa-arrow-left-long"></i>
         <span>Retour</span>
     </a>
@@ -12,11 +12,11 @@ require_once "layout/header.php";
     <div class="product-detail__inner">
         <div class="product-detail__gallery">
             <div>
-                <img src="../images/hero.png" alt="Boucles d'oreilles poisson argent" class="product-detail__main-img">
+                <img src="" alt="" class="product-detail__main-img">
             </div>
             <div class="product-detail__thumbs">
-                <img src="../images/hero.png" alt="Vue miniature produit" class="product-detail__thumb product-detail__thumb--active">
-                <img src="../images/hero.png" alt="Vue miniature produit" class="product-detail__thumb">
+                <img src="" alt="" class="product-detail__thumb product-detail__thumb--active">
+                <img src="" alt="" class="product-detail__thumb">
             </div>
         </div>
 
