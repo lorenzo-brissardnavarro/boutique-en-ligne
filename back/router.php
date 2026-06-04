@@ -49,6 +49,11 @@ switch ($action) {
             $Productcontroller->shop();
         }
         break;
+    case 'autocomplete':
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $Productcontroller->autocomplete();
+        }
+        break;
     case 'shop-view':
         $Productcontroller->shopView();
         break;

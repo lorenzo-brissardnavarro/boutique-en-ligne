@@ -42,4 +42,10 @@ class ProductController
         $categories = $this->product->getAllCategories();
         require '../front/views/shop.php';
     }
+
+    public function autocomplete(){
+        $keyword = $_GET['keyword'] ?? '';
+        $products = $this->product->autocomplete($keyword);
+        echo json_encode(["success" => true, "data" => $products]);
+    }
 }

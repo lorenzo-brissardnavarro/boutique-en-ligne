@@ -16,9 +16,10 @@ require_once "layout/header.php";
         <div class="shop-page__search">
             <i class="fa-solid fa-magnifying-glass"></i>
             <input type="search" name="search" placeholder="Rechercher un produit..." id="myKeyword">
+            <div class="shop-page__autocomplete" id="autocomplete"></div>
         </div>
 
-        <select name="platform" id="sort-select" class="shop-page__sort">
+        <select name="sort" id="sort-select" class="shop-page__sort">
             <option value="all">Trier</option>
             <option value="name_asc">Nom A-Z</option>
             <option value="name_desc">Nom Z-A</option>

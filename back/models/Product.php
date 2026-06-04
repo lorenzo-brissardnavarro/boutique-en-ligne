@@ -104,5 +104,13 @@ class Product
         $query->execute();
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    // Récupération de maximum 3 suggestions selon le texte écrit dans la barre de recherche
+    public function autocomplete($keyword){
+        $sql = "SELECT product_name FROM product WHERE product_name LIKE :keyword LIMIT 3";
+        $query = $this->pdo->prepare($sql);
+        $query->execute(["keyword" => "%$keyword%"]);
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
     
 }

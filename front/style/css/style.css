@@ -896,6 +896,7 @@ input::-o-inner-spin-button {
   background-color: #fff;
   border: 1px solid #1F2A3A;
   border-radius: 10px;
+  position: relative;
 }
 .shop-page__search input {
   flex: 1;
@@ -911,6 +912,26 @@ input::-o-inner-spin-button {
 .shop-page__search i {
   color: #1F2A3A;
   font-size: 1rem;
+}
+.shop-page__autocomplete {
+  position: absolute;
+  top: 102%;
+  left: 0;
+  right: 0;
+  font-size: 0.82rem;
+  background: #FFFFFF;
+  border-radius: 10px;
+  z-index: 100;
+}
+.shop-page__autocomplete div {
+  padding: 10px;
+  cursor: pointer;
+  border: 1px solid #C6A86E;
+  border-radius: 10px;
+  transition: background-color 0.2s ease;
+}
+.shop-page__autocomplete div:hover {
+  background: #C6A86E;
 }
 .shop-page__sort {
   display: flex;
@@ -1017,6 +1038,9 @@ input::-o-inner-spin-button {
   grid-template-columns: 1fr;
   gap: 16px;
   width: 100%;
+}
+.shop-grid__empty {
+  padding: 1em;
 }
 
 @media (min-width: 768px) {

@@ -11,7 +11,7 @@ async function loadShop() {
         console.log(result);
 
         if (result.data.length === 0) {
-            shopGrid.innerHTML = "<p>Aucun produit trouvé</p>";
+            shopGrid.innerHTML = "<p class='shop-grid__empty'>Aucun produit trouvé</p>";
             return;
         }
 
@@ -53,7 +53,7 @@ async function loadShop() {
 loadShop();
 
 document.getElementById("myKeyword").addEventListener("input", e => {
-    filters.keyword = e.target.value;
+    filters.keyword = e.target.value.trim();
     console.log(filters);
     loadShop();
 });
@@ -104,5 +104,37 @@ btns.forEach(btn => {
         filters.category = status;
 
         loadShop();
+    });
+});
+
+
+
+
+const autocomplete = document.getElementById("autocomplete");
+
+document.getElementById("myKeyword").addEventListener("input", async (e) => {
+    const keyword = e.target.value.trim();
+
+    if (keyword.length < 2) {
+        autocomplete.innerHTML = "";
+        return;
+    }
+
+    const request = await fetch(`../back/router.php?action=autocomplete&keyword=${keyword}`);
+    const outcome = await request.json();
+
+    autocomplete.innerHTML = "";
+
+    outcome.data.forEach(product => {
+        const div = document.createElement("div");
+        div.textContent = product.product_name;
+
+        div.addEventListener("click", () => {
+            document.getElementById("myKeyword").value = product.product_name;
+            filters.keyword = product.product_name;
+            autocomplete.innerHTML = "";
+            loadShop();
+        });
+        autocomplete.appendChild(div);
     });
 });
