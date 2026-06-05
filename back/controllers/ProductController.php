@@ -3,15 +3,18 @@ namespace App\Controllers;
 
 use App\Config\Database;
 use App\Models\Product;
+use App\Models\Favorite;
 
 class ProductController
 {
     private $product;
+    private $favorite;
 
     public function __construct()
     {
         $db = new Database();
         $this->product = new Product($db->getConnection());
+        $this->favorite = new Favorite($db->getConnection());
     }
 
    public function home(){
@@ -24,6 +27,11 @@ class ProductController
         $id = (int)$_GET['id'] ?? '';
         $product = $this->product->getById($id);
         $additionalImages = $this->product->getAdditionalImages($id);
+
+        $isFavorite = false;
+        if (!empty($_SESSION['user_id'])) {
+            $isFavorite = $this->favorite->exists($_SESSION['user_id'], $id);
+        }
         require '../front/views/product-details.php';
     }
 

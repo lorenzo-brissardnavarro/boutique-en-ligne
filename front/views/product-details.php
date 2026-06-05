@@ -62,15 +62,17 @@ require_once "layout/header.php";
                     Ajouter au panier
                 </button>
 
-                <button class="product-detail__wishlist" aria-label="Ajouter aux favoris">
-                    <i class="fa-regular fa-heart"></i>
+                <button class="product-detail__wishlist  <?php echo $isFavorite ? 'product-detail__wishlist--liked' : '' ?>" id="favoriteBtn" aria-label="Ajouter aux favoris" data-id="<?php echo $product['id'] ?>">
+                    <i id="favoriteIcon" class="<?php echo $isFavorite ? 'fa-solid' : 'fa-regular' ?> fa-heart"></i>
                 </button>
             </div>
         </div>
     </div>
 </section>
 
+<script src="../front/js/functions.js"></script>
 <script src="../front/js/product-details.js"></script>
+<script src="../front/js/like.js"></script>
 
 <?php
 require_once "layout/footer.php";

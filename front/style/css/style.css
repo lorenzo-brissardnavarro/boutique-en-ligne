@@ -1154,8 +1154,12 @@ input::-o-inner-spin-button {
   color: #1F2A3A;
   margin-bottom: 20px;
 }
-.product-detail__stock span {
+.product-detail__stock--green {
   color: #5a9e6e;
+  font-weight: 600;
+}
+.product-detail__stock--red {
+  color: #ec4848;
   font-weight: 600;
 }
 .product-detail__qty {
@@ -1237,6 +1241,10 @@ input::-o-inner-spin-button {
 .product-detail__wishlist:hover, .product-detail__wishlist.active {
   background-color: #E8B7C0;
   border-color: #E8B7C0;
+}
+.product-detail__wishlist--liked {
+  color: #e63946;
+  border-color: #e63946;
 }
 @media (min-width: 768px) {
   .product-detail__inner {

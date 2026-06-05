@@ -1491,6 +1491,11 @@ input{
       background-color: $color-accent-pink;
       border-color: $color-accent-pink;
     }
+
+    &--liked {
+      color: #e63946;
+      border-color: #e63946;
+    }
   }
 
   @media (min-width: $tablet) {

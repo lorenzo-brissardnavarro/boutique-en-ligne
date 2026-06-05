@@ -8,13 +8,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit(0);
 }
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require '../vendor/autoload.php';
 
 use App\Controllers\AuthController;
 use App\Controllers\ProductController;
+use App\Controllers\FavoriteController;
 
 $Authcontroller = new AuthController();
 $Productcontroller = new ProductController();
+$Favoritecontroller = new FavoriteController();
 $action = $_GET['action'] ?? '';
 
 switch ($action) {
@@ -59,6 +64,11 @@ switch ($action) {
         break;
     case 'product-details':
         $Productcontroller->productDetails();
+        break;
+    case 'toggle-favorite':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $Favoritecontroller->toggleFavorite();
+        }
         break;
     default:
         echo json_encode(['success' => false, 'message' => 'Action inconnue']);
