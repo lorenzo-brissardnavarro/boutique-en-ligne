@@ -8,27 +8,66 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit(0);
 }
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require '../vendor/autoload.php';
 
 use App\Controllers\AuthController;
+use App\Controllers\ProductController;
+use App\Controllers\FavoriteController;
 
-$controller = new AuthController();
+$Authcontroller = new AuthController();
+$Productcontroller = new ProductController();
+$Favoritecontroller = new FavoriteController();
 $action = $_GET['action'] ?? '';
 
 switch ($action) {
+    case 'home':
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $Productcontroller->home();
+        }
+        break;
+    case 'register-view':
+        $Authcontroller->registerView();
+        break;
     case 'register':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $controller->register();
+            $Authcontroller->register();
         }
+        break;
+    case 'login-view':
+        $Authcontroller->loginView();
         break;
     case 'login':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $controller->login();
+            $Authcontroller->login();
         }
         break;
     case 'logout':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $controller->logout();
+            $Authcontroller->logout();
+        }
+        break;
+    case 'shop':
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $Productcontroller->shop();
+        }
+        break;
+    case 'autocomplete':
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $Productcontroller->autocomplete();
+        }
+        break;
+    case 'shop-view':
+        $Productcontroller->shopView();
+        break;
+    case 'product-details':
+        $Productcontroller->productDetails();
+        break;
+    case 'toggle-favorite':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $Favoritecontroller->toggleFavorite();
         }
         break;
     default:

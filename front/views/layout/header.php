@@ -1,7 +1,3 @@
-<?php 
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -13,18 +9,18 @@ session_start();
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style/css/style.css">
+    <link rel="stylesheet" href="../front/style/css/style.css">
     <link rel="icon" type="image/png" href="">
-    <script src="../js/menu.js" defer></script>
-    <script src="../js/logout.js" defer></script>
+    <script src="../front/js/menu.js" defer></script>
+    <script src="../front/js/logout.js" defer></script>
 </head>
 
 <body id="body">
    <header class="header">
         <nav class="header__bar">
 
-            <a href="../../index.php" class="menu__logo">
-                <img src="../images/logo.png" alt="Logo de Sakura Moon">
+            <a href="../index.php" class="menu__logo">
+                <img src="../front/images/logo.png" alt="Logo de Sakura Moon">
             </a>
 
             <i class="fa-solid fa-bars" id="toggler"></i>
@@ -34,7 +30,7 @@ session_start();
                 if(!empty($_SESSION['user_id'])) {
                     echo '
                     <li>
-                        <a href="shop.php">
+                        <a href="../back/router.php?action=shop-view">
                             <i class="fa-solid fa-shop"></i>
                         </a>
                     </li>
@@ -57,16 +53,16 @@ session_start();
                 } else {
                     echo '
                     <li>
-                        <a href="../../index.php">Accueil</a>
+                        <a href="../index.php">Accueil</a>
                     </li>
                     <li>
-                        <a href="shop.php">Boutique</a>
+                        <a href="../back/router.php?action=shop-view">Boutique</a>
                     </li>
                     <li>
-                        <a href="registration.php">S\'inscrire</a>
+                        <a href="../back/router.php?action=register-view">S\'inscrire</a>
                     </li>
                     <li>
-                        <a href="login.php">Se connecter</a>
+                        <a href="../back/router.php?action=login-view">Se connecter</a>
                     </li>
                     ';
                 }
@@ -80,7 +76,7 @@ session_start();
                 if(!empty($_SESSION['user_id'])) {
                     echo '
                     <li>
-                        <a href="shop.php">
+                        <a href="../back/router.php?action=shop-view">
                             <i class="fa-solid fa-shop"></i>
                         </a>
                     </li>
@@ -103,16 +99,16 @@ session_start();
                 } else {
                     echo '
                     <li>
-                        <a href="../../index.php">Accueil</a>
+                        <a href="../index.php">Accueil</a>
                     </li>
                     <li>
-                        <a href="shop.php">Boutique</a>
+                        <a href="../back/router.php?action=shop-view">Boutique</a>
                     </li>
                     <li>
-                        <a href="registration.php">S\'inscrire</a>
+                        <a href="../back/router.php?action=register-view">S\'inscrire</a>
                     </li>
                     <li>
-                        <a href="login.php">Se connecter</a>
+                        <a href="../back/router.php?action=login-view">Se connecter</a>
                     </li>
                     ';
                 }

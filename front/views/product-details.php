@@ -4,7 +4,7 @@ require_once "layout/header.php";
 
 <section class="container product-detail">
 
-    <a href="#" class="product-detail__back">
+    <a href="../back/router.php?action=shop-view" class="product-detail__back">
         <i class="fa-solid fa-arrow-left-long"></i>
         <span>Retour</span>
     </a>
@@ -12,23 +12,35 @@ require_once "layout/header.php";
     <div class="product-detail__inner">
         <div class="product-detail__gallery">
             <div>
-                <img src="../images/hero.png" alt="Boucles d'oreilles poisson argent" class="product-detail__main-img">
+                <?php echo '<img src="../public/images/' . $product['image'] . '" alt="' . $product['product_name'] . '" class="product-detail__main-img" id="mainImage"> '?>
             </div>
             <div class="product-detail__thumbs">
-                <img src="../images/hero.png" alt="Vue miniature produit" class="product-detail__thumb product-detail__thumb--active">
-                <img src="../images/hero.png" alt="Vue miniature produit" class="product-detail__thumb">
+                <?php echo '<img src="../public/images/' . $product['image'] . '" alt="' . $product['product_name'] . '" class="product-detail__thumb product-detail__thumb--active">'?>
+                <?php
+                foreach ($additionalImages as $image) {
+                    echo '
+                        <img src="../public/images/' . $image['image'] . '" alt="' . $product['product_name'] . '" class="product-detail__thumb">
+                    ';
+                } 
+                ?>
             </div>
         </div>
 
         <div class="product-detail__content">
-            <span class="product-detail__badge">Bijoux</span>
+            <span class="product-detail__badge"><?php echo $product['category_name'] ?></span>
 
-            <h1 class="product-detail__name">Boucles d'oreilles poisson argent</h1>
-            <p class="product-detail__price">24.99 €</p>
-            <p class="product-detail__desc">Élégantes et raffinées, ces boucles d’oreilles en forme de poisson Betta offrent un design délicat aux détails finement sculptés. Leur style poétique et artisanal apporte une touche unique et sophistiquée à toute tenue.</p>
+            <h1 class="product-detail__name"><?php echo $product['product_name'] ?></h1>
+            <p class="product-detail__price"><?php echo $product['price'] ?> €</p>
+            <p class="product-detail__desc"><?php echo $product['description'] ?></p>
 
             <div class="product-detail__stock">
-                <p>Disponibilité : <span>5 en stock</span></p>
+                <p>Disponibilité :
+                    <?php
+                    echo $product['stock'] > 0
+                        ? '<span class="product-detail__stock--green">' . $product['stock'] . ' en stock</span>'
+                        : '<span class="product-detail__stock--red">Ce produit revient bientôt !</span>';
+                    ?>
+                </p>
             </div>
 
             <div class="product-detail__qty">
@@ -50,13 +62,17 @@ require_once "layout/header.php";
                     Ajouter au panier
                 </button>
 
-                <button class="product-detail__wishlist" aria-label="Ajouter aux favoris">
-                    <i class="fa-regular fa-heart"></i>
+                <button class="product-detail__wishlist  <?php echo $isFavorite ? 'product-detail__wishlist--liked' : '' ?>" id="favoriteBtn" aria-label="Ajouter aux favoris" data-id="<?php echo $product['id'] ?>">
+                    <i id="favoriteIcon" class="<?php echo $isFavorite ? 'fa-solid' : 'fa-regular' ?> fa-heart"></i>
                 </button>
             </div>
         </div>
     </div>
 </section>
+
+<script src="../front/js/functions.js"></script>
+<script src="../front/js/product-details.js"></script>
+<script src="../front/js/like.js"></script>
 
 <?php
 require_once "layout/footer.php";

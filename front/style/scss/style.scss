@@ -546,6 +546,9 @@ input{
 
     img {
       height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: 60% 60%;
       transition: 0.5s ease;
     }
   }
@@ -1086,6 +1089,7 @@ input{
     background-color: #fff;
     border: 1px solid $color-secondary;
     border-radius: 10px;
+    position: relative;
 
     input {
       flex: 1;
@@ -1103,6 +1107,29 @@ input{
     i { 
       color: $color-secondary; 
       font-size: 1rem; 
+    }
+  }
+
+  &__autocomplete {
+    position: absolute;
+    top: 102%;
+    left: 0;
+    right: 0;
+    font-size: 0.82rem;
+    background: $white;
+    border-radius: 10px;
+    z-index: 100;
+
+    div {
+      padding: 10px;
+      cursor: pointer;
+      border: 1px solid $color-accent-gold;
+      border-radius: 10px;
+      transition: background-color 0.2s ease;
+
+      &:hover{
+        background: $color-accent-gold;
+      }
     }
   }
 
@@ -1226,6 +1253,10 @@ input{
   grid-template-columns: 1fr;
   gap: 16px;
   width: 100%;
+
+  &__empty {
+    padding: 1em;
+  }
 }
 
 @media (min-width: $tablet) {
@@ -1361,8 +1392,13 @@ input{
     color: $color-secondary;
     margin-bottom: 20px;
 
-    span {
+    &--green{
       color: #5a9e6e;
+      font-weight: 600;
+    }
+
+    &--red{
+      color: #ec4848;
       font-weight: 600;
     }
   }
@@ -1454,6 +1490,11 @@ input{
     &.active {
       background-color: $color-accent-pink;
       border-color: $color-accent-pink;
+    }
+
+    &--liked {
+      color: #e63946;
+      border-color: #e63946;
     }
   }
 

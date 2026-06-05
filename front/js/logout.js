@@ -5,7 +5,7 @@ if(logoutBtn) {
         e.preventDefault();
 
         try {
-            const response = await fetch("../../back/router.php?action=logout", {
+            const response = await fetch("../back/router.php?action=logout", {
                 method: "POST",
                 credentials: "same-origin"
             });
@@ -13,7 +13,7 @@ if(logoutBtn) {
             const result = await response.json();
 
             if (result.success) {
-                window.location.href = "home.php";
+                window.location.href = "../back/router.php?action=home";
             }
         } catch (error) {
             console.error(error);

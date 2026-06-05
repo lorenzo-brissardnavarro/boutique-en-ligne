@@ -122,7 +122,7 @@ formRegister.addEventListener("submit", async function(e) {
 
     try {
         // Appel API et envoi des données
-        const response = await fetch("../../back/router.php?action=register", {
+        const response = await fetch("../back/router.php?action=register", {
         method: "POST",
         credentials: 'same-origin',
         headers: {
@@ -136,7 +136,7 @@ formRegister.addEventListener("submit", async function(e) {
         if (result.success) {
             showNotification("Inscription réussie", "green");
             setTimeout(() => {
-                window.location.href = "login.php";
+                window.location.href = "../back/router.php?action=login-view";
             }, 2000);
         } else {
             showNotification("Erreur", "red");
