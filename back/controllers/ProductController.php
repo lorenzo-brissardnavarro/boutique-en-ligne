@@ -20,10 +20,11 @@ class ProductController
         require '../front/views/home.php';
     }
 
-    public function productDetails($id){
-        header('Content-Type: application/json');
-        $details = $this->product->getById($id);
-        echo json_encode(["success" => true, "data" => $details]);
+    public function productDetails(){
+        $id = (int)$_GET['id'] ?? '';
+        $product = $this->product->getById($id);
+        $additionalImages = $this->product->getAdditionalImages($id);
+        require '../front/views/product-details.php';
     }
 
     public function shop(){

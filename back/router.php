@@ -57,6 +57,9 @@ switch ($action) {
     case 'shop-view':
         $Productcontroller->shopView();
         break;
+    case 'product-details':
+        $Productcontroller->productDetails();
+        break;
     default:
         echo json_encode(['success' => false, 'message' => 'Action inconnue']);
 }

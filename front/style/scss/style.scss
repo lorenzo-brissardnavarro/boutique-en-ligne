@@ -1392,8 +1392,13 @@ input{
     color: $color-secondary;
     margin-bottom: 20px;
 
-    span {
+    &--green{
       color: #5a9e6e;
+      font-weight: 600;
+    }
+
+    &--red{
+      color: #ec4848;
       font-weight: 600;
     }
   }

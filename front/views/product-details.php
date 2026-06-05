@@ -4,7 +4,7 @@ require_once "layout/header.php";
 
 <section class="container product-detail">
 
-    <a href="shop.php" class="product-detail__back">
+    <a href="../back/router.php?action=shop-view" class="product-detail__back">
         <i class="fa-solid fa-arrow-left-long"></i>
         <span>Retour</span>
     </a>
@@ -12,23 +12,35 @@ require_once "layout/header.php";
     <div class="product-detail__inner">
         <div class="product-detail__gallery">
             <div>
-                <img src="" alt="" class="product-detail__main-img">
+                <?php echo '<img src="../public/images/' . $product['image'] . '" alt="' . $product['product_name'] . '" class="product-detail__main-img" id="mainImage"> '?>
             </div>
             <div class="product-detail__thumbs">
-                <img src="" alt="" class="product-detail__thumb product-detail__thumb--active">
-                <img src="" alt="" class="product-detail__thumb">
+                <?php echo '<img src="../public/images/' . $product['image'] . '" alt="' . $product['product_name'] . '" class="product-detail__thumb product-detail__thumb--active">'?>
+                <?php
+                foreach ($additionalImages as $image) {
+                    echo '
+                        <img src="../public/images/' . $image['image'] . '" alt="' . $product['product_name'] . '" class="product-detail__thumb">
+                    ';
+                } 
+                ?>
             </div>
         </div>
 
         <div class="product-detail__content">
-            <span class="product-detail__badge">Bijoux</span>
+            <span class="product-detail__badge"><?php echo $product['category_name'] ?></span>
 
-            <h1 class="product-detail__name">Boucles d'oreilles poisson argent</h1>
-            <p class="product-detail__price">24.99 €</p>
-            <p class="product-detail__desc">Élégantes et raffinées, ces boucles d’oreilles en forme de poisson Betta offrent un design délicat aux détails finement sculptés. Leur style poétique et artisanal apporte une touche unique et sophistiquée à toute tenue.</p>
+            <h1 class="product-detail__name"><?php echo $product['product_name'] ?></h1>
+            <p class="product-detail__price"><?php echo $product['price'] ?> €</p>
+            <p class="product-detail__desc"><?php echo $product['description'] ?></p>
 
             <div class="product-detail__stock">
-                <p>Disponibilité : <span>5 en stock</span></p>
+                <p>Disponibilité :
+                    <?php
+                    echo $product['stock'] > 0
+                        ? '<span class="product-detail__stock--green">' . $product['stock'] . ' en stock</span>'
+                        : '<span class="product-detail__stock--red">Ce produit revient bientôt !</span>';
+                    ?>
+                </p>
             </div>
 
             <div class="product-detail__qty">
@@ -57,6 +69,8 @@ require_once "layout/header.php";
         </div>
     </div>
 </section>
+
+<script src="../front/js/product-details.js"></script>
 
 <?php
 require_once "layout/footer.php";

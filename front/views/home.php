@@ -14,7 +14,7 @@ require_once "layout/header.php";
             <h1>Des créations artisanales <span>inspirées de l’Asie</span></h1>
             <p>Pochettes brodées, sacs sashiko, foulards en soie, accessoires cheveux : chaque pièce est imaginée et cousue à la main dans notre atelier, avec des tissus choisis pour leur beauté et leur tenue dans le temps.</p>
 
-            <a href="../back/router.php?action=shop-categories" class="hero__btn">
+            <a href="../back/router.php?action=shop-view" class="hero__btn">
                 <div>
                     <p>DÉCOUVRIR LA BOUTIQUE</p>
                     <i class="fa-solid fa-arrow-right-long"></i>
@@ -114,7 +114,7 @@ require_once "layout/header.php";
         </div>
 
         <div class="products__button">
-            <a href="../back/router.php?action=shop-categories">Voir toute la boutique</a>
+            <a href="../back/router.php?action=shop-view">Voir toute la boutique</a>
         </div>
 
     </div>

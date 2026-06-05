@@ -28,12 +28,20 @@ class Product
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Récupération des informations d'un produit à partir de son id
+    // Récupération des informations générales d'un produit à partir de son id
     public function getById($id){
-        $sql = "SELECT product.*, category.category_name FROM product INNER JOIN category on product.category_id = category.id INNER JOIN additional_image on product.id = additional_image.product_id WHERE id = :id";
+        $sql = "SELECT product.*, category.category_name FROM product INNER JOIN category on product.category_id = category.id WHERE product.id = :id";
         $query = $this->pdo->prepare($sql);
         $query->execute([':id' => $id]);
         return $query->fetch(PDO::FETCH_ASSOC);
+    }
+
+    // Récupération des images suppplémentaires accociées à chaque produit
+    public function getAdditionalImages($productId){
+        $sql = "SELECT * FROM additional_image WHERE product_id = :product_id";
+        $query = $this->pdo->prepare($sql);
+        $query->execute([':product_id' => $productId]);
+        return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
     // Récupération de l'ensemble des produits
