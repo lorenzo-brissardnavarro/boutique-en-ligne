@@ -57,4 +57,29 @@ class User
         $query->execute([':id' => $id]);
         return $query->fetch(PDO::FETCH_ASSOC);
     }
+
+    ////////////////////////////////////////////////////// Modification du compte ////////////////////////////////////////////////////
+
+    // Modification des informations utilisateur
+    public function update($id, $firstname, $surname, $email, $phone, $birthday, $address) {
+        $sql = "UPDATE user SET firstname = :firstname, surname = :surname, email = :email, phone = :phone, birthday = :birthday, address = :address WHERE id = :id";
+        $query = $this->pdo->prepare($sql);
+        return $query->execute([':id' => $id, ':firstname' => $firstname, ':surname' => $surname, ':email' => $email, ':phone' => $phone, ':birthday' => $birthday, ':address' => $address]);
+    }
+
+    public function emailExistsOtherUser($id, $email) {
+        $sql = "SELECT id FROM user WHERE id != :id AND email = :email";
+        $query = $this->pdo->prepare($sql);
+        $query->execute([':id' => $id, ':email' => $email]);
+        return $query->fetch(PDO::FETCH_ASSOC) !== false;
+    }
+
+    /////////////////////////////////////////////////////// Suppresion du compte //////////////////////////////////////////////
+
+    // Suppresion du compte utlisateur
+    public function delete($id) {
+        $sql = "DELETE FROM user WHERE id = :id";
+        $query = $this->pdo->prepare($sql);
+        return $query->execute([':id' => $id]);
+    }
 }

@@ -75,6 +75,16 @@ switch ($action) {
     case 'profile-view':
         $Profilecontroller->profileView();
         break;
+    case 'update-profile':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $Authcontroller->updateProfile();
+        }
+        break;
+    case 'delete-account':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $Authcontroller->deleteAccount();
+        }
+        break;
     default:
         echo json_encode(['success' => false, 'message' => 'Action inconnue']);
 }

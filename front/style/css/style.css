@@ -1598,6 +1598,135 @@ input::-o-inner-spin-button {
   font-size: 0.9rem;
 }
 
+.settings-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background: #FFFFFF;
+  border-radius: 12px;
+}
+.settings-card__section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.settings-card__section h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+.settings-card__row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px;
+  border-bottom: 1px solid #70757E;
+}
+.settings-card__label {
+  font-size: 0.85rem;
+  color: #1F2A3A;
+}
+.settings-card__value {
+  font-size: 1rem;
+  color: #C6A86E;
+  font-weight: 600;
+}
+.settings-card__actions, .settings-card__danger {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.settings-card__actions--edit {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #1F2A3A;
+  background: transparent;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.settings-card__actions--edit:hover {
+  background: #1F2A3A;
+  color: white;
+}
+.settings-card__danger--delete {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #e63946;
+  background: transparent;
+  color: #e63946;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.settings-card__danger--delete:hover {
+  background: #e63946;
+  color: white;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 2999;
+}
+.modal__content {
+  width: 100%;
+  max-width: 420px;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.modal__content i {
+  text-align: end;
+  cursor: pointer;
+}
+.modal__content h3 {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 1em;
+  color: #1F2A3A;
+}
+.modal__content p {
+  text-align: center;
+}
+.modal__content form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.modal__content input {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 0.82rem;
+  border: 1px solid #1F2A3A;
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.modal__content input:focus {
+  border-color: #C6A86E;
+}
+.modal__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal.visible {
+  display: flex;
+}
+
 @media (min-width: 768px) {
   .profile-page__title {
     font-size: 2rem;
@@ -1618,6 +1747,15 @@ input::-o-inner-spin-button {
   }
   .order-item__line {
     flex-direction: row;
+  }
+  .settings-card__row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .modal__actions {
+    flex-direction: row;
+    justify-content: center;
   }
 }
 .admin-page {
