@@ -49,4 +49,12 @@ class User
         $query->execute([':email' => $email]);
         return $query->fetch(PDO::FETCH_ASSOC);
     }
+
+    // Récupération des informations d'un utilisateur
+    public function getById($id){
+        $sql = "SELECT * FROM user WHERE id = :id";
+        $query = $this->pdo->prepare($sql);
+        $query->execute([':id' => $id]);
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
 }

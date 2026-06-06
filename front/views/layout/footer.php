@@ -17,7 +17,7 @@
                     <ul>
                         <li><a href="../back/router.php?action=register-view">Inscription</a></li>
                         <li><a href="../back/router.php?action=login-view">Connexion</a></li>
-                        <li><a href="user-profiles.php">Mon profil</a></li>
+                        <li><a href="../back/router.php?action=profile-view">Mon profil</a></li>
                     </ul>
                 </nav>
             </div>

@@ -16,10 +16,12 @@ require '../vendor/autoload.php';
 use App\Controllers\AuthController;
 use App\Controllers\ProductController;
 use App\Controllers\FavoriteController;
+use App\Controllers\ProfileController;
 
 $Authcontroller = new AuthController();
 $Productcontroller = new ProductController();
 $Favoritecontroller = new FavoriteController();
+$Profilecontroller = new ProfileController();
 $action = $_GET['action'] ?? '';
 
 switch ($action) {
@@ -69,6 +71,9 @@ switch ($action) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $Favoritecontroller->toggleFavorite();
         }
+        break;
+    case 'profile-view':
+        $Profilecontroller->profileView();
         break;
     default:
         echo json_encode(['success' => false, 'message' => 'Action inconnue']);

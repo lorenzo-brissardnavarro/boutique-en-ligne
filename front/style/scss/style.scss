@@ -1814,6 +1814,7 @@ input{
       border-radius: 10px;
       background: transparent;
       border: none;
+      cursor: pointer;
       transition: background-color 0.2s;
 
       i {
@@ -1828,6 +1829,14 @@ input{
       }
     }
   }
+}
+
+.profile-content {
+    display: none;
+}
+
+.visible {
+  display: block;
 }
 
 

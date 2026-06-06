@@ -35,7 +35,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="user-profile.php">
+                        <a href="../back/router.php?action=profile-view">
                             <i class="fa-solid fa-user"></i>
                         </a>
                     </li>
@@ -81,7 +81,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="user-profile.php">
+                        <a href="../back/router.php?action=profile-view">
                             <i class="fa-solid fa-user"></i>
                         </a>
                     </li>
