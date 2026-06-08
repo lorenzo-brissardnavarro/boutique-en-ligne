@@ -16,10 +16,12 @@ require '../vendor/autoload.php';
 use App\Controllers\AuthController;
 use App\Controllers\ProductController;
 use App\Controllers\FavoriteController;
+use App\Controllers\ProfileController;
 
 $Authcontroller = new AuthController();
 $Productcontroller = new ProductController();
 $Favoritecontroller = new FavoriteController();
+$Profilecontroller = new ProfileController();
 $action = $_GET['action'] ?? '';
 
 switch ($action) {
@@ -68,6 +70,19 @@ switch ($action) {
     case 'toggle-favorite':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $Favoritecontroller->toggleFavorite();
+        }
+        break;
+    case 'profile-view':
+        $Profilecontroller->profileView();
+        break;
+    case 'update-profile':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $Authcontroller->updateProfile();
+        }
+        break;
+    case 'delete-account':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $Authcontroller->deleteAccount();
         }
         break;
     default:
