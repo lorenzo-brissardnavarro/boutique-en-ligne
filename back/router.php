@@ -17,11 +17,13 @@ use App\Controllers\AuthController;
 use App\Controllers\ProductController;
 use App\Controllers\FavoriteController;
 use App\Controllers\ProfileController;
+use App\Controllers\CaddieController;
 
 $Authcontroller = new AuthController();
 $Productcontroller = new ProductController();
 $Favoritecontroller = new FavoriteController();
 $Profilecontroller = new ProfileController();
+$Caddiecontroller = new CaddieController();
 $action = $_GET['action'] ?? '';
 
 switch ($action) {
@@ -83,6 +85,14 @@ switch ($action) {
     case 'delete-account':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $Authcontroller->deleteAccount();
+        }
+        break;
+    case 'caddie-view':
+        $Caddiecontroller->caddieView();
+        break;
+    case 'add-caddie':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $Caddiecontroller->addToCaddie();
         }
         break;
     default:
