@@ -24,6 +24,17 @@ class CaddieController
         }
 
         $userId = $_SESSION['user_id'];
+        $caddie = $this->caddie->getByUser($userId);
+        $data = $this->caddie->getCaddieByUser($userId, $caddie['id']);
+        $total = (float) $this->caddie->totalAmount($caddie['id']);
+        if($total > 50){
+            $delivery = 0;
+        } else {
+            $delivery = 3.99;
+        }
+
+        $deliveryMissing = round(50 - $total, 2);
+        $finalTotal = round($total + $delivery, 2);
 
         require '../front/views/shopping-basket.php';
     }
@@ -70,6 +81,47 @@ class CaddieController
         }
 
         echo json_encode(["success" => true, "message" => "Produit ajouté au panier", "count" => $this->caddie->countItems($caddieId)]);
+    }
+
+    public function updateCaddie() {
+        if (empty($_SESSION['user_id'])) {
+            echo json_encode(["success" => false, "message" => "Connexion requise"]);
+            return;
+        }
+
+        $data = json_decode(file_get_contents("php://input"), true);
+
+        if (!$data || empty($data['productId'])) {
+            echo json_encode(["success" => false, "message" => "Produit invalide"]);
+            return;
+        }
+
+        $userId = $_SESSION['user_id'];
+        $productId = (int)$data["productId"];
+        $quantity = (int)$data["quantity"];
+
+        $stock = $this->caddie->getStock($productId);
+
+        if($stock < $quantity) {
+            echo json_encode(["success" => false, "message" => "Stock insuffisant"]);
+            return;
+        }
+
+        $caddie = $this->caddie->getByUser($userId);
+        $caddieId = $caddie['id'];
+        $this->caddie->updateQuantityItem($productId, $caddieId, $quantity);
+
+        $total = (float) $this->caddie->totalAmount($caddie['id']);
+        if($total >= 50){
+            $delivery = 0;
+        } else {
+            $delivery = 3.99;
+        }
+
+        $deliveryMissing = round(50 - $total, 2);
+        $finalTotal = round($total + $delivery, 2);
+
+        echo json_encode(["success" => true, "total" => round($total, 2), "delivery" => $delivery, "deliveryMissing" => $deliveryMissing, "finalTotal" => $finalTotal]);
     }
 
     

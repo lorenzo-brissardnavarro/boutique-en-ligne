@@ -95,6 +95,11 @@ switch ($action) {
             $Caddiecontroller->addToCaddie();
         }
         break;
+    case 'update-caddie':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $Caddiecontroller->updateCaddie();
+        }
+        break;
     default:
         echo json_encode(['success' => false, 'message' => 'Action inconnue']);
 }

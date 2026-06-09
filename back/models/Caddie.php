@@ -41,6 +41,13 @@ class Caddie
         return $query->execute([':qty' => $qty, ':product_id' => $productId, ':caddie_id' => $caddieId]);
     }
 
+    // Modification de la quantité d'un produit du panier
+    public function updateQuantityItem($productId, $caddieId, $qty){
+        $sql = "UPDATE caddie_content SET quantity = :quantity WHERE product_id = :product_id AND caddie_id = :caddie_id";
+        $query = $this->pdo->prepare($sql);
+        return $query->execute([':quantity' => $qty, ':product_id' => $productId, ':caddie_id' => $caddieId]);
+    }
+
     // Ajout d'une quantité en moins pour un article du panier
     public function decreaseQuantityItem($productId, $caddieId){
         $sql = "UPDATE caddie_content SET quantity = quantity - 1 WHERE product_id = :product_id AND caddie_id = :caddie_id AND quantity > 1";
@@ -78,7 +85,7 @@ class Caddie
         $query = $this->pdo->prepare($sql);
         $query->execute([':caddie_id' => $caddieId]);
         $result = $query->fetch(PDO::FETCH_ASSOC);
-        return $result['total'];
+        return (float)$result['total'];
     }
 
     // Récupérer l'ensemble des articles présents dans le panier d'un utilisateur

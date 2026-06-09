@@ -7,63 +7,72 @@ require_once "layout/header.php";
     <div class="cart-page__inner">
 
         <section class="cart-items">
-            <article class="cart-item">
-                <div class="cart-item__info">
-                    <img src="../images/hero.png" alt="Boucles d’oreilles poisson argent" class="cart-item__img">
-                    <div>
-                        <p class="cart-item__badge">Bijoux</p>
-                        <h2 class="cart-item__name">Boucles d’oreilles poisson argent</h2>
-                        <p class="cart-item__price">24.99 €</p>
+            <?php
+            foreach ($data as $product) {
+                echo '
+                <article class="cart-item" data-id="' . $product['id'] . '">
+                    <div class="cart-item__info">
+                        <img src="../public/images/' . $product['image'] . '" alt="' . $product['product_name'] . '" class="cart-item__img">
+                        <div>
+                            <p class="cart-item__badge">' . $product['category_name'] . '</p>
+                            <h2 class="cart-item__name">' . $product['product_name'] . '</h2>
+                            <p class="cart-item__price">' . $product['price'] . ' €</p>
+                        </div>
                     </div>
-                </div>
-                <div class="cart-item__controls">
-                    <div class="product-detail__qty m0">
-                        <button aria-label="Diminuer la quantité">
-                            <i class="fa-solid fa-minus"></i>
-                        </button>
-                        <input type="number" value="1" min="1" aria-label="Quantité">
-                        <button aria-label="Augmenter la quantité">
-                            <i class="fa-solid fa-plus"></i>
-                        </button>
-                    </div>
+                    <div class="cart-item__controls">
+                        <div class="product-detail__qty m0">
+                            <button aria-label="Diminuer la quantité" class="decrease">
+                                <i class="fa-solid fa-minus"></i>
+                            </button>
+                            <input type="number" value="' . $product['quantity'] . '" min="1" max="' . $product['stock'] . '" aria-label="Quantité" class="qty">
+                            <button aria-label="Augmenter la quantité" class="add">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </div>
 
-                    <button class="cart-item__delete" aria-label="Supprimer l’article">
-                        <i class="fa-solid fa-trash-can"></i>
-                    </button>
-                </div>
-            </article>
+                        <button class="cart-item__delete" aria-label="Supprimer l’article" data-id="' . $product['id'] . '">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                </article>
+                ';
+            }
+            ?>
         </section>
 
         <aside class="cart-summary">
             <h2 class="cart-summary__title">Récapitulatif</h2>
             <div class="cart-summary__line">
                 <span>Sous-total</span>
-                <span>40.98 €</span>
+                <span id="total"><?php echo $total ?> €</span>
             </div>
 
             <div class="cart-summary__line">
                 <span>Livraison</span>
-                <span>3.99 €</span>
+                <span id="delivery"><?php echo $delivery === 0 ? 'Offerte' : $delivery ?></span>
             </div>
 
-            <p class="cart-summary__note">Plus que 9.02 € pour la livraison offerte.</p>
+            <p class="cart-summary__note" id="comment"><?php echo $delivery === 0 ? '' : "Plus que $deliveryMissing € pour la livraison offerte" ?></p>
 
             <div class="cart-summary__line cart-summary__line--total">
                 <span>Total</span>
-                <span>44.97 €</span>
+                <span id="finalTotal"><?php echo $finalTotal ?> €</span>
             </div>
 
             <div class="cart-summary__checkout">
                 <button>VALIDER LA COMMANDE</button>
             </div>
 
-            <button class="cart-summary__continue">CONTINUER MES ACHATS</button>
+            <a href="../back/router.php?action=shop-view" class="cart-summary__continue"><p>CONTINUER MES ACHATS</p></a>
 
         </aside>
 
     </div>
 
 </section>
+
+<script src="../front/js/functions.js"></script>
+<script src="../front/js/shopping-basket.js"></script>
 
 <?php
 require_once "layout/footer.php";
