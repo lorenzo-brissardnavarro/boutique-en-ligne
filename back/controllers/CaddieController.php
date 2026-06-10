@@ -121,7 +121,39 @@ class CaddieController
         $deliveryMissing = round(50 - $total, 2);
         $finalTotal = round($total + $delivery, 2);
 
-        echo json_encode(["success" => true, "total" => round($total, 2), "delivery" => $delivery, "deliveryMissing" => $deliveryMissing, "finalTotal" => $finalTotal]);
+        echo json_encode(["success" => true, "total" => round($total, 2), "delivery" => $delivery, "deliveryMissing" => $deliveryMissing, "finalTotal" => $finalTotal, "count" => $this->caddie->countItems($caddieId)]);
+    }
+
+    public function deleteCaddie() {
+        if (empty($_SESSION['user_id'])) {
+            echo json_encode(["success" => false, "message" => "Connexion requise"]);
+            return;
+        }
+
+        $data = json_decode(file_get_contents("php://input"), true);
+
+        if (!$data || empty($data['productId'])) {
+            echo json_encode(["success" => false, "message" => "Produit invalide"]);
+            return;
+        }
+
+        $userId = $_SESSION['user_id'];
+        $productId = (int)$data["productId"];
+        $caddie = $this->caddie->getByUser($userId);
+        $caddieId = $caddie['id'];
+
+        $this->caddie->deleteItem($productId, $caddieId);
+        $total = (float) $this->caddie->totalAmount($caddie['id']);
+        if($total >= 50){
+            $delivery = 0;
+        } else {
+            $delivery = 3.99;
+        }
+
+        $deliveryMissing = round(50 - $total, 2);
+        $finalTotal = round($total + $delivery, 2);
+
+        echo json_encode(["success" => true, "message" => "Produit supprimé", "total" => round($total, 2), "delivery" => $delivery, "deliveryMissing" => $deliveryMissing, "finalTotal" => $finalTotal, "count" => $this->caddie->countItems($caddieId)]);
     }
 
     

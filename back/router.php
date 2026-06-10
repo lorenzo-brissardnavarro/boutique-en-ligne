@@ -100,6 +100,11 @@ switch ($action) {
             $Caddiecontroller->updateCaddie();
         }
         break;
+    case 'delete-caddie':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $Caddiecontroller->deleteCaddie();
+        }
+        break;
     default:
         echo json_encode(['success' => false, 'message' => 'Action inconnue']);
 }
