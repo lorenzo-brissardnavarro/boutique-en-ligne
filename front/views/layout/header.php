@@ -40,8 +40,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="shopping-basket.php">
+                        <a href="../back/router.php?action=caddie-view">
                             <i class="fa-solid fa-cart-shopping"></i>
+                            <span id="caddie-count">' . $caddieCount . '</span>
                         </a>
                     </li>
                     <li>
@@ -86,8 +87,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="shopping-basket.php">
+                        <a href="../back/router.php?action=caddie-view">
                             <i class="fa-solid fa-cart-shopping"></i>
+                            <span id="caddie-count">' . $caddieCount . '</span>
                         </a>
                     </li>
                     <li>

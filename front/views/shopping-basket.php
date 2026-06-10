@@ -4,66 +4,95 @@ require_once "layout/header.php";
 
 <section class="container cart-page">
     <h1 class="shop-page__title">Mon panier</h1>
-    <div class="cart-page__inner">
+        <?php
 
-        <section class="cart-items">
-            <article class="cart-item">
-                <div class="cart-item__info">
-                    <img src="../images/hero.png" alt="Boucles d’oreilles poisson argent" class="cart-item__img">
-                    <div>
-                        <p class="cart-item__badge">Bijoux</p>
-                        <h2 class="cart-item__name">Boucles d’oreilles poisson argent</h2>
-                        <p class="cart-item__price">24.99 €</p>
-                    </div>
-                </div>
-                <div class="cart-item__controls">
-                    <div class="product-detail__qty m0">
-                        <button aria-label="Diminuer la quantité">
-                            <i class="fa-solid fa-minus"></i>
-                        </button>
-                        <input type="number" value="1" min="1" aria-label="Quantité">
-                        <button aria-label="Augmenter la quantité">
-                            <i class="fa-solid fa-plus"></i>
-                        </button>
+        if (!empty($data)) {
+
+            echo '<div class="cart-page__inner">';
+                echo '<section class="cart-items">';
+
+                foreach ($data as $product) {
+                    echo '
+                    <article class="cart-item" data-id="' . $product['id'] . '">
+                        <div class="cart-item__info">
+                            <img src="../public/images/' . $product['image'] . '" alt="' . $product['product_name'] . '" class="cart-item__img">
+                            <div>
+                                <p class="cart-item__badge">' . $product['category_name'] . '</p>
+                                <h2 class="cart-item__name">' . $product['product_name'] . '</h2>
+                                <p class="cart-item__price">' . $product['price'] . ' €</p>
+                            </div>
+                        </div>
+                        <div class="cart-item__controls">
+                            <div class="product-detail__qty m0">
+                                <button aria-label="Diminuer la quantité" class="decrease">
+                                    <i class="fa-solid fa-minus"></i>
+                                </button>
+                                <input type="number" value="' . $product['quantity'] . '" min="1" max="' . $product['stock'] . '" aria-label="Quantité" class="qty">
+                                <button aria-label="Augmenter la quantité" class="add">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+
+                            <button class="cart-item__delete" aria-label="Supprimer l’article" data-id="' . $product['id'] . '">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </div>
+                    </article>
+                    ';
+                }
+
+                echo '</section>';
+
+                echo '
+                <aside class="cart-summary">
+                    <h2 class="cart-summary__title">Récapitulatif</h2>
+
+                    <div class="cart-summary__line">
+                        <span>Sous-total</span>
+                        <span id="total">' . $total . ' €</span>
                     </div>
 
-                    <button class="cart-item__delete" aria-label="Supprimer l’article">
-                        <i class="fa-solid fa-trash-can"></i>
-                    </button>
-                </div>
-            </article>
+                    <div class="cart-summary__line">
+                        <span>Livraison</span>
+                        <span id="delivery">' . ($delivery === 0 ? 'Offerte' : $delivery . ' €') . '</span>
+                    </div>
+
+                    <p class="cart-summary__note" id="comment">' .
+                        ($delivery === 0 ? '' : "Plus que $deliveryMissing € pour la livraison offerte.") .
+                    '</p>
+
+                    <div class="cart-summary__line cart-summary__line--total">
+                        <span>Total</span>
+                        <span id="finalTotal">' . $finalTotal . ' €</span>
+                    </div>
+
+                    <div class="cart-summary__checkout">
+                        <button>VALIDER LA COMMANDE</button>
+                    </div>
+
+                    <a href="../back/router.php?action=shop-view" class="cart-summary__continue"><p>CONTINUER MES ACHATS</p></a>
+                </aside>';
+
+                echo '</div>';
+
+            } else {
+
+                echo '
+                <section class="container page-404">
+                    <p class="page-404__label">Votre panier est vide.</p>
+                    <a href="../back/router.php?action=shop-view" class="page-404__cta">Aller à la boutique</a>
+                </section>';
+            }
+
+            ?>
         </section>
-
-        <aside class="cart-summary">
-            <h2 class="cart-summary__title">Récapitulatif</h2>
-            <div class="cart-summary__line">
-                <span>Sous-total</span>
-                <span>40.98 €</span>
-            </div>
-
-            <div class="cart-summary__line">
-                <span>Livraison</span>
-                <span>3.99 €</span>
-            </div>
-
-            <p class="cart-summary__note">Plus que 9.02 € pour la livraison offerte.</p>
-
-            <div class="cart-summary__line cart-summary__line--total">
-                <span>Total</span>
-                <span>44.97 €</span>
-            </div>
-
-            <div class="cart-summary__checkout">
-                <button>VALIDER LA COMMANDE</button>
-            </div>
-
-            <button class="cart-summary__continue">CONTINUER MES ACHATS</button>
-
-        </aside>
 
     </div>
 
 </section>
+
+<script src="../front/js/functions.js"></script>
+<script src="../front/js/shopping-basket.js"></script>
 
 <?php
 require_once "layout/footer.php";

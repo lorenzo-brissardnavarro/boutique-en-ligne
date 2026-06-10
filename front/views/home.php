@@ -99,10 +99,6 @@ require_once "layout/header.php";
 
                                 <div class="product-card__bottom">
                                     <p class="product-card__price">' . $product['price'] . ' €</p>
-
-                                    <button class="product-card__cart" type="button">
-                                        <i class="fa-solid fa-cart-shopping"></i>
-                                    </button>
                                 </div>
 
                             </div>
@@ -147,10 +143,6 @@ require_once "layout/header.php";
 
                                 <div class="product-card__bottom">
                                     <p class="product-card__price">' . $product['price'] . ' €</p>
-
-                                    <button class="product-card__cart" type="button">
-                                        <i class="fa-solid fa-cart-shopping"></i>
-                                    </button>
                                 </div>
 
                             </div>

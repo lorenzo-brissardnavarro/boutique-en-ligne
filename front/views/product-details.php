@@ -44,12 +44,12 @@ require_once "layout/header.php";
             </div>
 
             <div class="product-detail__qty">
-                <button aria-label="Diminuer la quantité">
+                <button aria-label="Diminuer la quantité" id="decrease">
                     <i class="fa-solid fa-minus"></i>
                 </button>
-                <input type="number" value="1" min="1" aria-label="Quantité">
+                <input type="number" value="1" min="1" max="<?php echo $product['stock']; ?>" aria-label="Quantité" id="qty">
 
-                <button aria-label="Augmenter la quantité">
+                <button aria-label="Augmenter la quantité" id="add">
                     <i class="fa-solid fa-plus"></i>
                 </button>
 
@@ -57,7 +57,7 @@ require_once "layout/header.php";
 
             <div class="product-detail__actions">
 
-                <button class="product-detail__add-to-cart">
+                <button class="product-detail__add-to-cart" id="addCaddie" data-id="<?php echo $product['id'] ?>">
                     <i class="fa-solid fa-cart-shopping"></i>
                     Ajouter au panier
                 </button>
@@ -72,6 +72,7 @@ require_once "layout/header.php";
 
 <script src="../front/js/functions.js"></script>
 <script src="../front/js/product-details.js"></script>
+<script src="../front/js/caddie-details.js"></script>
 <script src="../front/js/like.js"></script>
 
 <?php

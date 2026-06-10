@@ -8,7 +8,6 @@ async function loadShop() {
         const query = new URLSearchParams(filters).toString();
         const response = await fetch(`../back/router.php?action=shop&${query}`);
         const result = await response.json();
-        console.log(result);
 
         if (result.data.length === 0) {
             shopGrid.innerHTML = "<p class='shop-grid__empty'>Aucun produit trouvé</p>";
@@ -34,7 +33,7 @@ async function loadShop() {
                         <h3>${product.product_name}</h3>
                         <div class="product-card__bottom">
                             <p class="product-card__price">${product.price} €</p>
-                            <button class="product-card__cart" type="button">
+                            <button class="product-card__cart" data-id="${product.id}">
                                 <i class="fa-solid fa-cart-shopping"></i>
                             </button>
                         </div>
