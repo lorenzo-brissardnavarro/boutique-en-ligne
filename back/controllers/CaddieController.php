@@ -36,6 +36,10 @@ class CaddieController
         $deliveryMissing = round(50 - $total, 2);
         $finalTotal = round($total + $delivery, 2);
 
+        $caddie = $this->caddie->getByUser($userId);
+        $caddieId = $caddie['id'];
+        $caddieCount = $this->caddie->countItems($caddieId);
+
         require '../front/views/shopping-basket.php';
     }
 
@@ -154,6 +158,20 @@ class CaddieController
         $finalTotal = round($total + $delivery, 2);
 
         echo json_encode(["success" => true, "message" => "Produit supprimé", "total" => round($total, 2), "delivery" => $delivery, "deliveryMissing" => $deliveryMissing, "finalTotal" => $finalTotal, "count" => $this->caddie->countItems($caddieId)]);
+    }
+
+    public function getCaddieCount(){
+        if (empty($_SESSION['user_id'])) {
+            return 0;
+        }
+
+        $caddie = $this->caddie->getByUser($_SESSION['user_id']);
+
+        if (!$caddie) {
+            return 0;
+        }
+
+        return $this->caddie->countItems($caddie['id']);
     }
 
     

@@ -111,6 +111,9 @@ class Caddie
         $query = $this->pdo->prepare($sql);
         $query->execute([':product_id' => $productId, ':caddie_id' => $caddieId]);
         $result = $query->fetch(PDO::FETCH_ASSOC);
+        if (!$result) {
+            return 0;
+        }
         return (int)$result['quantity'];
     }
 

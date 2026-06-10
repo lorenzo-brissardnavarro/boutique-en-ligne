@@ -79,12 +79,12 @@ switch ($action) {
         break;
     case 'update-profile':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $Authcontroller->updateProfile();
+            $Profilecontroller->updateProfile();
         }
         break;
     case 'delete-account':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $Authcontroller->deleteAccount();
+            $Profilecontroller->deleteAccount();
         }
         break;
     case 'caddie-view':

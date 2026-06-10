@@ -20,6 +20,7 @@ class ProductController
    public function home(){
         $top = $this->product->topProducts();
         $news = $this->product->newProducts();
+        $caddieCount = (new CaddieController())->getCaddieCount();
         require '../front/views/home.php';
     }
 
@@ -32,6 +33,7 @@ class ProductController
         if (!empty($_SESSION['user_id'])) {
             $isFavorite = $this->favorite->exists($_SESSION['user_id'], $id);
         }
+        $caddieCount = (new CaddieController())->getCaddieCount();
         require '../front/views/product-details.php';
     }
 
@@ -49,6 +51,7 @@ class ProductController
 
     public function shopView(){
         $categories = $this->product->getAllCategories();
+        $caddieCount = (new CaddieController())->getCaddieCount();
         require '../front/views/shop.php';
     }
 
