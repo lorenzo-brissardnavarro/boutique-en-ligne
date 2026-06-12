@@ -32,34 +32,46 @@ require_once "layout/header.php";
 
         <section class="orders profile-content visible" id="orders">
             <h2 class="orders__title">Mes commandes</h2>
+            <?php
+            if(!empty($orders)){
+                foreach ($orders as $order) {
+                    echo '
+                    <article class="order-item">
+                        <div class="order-item__header">
+                            <h3 class="order-item__num">Commande N° ' . $order['number'] . '</h3>
+                            <div>
+                                <span class="order-item__count">' . $order['count'] . ' article' . ($order['count'] > 1 ? 's' : '') . '</span>
+                                <span class="order-item__total">' . $order['total_price'] . ' €</span>
+                            </div>
+                            
+                        </div>
 
-            <article class="order-item">
-                <div class="order-item__header">
-                    <h3 class="order-item__num">Commande N° CDM-001</h3>
-                    <div>
-                        <span class="order-item__count">2 articles</span>
-                        <span class="order-item__total">44.97 €</span>
-                    </div>
-                    
-                </div>
-
-                <div class="order-item__lines">
-                    <div class="order-item__line">
-                        <p>Boucles d’oreilles poisson argent ×1</p>
-                        <span>24.99 €</span>
-                    </div>
-
-                    <div class="order-item__line">
-                        <p>Trousse M Verte ×1</p>
-                        <span>15.99 €</span>
-                    </div>
-
-                    <div class="order-item__line">
-                        <p>Livraison</p>
-                        <span>3.99 €</span>
-                    </div>
-                </div>
-            </article>
+                        <div class="order-item__lines">';
+                            foreach ($order['products'] as $product) {
+                                echo '
+                                <div class="order-item__line">
+                                    <p>' . $product['product_name'] . ' ×' . $product['quantity'] . '</p>
+                                    <span>' . $product['quantity'] * $product['unit_price'] . ' €</span>
+                                </div>
+                                ';
+                            }
+                            if($order['total_price'] < 50){
+                                echo '
+                                <div class="order-item__line">
+                                    <p>Livraison</p>
+                                    <span>3.99 €</span>
+                                </div>
+                                ';
+                            }
+                        echo '
+                        </div>
+                    </article>
+                    ';
+                }
+            } else {
+                echo '<p>Aucune commande pour le moment</p>';
+            }
+            ?>
         </section>
 
         <section class="profile-content" id="favorites">

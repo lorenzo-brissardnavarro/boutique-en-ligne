@@ -120,5 +120,13 @@ class Product
         $query->execute(["keyword" => "%$keyword%"]);
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    // Modification de la quantité de stock restant pour un produit après commande
+    public function updateStockItem($productId, $quantity){
+        $sql = "UPDATE product SET stock = stock - :quantity WHERE id = :id";
+        $query = $this->pdo->prepare($sql);
+        return $query->execute([':quantity' => $quantity, ':id' => $productId]);
+    }
+
     
 }

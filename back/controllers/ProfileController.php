@@ -4,6 +4,7 @@ namespace App\Controllers;
 use App\Config\Database;
 use App\Models\User;
 use App\Models\Favorite;
+use App\Models\Order;
 
 class ProfileController
 {
@@ -15,6 +16,7 @@ class ProfileController
         $db = new Database();
         $this->user = new User($db->getConnection());
         $this->favorite = new Favorite($db->getConnection());
+        $this->order = new Order($db->getConnection());
     }
 
    public function profileView(){
@@ -29,6 +31,21 @@ class ProfileController
         $user = $this->user->getById($userId);
         $favorites = $this->favorite->getUserFavorites($userId);
         $caddieCount = (new CaddieController())->getCaddieCount();
+
+        $ordersTotal = $this->order->getOrderByUser($userId);
+
+        $orders = [];
+
+        foreach ($ordersTotal as $row) {
+
+            $orderId = $row['order_id'];
+
+            if (!isset($orders[$orderId])) {
+                $orders[$orderId] = ['id' => $orderId, 'number' => $row['number'], 'total_price' => $row['total_price'], 'products' => [], 'count' => $this->order->countItemsInOrder($orderId)];
+            }
+
+            $orders[$orderId]['products'][] = ['id' => $row['product_id'], 'product_name' => $row['product_name'], 'quantity' => $row['quantity'], 'unit_price' => $row['unit_price']];
+        }
         require '../front/views/user-profile.php';
     }
 

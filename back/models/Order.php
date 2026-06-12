@@ -34,10 +34,10 @@ class Order {
     }
 
     // Récupérer l'ensemble des commandes passées par un utilisateur
-    public function getOrderByUser($userId, $orderId){
-        $sql = "SELECT `order`.*, order_content.*, product.* FROM order INNER JOIN order_content ON order_content.order_id = order.id INNER JOIN product ON order_content.product_id = product.id WHERE order.id = :order_id AND order.user_id = :user_id";
+    public function getOrderByUser($userId){
+        $sql = "SELECT order.id AS order_id, order.number, order.total_price, order.user_id, order_content.quantity, order_content.unit_price, product.id AS product_id, product.product_name FROM `order` INNER JOIN order_content ON order_content.order_id = order.id INNER JOIN product ON order_content.product_id = product.id WHERE order.user_id = :user_id ORDER BY order.id DESC";
         $query = $this->pdo->prepare($sql);
-        $query->execute([':order_id' => $orderId, ':user_id' => $userId]);
+        $query->execute([':user_id' => $userId]);
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 

@@ -117,6 +117,13 @@ input{
   color: #fecaca;
 }
 
+#caddie-count{
+  color: $white;
+  background: $color-accent-gold;
+  padding: 2px 6px;
+  border-radius: 100px;
+}
+
 ////////////////////////////////////////////////////////////////// Navbar /////////////////////////////////////////////////////////////////
 
 .header {
@@ -197,6 +204,12 @@ input{
 }
 
 @media (min-width: $tablet) {
+
+    #caddie-count{
+      position: absolute;
+      top: 1px;
+      left: 13px;
+    }
 
     #toggler {
         display: none;
@@ -1856,6 +1869,7 @@ input{
   background-color: $white;
   border-radius: 15px;
   padding: 24px 20px;
+  margin-bottom: 1em;
 
   &__header {
     display: flex;

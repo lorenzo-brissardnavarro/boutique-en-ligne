@@ -4,17 +4,20 @@ namespace App\Controllers;
 use App\Config\Database;
 use App\Models\Caddie;
 use App\Models\Order;
+use App\Models\Product;
 
 class OrderController
 {
     private $order;
     private $caddie;
+    private $product;
 
     public function __construct()
     {
         $db = new Database();
         $this->order = new Order($db->getConnection());
         $this->caddie = new Caddie($db->getConnection());
+        $this->product = new Product($db->getConnection());
     }
 
    public function addOrder(){
@@ -44,6 +47,7 @@ class OrderController
 
         foreach ($products as $product) {
             $this->order->addItemToOrder($orderId, $product['id'], $product['quantity'], $product['price']);
+            $this->product->updateStockItem($product['id'], $product['quantity']);
         }
 
         $this->caddie->clearCaddie($caddieId);
