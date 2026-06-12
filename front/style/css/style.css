@@ -87,6 +87,13 @@ input::-o-inner-spin-button {
   color: #fecaca;
 }
 
+#caddie-count {
+  color: #FFFFFF;
+  background: #C6A86E;
+  padding: 2px 6px;
+  border-radius: 100px;
+}
+
 .header {
   position: sticky;
   top: 0;
@@ -155,6 +162,11 @@ input::-o-inner-spin-button {
 }
 
 @media (min-width: 768px) {
+  #caddie-count {
+    position: absolute;
+    top: 1px;
+    left: 13px;
+  }
   #toggler {
     display: none;
   }
@@ -1548,6 +1560,7 @@ input::-o-inner-spin-button {
   background-color: #FFFFFF;
   border-radius: 15px;
   padding: 24px 20px;
+  margin-bottom: 1em;
 }
 .order-item__header {
   display: flex;

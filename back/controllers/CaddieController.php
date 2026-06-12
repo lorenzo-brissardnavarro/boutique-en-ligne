@@ -3,12 +3,10 @@ namespace App\Controllers;
 
 use App\Config\Database;
 use App\Models\Caddie;
-use App\Models\User;
 
 class CaddieController
 {
     private $product;
-    private $favorite;
 
     public function __construct()
     {

@@ -18,12 +18,15 @@ use App\Controllers\ProductController;
 use App\Controllers\FavoriteController;
 use App\Controllers\ProfileController;
 use App\Controllers\CaddieController;
+use App\Controllers\OrderController;
 
 $Authcontroller = new AuthController();
 $Productcontroller = new ProductController();
 $Favoritecontroller = new FavoriteController();
 $Profilecontroller = new ProfileController();
 $Caddiecontroller = new CaddieController();
+$Ordercontroller = new OrderController();
+
 $action = $_GET['action'] ?? '';
 
 switch ($action) {
@@ -103,6 +106,11 @@ switch ($action) {
     case 'delete-caddie':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $Caddiecontroller->deleteCaddie();
+        }
+        break;
+    case 'add-order':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $Ordercontroller->addOrder();
         }
         break;
     default:
