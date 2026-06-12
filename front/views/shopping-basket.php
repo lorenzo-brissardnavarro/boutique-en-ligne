@@ -93,6 +93,7 @@ require_once "layout/header.php";
 
 <script src="../front/js/functions.js"></script>
 <script src="../front/js/shopping-basket.js"></script>
+<script src="../front/js/order.js"></script>
 
 <?php
 require_once "layout/footer.php";

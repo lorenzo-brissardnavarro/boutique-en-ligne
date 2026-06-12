@@ -117,4 +117,11 @@ class Caddie
         return (int)$result['quantity'];
     }
 
+    // Suppression de l'ensemble du panier de l'utilisateur si la commande est passée
+    public function clearCaddie($caddieId){
+        $sql = "DELETE FROM caddie_content WHERE caddie_id = :caddie_id";
+        $query = $this->pdo->prepare($sql);
+        return $query->execute([':caddie_id' => $caddieId]);
+    }
+
 }
