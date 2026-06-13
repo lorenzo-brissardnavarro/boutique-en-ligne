@@ -2452,3 +2452,169 @@ input{
     }
   }
 }
+
+
+//////////////////////////////////////////////////////// Modale ajout nouveau produit //////////////////////////////////////////////////
+
+.modal__content--product {
+    max-width: 650px;
+}
+
+#addProductForm {
+
+  h3 {
+    font-size: 0.8em;
+    margin-bottom: 0;
+  }
+  .cover-upload {
+    width: 140px;
+    margin: 0 auto;
+    height: 120px;
+    border: 2px dashed $color-secondary;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .2s;
+
+    &:hover {
+        border-color: $color-accent-gold;
+    }
+
+    #previewImage {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: none;
+    }
+
+    .inputImage {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: .5em;
+        color: $color-secondary;
+
+        i {
+            font-size: 1.5rem;
+        }
+
+        span {
+            font-size: 0.65rem;
+            text-align: center;
+        }
+    }
+  }
+
+  #cover {
+    display: none;
+  }
+
+  input[type="file"] {
+      width: 100%;
+      padding: 6px 8px;
+      font-size: 0.62rem;
+      border: 1px solid $color-secondary;
+      border-radius: 10px;
+      cursor: pointer;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  textarea,
+  select {
+      width: 100%;
+      padding: 6px 8px;
+      font-size: 0.62rem;
+      border: 1px solid $color-secondary;
+      border-radius: 10px;
+      outline: none;
+      transition: border-color .2s;
+
+      &:focus {
+          border-color: $color-accent-gold;
+      }
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+  }
+
+  textarea {
+      resize: vertical;
+  }
+
+  label {
+      color: $color-secondary;
+      font-size: 0.9rem;
+      font-weight: 600;
+  }
+
+  .checkbox-container {
+      display: flex;
+      align-items: center;
+      gap: .75em;
+      font-size: 0.65rem;
+      color: $color-secondary;
+      cursor: pointer;
+      input[type="checkbox"] {
+          width: auto;
+          margin: 0;
+      }
+  }
+
+  .input-button {
+      background-color: $color-secondary;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: .2s;
+
+      &:hover {
+          background-color: $color-accent-gold;
+      }
+  }
+}
+
+@media (min-width: $tablet) {
+  #addProductForm{
+
+    h3 {
+    font-size: 1em;
+  }
+
+    .cover-upload {
+      width: 40%;
+      height: 220px;
+
+      .inputImage {
+          i {
+              font-size: 2.5rem;
+          }
+
+          span {
+              font-size: 0.85rem;
+          }
+      }
+    }
+
+    input[type="file"],
+    input[type="text"],
+    input[type="number"],
+    textarea,
+    select{
+      padding: 12px 14px;
+      font-size: 0.82rem;
+    }
+
+    .checkbox-container {
+      font-size: 0.85rem;
+    }
+
+  }
+}

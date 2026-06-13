@@ -128,5 +128,19 @@ class Product
         return $query->execute([':quantity' => $quantity, ':id' => $productId]);
     }
 
+    // Enregistrement des données de nouveau produit dans la BDD
+    public function addNewProduct($name, $description, $price, $stock, $image, $is_active, $category_id){
+        $sql = "INSERT INTO product (product_name, description, price, stock, image, is_active, category_id) VALUES (:product_name, :description, :price, :stock, :image, :is_active, :category_id)";
+        $query = $this->pdo->prepare($sql);
+        $query->execute([':product_name' => $name, ':description' => $description, ':price' => $price, ':stock' => $stock, ':image' => $image, ':is_active' => $is_active, ':category_id' => $category_id]);
+        return $this->pdo->lastInsertId();
+    }
+
+    public function addProductImage($productId, $image){
+        $sql = "INSERT INTO additional_image (image, product_id) VALUES (:image, :product_id)";
+        $query = $this->pdo->prepare($sql);
+        return $query->execute([':image' => $image, ':product_id' => $productId]);
+    }
+
     
 }

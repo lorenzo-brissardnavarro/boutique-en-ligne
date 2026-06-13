@@ -118,6 +118,9 @@ switch ($action) {
     case 'admin-view':
         $Admincontroller->adminView();
         break;
+    case 'add-product':
+        $Admincontroller->addProduct();
+        break;
     default:
         echo json_encode(['success' => false, 'message' => 'Action inconnue']);
 }

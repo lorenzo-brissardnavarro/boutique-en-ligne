@@ -2043,5 +2043,141 @@ input::-o-inner-spin-button {
     font-size: 0.78rem;
   }
 }
+.modal__content--product {
+  max-width: 650px;
+}
+
+#addProductForm h3 {
+  font-size: 0.8em;
+  margin-bottom: 0;
+}
+#addProductForm .cover-upload {
+  width: 140px;
+  margin: 0 auto;
+  height: 120px;
+  border: 2px dashed #1F2A3A;
+  border-radius: 10px;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s;
+}
+#addProductForm .cover-upload:hover {
+  border-color: #C6A86E;
+}
+#addProductForm .cover-upload #previewImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+#addProductForm .cover-upload .inputImage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+  color: #1F2A3A;
+}
+#addProductForm .cover-upload .inputImage i {
+  font-size: 1.5rem;
+}
+#addProductForm .cover-upload .inputImage span {
+  font-size: 0.65rem;
+  text-align: center;
+}
+#addProductForm #cover {
+  display: none;
+}
+#addProductForm input[type=file] {
+  width: 100%;
+  padding: 6px 8px;
+  font-size: 0.62rem;
+  border: 1px solid #1F2A3A;
+  border-radius: 10px;
+  cursor: pointer;
+}
+#addProductForm input[type=text],
+#addProductForm input[type=number],
+#addProductForm textarea,
+#addProductForm select {
+  width: 100%;
+  padding: 6px 8px;
+  font-size: 0.62rem;
+  border: 1px solid #1F2A3A;
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+#addProductForm input[type=text]:focus,
+#addProductForm input[type=number]:focus,
+#addProductForm textarea:focus,
+#addProductForm select:focus {
+  border-color: #C6A86E;
+}
+#addProductForm div {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+#addProductForm textarea {
+  resize: vertical;
+}
+#addProductForm label {
+  color: #1F2A3A;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+#addProductForm .checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  font-size: 0.65rem;
+  color: #1F2A3A;
+  cursor: pointer;
+}
+#addProductForm .checkbox-container input[type=checkbox] {
+  width: auto;
+  margin: 0;
+}
+#addProductForm .input-button {
+  background-color: #1F2A3A;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+#addProductForm .input-button:hover {
+  background-color: #C6A86E;
+}
+
+@media (min-width: 768px) {
+  #addProductForm h3 {
+    font-size: 1em;
+  }
+  #addProductForm .cover-upload {
+    width: 40%;
+    height: 220px;
+  }
+  #addProductForm .cover-upload .inputImage i {
+    font-size: 2.5rem;
+  }
+  #addProductForm .cover-upload .inputImage span {
+    font-size: 0.85rem;
+  }
+  #addProductForm input[type=file],
+  #addProductForm input[type=text],
+  #addProductForm input[type=number],
+  #addProductForm textarea,
+  #addProductForm select {
+    padding: 12px 14px;
+    font-size: 0.82rem;
+  }
+  #addProductForm .checkbox-container {
+    font-size: 0.85rem;
+  }
+}
 
 /*# sourceMappingURL=style.css.map */

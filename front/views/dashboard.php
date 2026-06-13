@@ -9,7 +9,7 @@ require_once "layout/header.php";
 
         <div class="admin-page__section-header">
             <h2 class="admin-page__section-title">Gestion des produits</h2>
-            <button class="admin-btn">AJOUTER UN PRODUIT</button>
+            <button class="admin-btn" id="addProductBtn">AJOUTER UN PRODUIT</button>
         </div>
 
         <div class="admin-products">
@@ -51,6 +51,54 @@ require_once "layout/header.php";
         </div>
     </section>
 
+    <div class="modal" id="addProductModal">
+        <div class="modal__content modal__content--product">
+            <i class="fa-solid fa-xmark" id="closeBtn"></i>
+
+            <form action="" method="post" enctype="multipart/form-data" id="addProductForm">
+                <h3>Image de couverture</h3>
+                <label for="cover" class="cover-upload">
+                    <img id="previewImage" alt="Image prévisualisée">
+                    <div class="inputImage">
+                        <i class="fa-solid fa-image"></i>
+                        <span>Choisir une image (5 Mo max)</span>
+                    </div>
+                </label>
+
+                <input type="file" id="cover" name="cover" accept="image/*" required>
+
+                <label for="files">Images supplémentaires</label>
+                <input type="file" id="files" name="files[]" accept="image/*" multiple>
+
+                <input type="text" name="name" placeholder="Nom du produit" maxlength="100" required>
+                <textarea name="description" placeholder="Description du produit" rows="3" required></textarea>
+                <div>
+                    <input type="number" name="price" placeholder="Prix" min="0" step="0.01" required>
+                    <input type="number" name="stock" placeholder="Stock disponible" min="0" step="1" required>
+                </div>
+                
+                <label for="category">Catégorie</label>
+                <select name="category_id" id="category" required>
+                    <option value="">-- Sélectionner une catégorie --</option>
+                    <?php 
+                    foreach ($categories as $category){
+                        echo '
+                        <option value="' . $category['id'] . '">' . htmlspecialchars($category['category_name']) . '</option>
+                        ';
+                    }
+                    ?>  
+                </select>
+
+                <label class="checkbox-container">
+                    <input type="checkbox" name="is_active" value="1">Afficher le produit immédiatement
+                </label>
+
+                <input type="submit" value="Enregistrer le produit" class="input-button">
+            </form>
+
+        </div>
+    </div>
+
     <section class="admin-page__section">
 
         <div class="admin-page__section-header">
@@ -84,6 +132,9 @@ require_once "layout/header.php";
         </div>
     </section>
 </section>
+
+<script src="../front/js/functions.js"></script>
+<script src="../front/js/admin.js"></script>
 
 <?php
 require_once "layout/footer.php";
