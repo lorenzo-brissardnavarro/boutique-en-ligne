@@ -542,6 +542,10 @@ input{
     transform: translateY(-6px);
   }
 
+  article {
+    height: 100%;
+  }
+
   &__badge {
     position: absolute;
     top: 1rem;
@@ -572,6 +576,9 @@ input{
 
   &__content {
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: stretch;
 
     &--beige {
         background: $color-primary;
@@ -2201,6 +2208,8 @@ input{
     display: flex;
     flex-direction: column;
     gap: 6px;
+    justify-content: space-between;
+    height: stretch;
   }
 
   &__name {
@@ -2221,8 +2230,16 @@ input{
 
   &__stock {
     font-size: 0.8rem;
-    color: #5a9e6e;
-    font-weight: 500;
+
+    &--green{
+      color: #5a9e6e;
+      font-weight: 600;
+    }
+
+    &--red{
+      color: #ec4848;
+      font-weight: 600;
+    }
   }
 
   &__desc {

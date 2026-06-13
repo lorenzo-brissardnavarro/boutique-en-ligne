@@ -6,7 +6,7 @@ use App\Models\Caddie;
 
 class CaddieController
 {
-    private $product;
+    private $caddie;
 
     public function __construct()
     {
@@ -18,6 +18,11 @@ class CaddieController
 
          if (empty($_SESSION['user_id'])) {
             header("Location: router.php?action=login-view");
+            exit;
+        }
+
+        if ($_SESSION['role_name'] === "admin") {
+            header("Location: router.php?action=admin-view");
             exit;
         }
 
