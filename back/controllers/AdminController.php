@@ -103,7 +103,7 @@ class AdminController
 
         $name =  str_replace(' ', '-', strtolower($name));
         $name = preg_replace('/[^a-zA-Z0-9_-]/', '-', strtolower($name));
-        $new_image_name = $name . '-' . $i . '-' . date('Ymd') . '.webp';
+        $new_image_name = $name . '-' . $i . '-' . date('YmdHis') . '.webp';
         $destination = __DIR__ . '/../../public/images/' . $new_image_name;
 
         switch ($file_extension) {
@@ -157,6 +157,71 @@ class AdminController
 
 
         $this->product->updateProductInfos($data['productId'], $data["name"], $data["description"], $data["price"], $data["stock"], $data["category_id"], $data["is_active"]);
+
+        echo json_encode(['success' => true]);
+    }
+
+    public function updateProductImages(){
+
+        if (empty($_SESSION['user_id'])) {
+            echo json_encode(['success' => false, 'message' => 'Non connecté']);
+            return;
+        }
+
+        $productId = $_POST['product_id'];
+        $name = $_POST['name'];
+
+        if (!$productId) {
+            echo json_encode(['success' => false, 'message' => 'Produit manquant']);
+            return;
+        }
+
+        if (!$name) {
+            echo json_encode(['success' => false, 'message' => 'Nom manquant']);
+            return;
+        }
+
+        if (isset($_FILES['cover']) && $_FILES['cover']['error'] === 0) {
+
+            $old = $this->product->getCoverById($productId);
+            $newCover = $this->imageProcessing($_FILES['cover'], $name, 1);
+            if ($newCover) {
+                if ($old) {
+                    unlink(__DIR__ . "/../../public/images/" . $old['image']);
+                }
+                $this->product->updateCover($productId, $newCover);
+            }
+        }
+
+        if (isset($_FILES['files']) && !empty($_FILES['files']['name'][0])) {
+            $startIndex = $this->product->getNextImageIndex($productId);
+            for ($i = 0; $i < count($_FILES['files']['name']); $i++) {
+                $file = ["name" => $_FILES['files']["name"][$i], "type" => $_FILES['files']["type"][$i], "tmp_name" => $_FILES['files']["tmp_name"][$i], "error" => $_FILES['files']["error"][$i], "size" => $_FILES['files']["size"][$i]];
+                $imageName = $this->imageProcessing($file, $name, $startIndex + $i);
+                if ($imageName) {
+                    $this->product->addProductImage($productId, $imageName);
+                }
+            }
+        }
+
+        echo json_encode(['success' => true]);
+    }
+
+    public function deleteImage(){
+        $data = json_decode(file_get_contents("php://input"), true);
+
+        $imageId = $data['image_id'];
+
+        if (!$imageId) {
+            echo json_encode(['success' => false, 'message' => 'Image non reconnue']);
+            return;
+        }
+
+        $image = $this->product->getImageById($imageId);
+        if ($image) {
+            unlink(__DIR__ . "/../../public/images/" . $image['image']);
+        }
+        $this->product->deleteImage($imageId);
 
         echo json_encode(['success' => true]);
     }

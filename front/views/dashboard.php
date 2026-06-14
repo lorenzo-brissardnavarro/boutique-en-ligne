@@ -35,7 +35,7 @@ require_once "layout/header.php";
                                     <i class="fa-solid fa-pen"></i>
                                 </button>
 
-                                <button class="admin-product-card__icon-btn admin-product-card__icon-btn--edit edit-images-btn" aria-label="Modifier les images du produit" data-id="' . $product['id'] . '" data-cover="' . $product['image'] . '" data-images="' . htmlspecialchars(json_encode($product["images"])) . '">
+                                <button class="admin-product-card__icon-btn admin-product-card__icon-btn--edit edit-images-btn" aria-label="Modifier les images du produit" data-id="' . $product['id'] . '" data-cover="' . $product['image'] . '" data-images="' . htmlspecialchars(json_encode($product["images"])) . '" data-name="' . htmlspecialchars($product['product_name']) . '">
                                     <i class="fa-solid fa-file-image"></i>
                                 </button>
 
@@ -137,6 +137,27 @@ require_once "layout/header.php";
 
                 <input type="submit" value="Modifier les informations" class="input-button">
             </form>
+
+        </div>
+    </div>
+
+    <div class="modal" id="editProductImagesModal">
+        <div class="modal__content modal__content--product">
+            <i class="fa-solid fa-xmark" id="closeBtnModalImages"></i>
+
+            <h3>Gestion des images</h3>
+
+            <input type="hidden" id="images_product_id">
+            <input type="hidden" id="images_product_name">
+            <h4>Image de couverture</h4>
+            <img id="previewCover">
+            <input type="file" id="coverInput" name="cover" accept="image/*">
+
+            <h4>Images supplémentaires</h4>
+            <div id="galleryContainer"></div>
+            <input type="file" id="galleryInput" name="files[]" multiple accept="image/*">
+
+            <button id="saveImagesBtn" class="input-button">Enregistrer les images</button>
 
         </div>
     </div>

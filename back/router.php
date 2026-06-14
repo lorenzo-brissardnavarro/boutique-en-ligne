@@ -128,6 +128,16 @@ switch ($action) {
             $Admincontroller->updateProductInfos();
         }
         break;
+    case 'update-product-images':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $Admincontroller->updateProductImages();
+        }
+        break;
+    case 'delete-image':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $Admincontroller->deleteImage();
+        }
+        break;
     default:
         echo json_encode(['success' => false, 'message' => 'Action inconnue']);
 }

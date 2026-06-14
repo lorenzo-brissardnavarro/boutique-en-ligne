@@ -38,10 +38,10 @@ class Product
 
     // Récupération des images suppplémentaires accociées à chaque produit
     public function getAdditionalImages($productId){
-        $sql = "SELECT image FROM additional_image WHERE product_id = :product_id";
+        $sql = "SELECT id, image FROM additional_image WHERE product_id = :product_id";
         $query = $this->pdo->prepare($sql);
         $query->execute([':product_id' => $productId]);
-        return $query->fetchAll(PDO::FETCH_COLUMN);
+        return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
     // Récupération de l'ensemble des produits
@@ -150,5 +150,42 @@ class Product
         return $query->execute([':id' => $productId, ':name' => $name, ':description' => $description, ':price' => $price, ':stock' => $stock, ':category_id' => $category_id, ':is_active' => $is_active]);
     }
 
+    // Récupération de l'image d'un produit
+    public function getCoverById($productId){
+        $sql = "SELECT image FROM product WHERE id = :id";
+        $query = $this->pdo->prepare($sql);
+        $query->execute([":id" => $productId]);
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function getImageById($id){
+        $sql = "SELECT * FROM additional_image WHERE id = :id";
+        $query = $this->pdo->prepare($sql);
+        $query->execute([':id' => $id]);
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
+
+    // Modification de l'image d'un produit
+    public function updateCover($productId, $newCover){
+        $sql = "UPDATE product SET image = :image WHERE id = :id";
+        $query = $this->pdo->prepare($sql);
+        return $query->execute([':image' => $newCover, ':id' => $productId]);
+    }
+
+    // Calcul du numéro à mettre pour le nom de l'image
+    public function getNextImageIndex($productId){
+        $sql = "SELECT COUNT(*) AS count_index FROM additional_image WHERE product_id = :id";
+        $query = $this->pdo->prepare($sql);
+        $query->execute([':id' => $productId]);
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        return (int)$result['count_index'] + 2;
+    }
+
+    // Suppression d'une image additionnelle
+    public function deleteImage($id){
+        $sql = "DELETE FROM additional_image WHERE id = :id";
+        $query = $this->pdo->prepare($sql);
+        return $query->execute([':id' => $id]);
+    }
     
 }

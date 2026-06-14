@@ -15,10 +15,15 @@ document.getElementById("closeBtnModalInfo").addEventListener("click", () => {
     infoModal.classList.remove("visible");
 })
 
+document.getElementById("closeBtnModalImages").addEventListener("click", () => {
+    imagesModal.classList.remove("visible");
+})
+
 window.addEventListener('click', (event) => {
-    if (event.target === addProductModal || event.target === infoModal) {
+    if (event.target === addProductModal || event.target === infoModal || event.target === imagesModal) {
         addProductModal.classList.remove("visible");
         infoModal.classList.remove("visible");
+        imagesModal.classList.remove("visible");
     }
 });
 
@@ -144,6 +149,117 @@ document.getElementById("editProductInfoForm").addEventListener("submit", async 
 
         if (result.success) {
             showNotification("Informations mises à jour", "green");
+
+            setTimeout(() => {
+                location.reload();
+            }, 1000);
+
+        } else {
+            showNotification(result.message, "red");
+        }
+
+    } catch (error) {
+        console.error(error);
+    }
+});
+
+
+
+
+// Gestion de la modification / suppression ou ajout d'images pour un produit
+
+const imagesModal = document.getElementById("editProductImagesModal");
+
+document.querySelectorAll(".edit-images-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+
+        document.getElementById("images_product_id").value = btn.dataset.id;
+        document.getElementById("images_product_name").value = btn.dataset.name;
+        document.getElementById("previewCover").src = "../public/images/" + btn.dataset.cover;
+
+        const container = document.getElementById("galleryContainer");
+        container.innerHTML = "";
+        const images = JSON.parse(btn.dataset.images);
+        images.forEach(img => {
+            container.innerHTML += `
+                <div class="gallery-item" data-id="${img.id}">
+                    <img src="../public/images/${img.image}">
+                    <button class="delete-image" data-id="${img.id}">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </div>
+            `;
+        });
+
+        // suppression image
+        document.querySelectorAll(".delete-image").forEach(btn => {
+            btn.addEventListener("click", async (e) => {
+                const imageId = e.currentTarget.dataset.id;
+                try {
+                    const response = await fetch("../back/router.php?action=delete-image", {
+                    method: "POST",
+                    credentials: "same-origin",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ image_id: imageId })
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        const imageItem = document.querySelector(`.gallery-item[data-id="${imageId}"]`);
+                        if (imageItem) {
+                            imageItem.remove();
+                        }
+                    } else {
+                        showNotification(result.message, "red");
+                    }
+
+                } catch (error) {
+                    console.error(error);
+                }
+            });
+
+        });
+
+        imagesModal.classList.add("visible");
+    });
+
+});
+
+
+// ajout images additionnelles ou maj image cover
+document.getElementById("saveImagesBtn").addEventListener("click", async () => {
+
+    const productId = document.getElementById("images_product_id").value;
+    const name = document.getElementById("images_product_name").value;
+
+    const formData = new FormData();
+    formData.append("product_id", productId);
+    formData.append("name", name);
+
+    const cover = document.getElementById("coverInput").files[0];
+    if (cover) {
+        formData.append("cover", cover);
+    }
+
+    const files = document.getElementById("galleryInput").files;
+    for (let i = 0; i < files.length; i++) {
+        formData.append("files[]", files[i]);
+    }
+
+    try {
+        const response = await fetch("../back/router.php?action=update-product-images", {
+            method: "POST",
+            credentials: "same-origin",
+            body: formData
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            showNotification("Images mises à jour", "green");
 
             setTimeout(() => {
                 location.reload();
