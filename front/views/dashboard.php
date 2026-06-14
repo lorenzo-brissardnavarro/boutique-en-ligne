@@ -31,8 +31,12 @@ require_once "layout/header.php";
                             <p class="admin-product-card__desc">' . $product['description'] . '</p>
 
                             <div class="admin-product-card__actions">
-                                <button class="admin-product-card__icon-btn admin-product-card__icon-btn--edit" aria-label="Modifier le produit">
+                                <button class="admin-product-card__icon-btn admin-product-card__icon-btn--edit edit-info-btn" aria-label="Modifier le produit" data-id="' . $product['id'] .'" data-name="' . htmlspecialchars($product['product_name']) . '" data-description="' . htmlspecialchars($product['description']) . '" data-price="' . $product['price'] . '" data-stock="' . $product['stock'] . '" data-category="' . $product['category_id'] . '" data-active="' . $product['is_active'] . '">
                                     <i class="fa-solid fa-pen"></i>
+                                </button>
+
+                                <button class="admin-product-card__icon-btn admin-product-card__icon-btn--edit edit-images-btn" aria-label="Modifier les images du produit" data-id="' . $product['id'] . '" data-cover="' . $product['image'] . '" data-images="' . htmlspecialchars(json_encode($product["images"])) . '">
+                                    <i class="fa-solid fa-file-image"></i>
                                 </button>
 
                                 <button class="admin-product-card__icon-btn admin-product-card__icon-btn--delete" aria-label="Supprimer le produit">
@@ -68,6 +72,7 @@ require_once "layout/header.php";
                 <input type="file" id="cover" name="cover" accept="image/*" required>
 
                 <label for="files">Images supplémentaires</label>
+                <div id="existingImages"></div>
                 <input type="file" id="files" name="files[]" accept="image/*" multiple>
 
                 <input type="text" name="name" placeholder="Nom du produit" maxlength="100" required>
@@ -94,6 +99,43 @@ require_once "layout/header.php";
                 </label>
 
                 <input type="submit" value="Enregistrer le produit" class="input-button">
+            </form>
+
+        </div>
+    </div>
+
+    <div class="modal" id="editProductInfoModal">
+        <div class="modal__content modal__content--product">
+            <i class="fa-solid fa-xmark" id="closeBtnModalInfo"></i>
+
+            <form action="" method="post" id="editProductInfoForm">
+                <input type="hidden" name="product_idInfo" id="product_idInfo">
+                <h3>Modifier les informations</h3>
+
+                <input type="text" name="nameInfo" placeholder="Nom du produit" required>
+                <textarea name="descriptionInfo" placeholder="Description du produit" rows="3" required></textarea>
+                <div>
+                    <input type="number" name="priceInfo" placeholder="Prix" min="0" step="0.01" required>
+                    <input type="number" name="stockInfo" placeholder="Stock disponible" min="0" step="1" required>
+                </div>
+                
+                <label for="category">Catégorie</label>
+                <select name="category_idInfo" id="category" required>
+                    <option value="">-- Sélectionner une catégorie --</option>
+                    <?php 
+                    foreach ($categories as $category){
+                        echo '
+                        <option value="' . $category['id'] . '">' . htmlspecialchars($category['category_name']) . '</option>
+                        ';
+                    }
+                    ?>  
+                </select>
+
+                <label class="checkbox-container">
+                    <input type="checkbox" name="is_activeInfo" value="1">Afficher le produit immédiatement
+                </label>
+
+                <input type="submit" value="Modifier les informations" class="input-button">
             </form>
 
         </div>

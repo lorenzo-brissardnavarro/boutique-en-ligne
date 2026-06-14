@@ -38,10 +38,10 @@ class Product
 
     // Récupération des images suppplémentaires accociées à chaque produit
     public function getAdditionalImages($productId){
-        $sql = "SELECT * FROM additional_image WHERE product_id = :product_id";
+        $sql = "SELECT image FROM additional_image WHERE product_id = :product_id";
         $query = $this->pdo->prepare($sql);
         $query->execute([':product_id' => $productId]);
-        return $query->fetchAll(PDO::FETCH_ASSOC);
+        return $query->fetchAll(PDO::FETCH_COLUMN);
     }
 
     // Récupération de l'ensemble des produits
@@ -136,10 +136,18 @@ class Product
         return $this->pdo->lastInsertId();
     }
 
+    // Ajout d'une image additionnelle pour un produit
     public function addProductImage($productId, $image){
         $sql = "INSERT INTO additional_image (image, product_id) VALUES (:image, :product_id)";
         $query = $this->pdo->prepare($sql);
         return $query->execute([':image' => $image, ':product_id' => $productId]);
+    }
+
+    // Modification des informations d'un produit
+    public function updateProductInfos($productId, $name, $description, $price, $stock, $category_id, $is_active) {
+        $sql = "UPDATE product SET product_name = :name, description = :description, price = :price, stock = :stock, category_id = :category_id, is_active = :is_active WHERE id = :id";
+        $query = $this->pdo->prepare($sql);
+        return $query->execute([':id' => $productId, ':name' => $name, ':description' => $description, ':price' => $price, ':stock' => $stock, ':category_id' => $category_id, ':is_active' => $is_active]);
     }
 
     

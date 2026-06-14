@@ -2460,7 +2460,8 @@ input{
     max-width: 650px;
 }
 
-#addProductForm {
+#addProductForm,
+#editProductInfoModal {
 
   h3 {
     font-size: 0.8em;
@@ -2581,8 +2582,15 @@ input{
   }
 }
 
+#editProductInfoModal {
+  div {
+    align-items: normal;
+  }
+}
+
 @media (min-width: $tablet) {
-  #addProductForm{
+  #addProductForm,
+  #editProductInfoModal{
 
     h3 {
     font-size: 1em;

@@ -29,6 +29,14 @@ class AdminController
         $products = $this->product->getAllProducts();
         $categories = $this->product->getAllCategories();
 
+        $productsWithImages = [];
+        foreach ($products as $product) {
+            $product['images'] =  $this->product->getAdditionalImages($product['id']);
+            $productsWithImages[] = $product;
+        }
+
+        $products = $productsWithImages;
+
         require '../front/views/dashboard.php';
     }
 
@@ -121,6 +129,36 @@ class AdminController
         imagedestroy($image);
 
         return $new_image_name;
+    }
+
+    // Modification informations utilisateur
+    public function updateProductInfos(){
+        $data = json_decode(file_get_contents("php://input"), true);
+
+        if (empty($_SESSION['user_id'])) {
+            echo json_encode(['success' => false, 'message' => 'Non connecté']);
+            return;
+        }
+
+        if (!$data) {
+            echo json_encode(['success' => false, 'message' => 'Données invalides']);
+            return;
+        }
+
+        if(empty($data['productId'])){
+            echo json_encode(['success' => false, 'message' => 'Produit non défini']);
+            return;
+        }
+
+        if (empty($data["name"]) || empty($data["description"]) || empty($data["price"]) || empty($data["stock"]) || empty($data["category_id"]) || !isset($data["is_active"])) {
+            echo json_encode(['success' => false, 'message' => 'Champs requis manquants']);
+            return;
+        }
+
+
+        $this->product->updateProductInfos($data['productId'], $data["name"], $data["description"], $data["price"], $data["stock"], $data["category_id"], $data["is_active"]);
+
+        echo json_encode(['success' => true]);
     }
 
     

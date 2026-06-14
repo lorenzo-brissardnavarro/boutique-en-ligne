@@ -119,7 +119,14 @@ switch ($action) {
         $Admincontroller->adminView();
         break;
     case 'add-product':
-        $Admincontroller->addProduct();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $Admincontroller->addProduct();
+        }
+        break;
+    case 'update-product-infos':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $Admincontroller->updateProductInfos();
+        }
         break;
     default:
         echo json_encode(['success' => false, 'message' => 'Action inconnue']);
