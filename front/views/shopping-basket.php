@@ -1,4 +1,6 @@
 <?php
+$pageTitle = 'Panier';
+$pageDescription = 'Consultez votre panier Sakura Moon, vérifiez vos articles sélectionnés et finalisez votre commande en toute simplicité.';
 require_once "layout/header.php";
 ?>
 

@@ -1,4 +1,6 @@
 <?php
+$pageTitle = 'Mon compte';
+$pageDescription = 'Accédez à votre espace utilisateur Sakura Moon : profil, commandes, informations personnelles et suivi de vos achats.';
 require_once "layout/header.php";
 ?>
 

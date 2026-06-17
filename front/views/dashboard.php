@@ -1,4 +1,6 @@
 <?php
+$pageTitle = 'Espace Admin';
+$pageDescription = 'Tableau de bord administrateur Sakura Moon : gérez les produits, catégories et contenus du site.';
 require_once "layout/header.php";
 ?>
 

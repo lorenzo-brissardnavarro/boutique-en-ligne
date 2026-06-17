@@ -1,4 +1,6 @@
 <?php
+$pageTitle = 'Inscription';
+$pageDescription = 'Créez votre compte Sakura Moon pour accéder à la boutique, suivre vos commandes et profiter d’une expérience personnalisée.';
 require_once "layout/header.php";
 ?>
 

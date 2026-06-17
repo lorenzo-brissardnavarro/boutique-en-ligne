@@ -1,4 +1,6 @@
 <?php
+$pageTitle = 'Page détails';
+$pageDescription = 'Découvrez les détails de ce produit Sakura Moon : description, caractéristiques, prix et disponibilité.';
 require_once "layout/header.php";
 ?>
 

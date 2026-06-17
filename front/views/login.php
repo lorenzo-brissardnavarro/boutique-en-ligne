@@ -1,4 +1,6 @@
 <?php
+$pageTitle = 'Connexion';
+$pageDescription = 'Connectez-vous à votre compte Sakura Moon pour accéder à votre espace personnel, vos commandes et votre panier.';
 require_once "layout/header.php";
 ?>
 

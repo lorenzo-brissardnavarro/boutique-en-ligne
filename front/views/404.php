@@ -1,4 +1,6 @@
 <?php
+$pageTitle = 'Erreur 404';
+$pageDescription = 'Page introuvable. La page que vous recherchez n’existe pas ou a été déplacée. Retournez à l’accueil de Sakura Moon.';
 require_once "layout/header.php";
 ?>
 

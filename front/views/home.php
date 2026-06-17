@@ -1,4 +1,6 @@
 <?php
+$pageTitle = 'Accueil';
+$pageDescription = 'Découvrez Sakura Moon, boutique en ligne de produits japonais et asiatiques. Explorez nos articles uniques, inspirés de la culture nippone.';
 require_once "layout/header.php";
 ?>
 

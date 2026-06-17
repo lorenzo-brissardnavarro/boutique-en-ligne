@@ -2,8 +2,10 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Sakura Moon Créations</title>
+    <title><?php echo $pageTitle ?> - Sakura Moon Créations</title>
+    <meta name="description" content=<?php echo $pageDescription ?>>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="all" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
