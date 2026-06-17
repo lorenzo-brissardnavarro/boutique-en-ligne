@@ -18,6 +18,11 @@ class ProductController
     }
 
    public function home(){
+        if (!empty($_SESSION['user_id']) && $_SESSION['role_name'] === "admin") {
+            header("Location: router.php?action=admin-view");
+            exit;
+        }
+
         $top = $this->product->topProducts();
         $news = $this->product->newProducts();
         $caddieCount = (new CaddieController())->getCaddieCount();
@@ -25,6 +30,11 @@ class ProductController
     }
 
     public function productDetails(){
+        if (!empty($_SESSION['user_id']) && $_SESSION['role_name'] === "admin") {
+            header("Location: router.php?action=admin-view");
+            exit;
+        }
+
         $id = (int)$_GET['id'] ?? '';
         $product = $this->product->getById($id);
         $additionalImages = $this->product->getAdditionalImages($id);
@@ -50,6 +60,11 @@ class ProductController
     }
 
     public function shopView(){
+        if (!empty($_SESSION['user_id']) && $_SESSION['role_name'] === "admin") {
+            header("Location: router.php?action=admin-view");
+            exit;
+        }
+
         $categories = $this->product->getAllCategories();
         $caddieCount = (new CaddieController())->getCaddieCount();
         require '../front/views/shop.php';

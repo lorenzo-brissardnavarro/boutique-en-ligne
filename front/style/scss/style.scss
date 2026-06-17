@@ -542,6 +542,10 @@ input{
     transform: translateY(-6px);
   }
 
+  article {
+    height: 100%;
+  }
+
   &__badge {
     position: absolute;
     top: 1rem;
@@ -572,6 +576,9 @@ input{
 
   &__content {
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: stretch;
 
     &--beige {
         background: $color-primary;
@@ -2201,6 +2208,8 @@ input{
     display: flex;
     flex-direction: column;
     gap: 6px;
+    justify-content: space-between;
+    height: stretch;
   }
 
   &__name {
@@ -2221,8 +2230,16 @@ input{
 
   &__stock {
     font-size: 0.8rem;
-    color: #5a9e6e;
-    font-weight: 500;
+
+    &--green{
+      color: #5a9e6e;
+      font-weight: 600;
+    }
+
+    &--red{
+      color: #ec4848;
+      font-weight: 600;
+    }
   }
 
   &__desc {
@@ -2433,5 +2450,244 @@ input{
       padding: 14px 32px;
       font-size: 0.78rem;
     }
+  }
+}
+
+
+//////////////////////////////////////////////////////// Modale ajout nouveau produit //////////////////////////////////////////////////
+
+.modal__content--product {
+    max-width: 650px;
+}
+
+#addProductForm,
+#editProductInfoModal {
+
+  h3 {
+    font-size: 0.8em;
+    margin-bottom: 0;
+  }
+  .cover-upload {
+    width: 140px;
+    margin: 0 auto;
+    height: 120px;
+    border: 2px dashed $color-secondary;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .2s;
+
+    &:hover {
+        border-color: $color-accent-gold;
+    }
+
+    #previewImage {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: none;
+    }
+
+    .inputImage {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: .5em;
+        color: $color-secondary;
+
+        i {
+            font-size: 1.5rem;
+        }
+
+        span {
+            font-size: 0.65rem;
+            text-align: center;
+        }
+    }
+  }
+
+  #cover {
+    display: none;
+  }
+
+  input[type="file"] {
+      width: 100%;
+      padding: 6px 8px;
+      font-size: 0.62rem;
+      border: 1px solid $color-secondary;
+      border-radius: 10px;
+      cursor: pointer;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  textarea,
+  select {
+      width: 100%;
+      padding: 6px 8px;
+      font-size: 0.62rem;
+      border: 1px solid $color-secondary;
+      border-radius: 10px;
+      outline: none;
+      transition: border-color .2s;
+
+      &:focus {
+          border-color: $color-accent-gold;
+      }
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+  }
+
+  textarea {
+      resize: vertical;
+  }
+
+  label {
+      color: $color-secondary;
+      font-size: 0.9rem;
+      font-weight: 600;
+  }
+
+  .checkbox-container {
+      display: flex;
+      align-items: center;
+      gap: .75em;
+      font-size: 0.65rem;
+      color: $color-secondary;
+      cursor: pointer;
+      input[type="checkbox"] {
+          width: auto;
+          margin: 0;
+      }
+  }
+
+  .input-button {
+      background-color: $color-secondary;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: .2s;
+
+      &:hover {
+          background-color: $color-accent-gold;
+      }
+  }
+}
+
+#editProductInfoModal {
+  div {
+    align-items: normal;
+  }
+}
+
+#editProductImagesModal {
+  .gallery-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 8px;
+      border: 1px solid $color-secondary;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      background: $white;
+
+      img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+
+      button {
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        color: $color-secondary;
+        transition: color 0.2s;
+
+        &:hover {
+          color: $color-accent-gold;
+        }
+      }
+  }
+
+   h4 {
+      font-size: 1rem;
+      margin: 10px 0;
+      color: $color-secondary;
+    }
+
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px dashed $color-secondary;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    #previewCover {
+      height: 120px;
+      width: 120px;
+      border-radius: 10px;
+      border: 1px solid #eee;
+      object-fit: cover;
+    }
+
+    #galleryContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 10px;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+}
+
+@media (min-width: $tablet) {
+  #addProductForm,
+  #editProductInfoModal{
+
+    h3 {
+    font-size: 1em;
+  }
+
+    .cover-upload {
+      width: 40%;
+      height: 220px;
+
+      .inputImage {
+          i {
+              font-size: 2.5rem;
+          }
+
+          span {
+              font-size: 0.85rem;
+          }
+      }
+    }
+
+    input[type="file"],
+    input[type="text"],
+    input[type="number"],
+    textarea,
+    select{
+      padding: 12px 14px;
+      font-size: 0.82rem;
+    }
+
+    .checkbox-container {
+      font-size: 0.85rem;
+    }
+
   }
 }

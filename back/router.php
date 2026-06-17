@@ -19,6 +19,7 @@ use App\Controllers\FavoriteController;
 use App\Controllers\ProfileController;
 use App\Controllers\CaddieController;
 use App\Controllers\OrderController;
+use App\Controllers\AdminController;
 
 $Authcontroller = new AuthController();
 $Productcontroller = new ProductController();
@@ -26,6 +27,7 @@ $Favoritecontroller = new FavoriteController();
 $Profilecontroller = new ProfileController();
 $Caddiecontroller = new CaddieController();
 $Ordercontroller = new OrderController();
+$Admincontroller = new AdminController();
 
 $action = $_GET['action'] ?? '';
 
@@ -111,6 +113,44 @@ switch ($action) {
     case 'add-order':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $Ordercontroller->addOrder();
+        }
+        break;
+    case 'admin-view':
+        $Admincontroller->adminView();
+        break;
+    case 'add-product':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $Admincontroller->addProduct();
+        }
+        break;
+    case 'update-product-infos':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $Admincontroller->updateProductInfos();
+        }
+        break;
+    case 'update-product-images':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $Admincontroller->updateProductImages();
+        }
+        break;
+    case 'delete-image':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $Admincontroller->deleteImage();
+        }
+        break;
+    case 'add-category':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $Admincontroller->addCategory();
+        }
+        break;
+    case 'update-category':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $Admincontroller->updateCategory();
+        }
+        break;
+    case 'delete-category':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $Admincontroller->deleteCategory();
         }
         break;
     default:

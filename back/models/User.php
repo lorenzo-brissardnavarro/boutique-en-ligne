@@ -44,7 +44,7 @@ class User
 
     // Récupération des informations d'un utilisateur
     public function findByEmail($email){
-        $sql = "SELECT * FROM user WHERE email = :email";
+        $sql = "SELECT user.*, role.role_name FROM user INNER JOIN role on user.role_id = role.id WHERE email = :email";
         $query = $this->pdo->prepare($sql);
         $query->execute([':email' => $email]);
         return $query->fetch(PDO::FETCH_ASSOC);

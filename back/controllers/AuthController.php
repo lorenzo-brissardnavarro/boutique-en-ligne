@@ -120,6 +120,7 @@ class AuthController
 
         if (password_verify($data["password"], $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
+            $_SESSION['role_name'] = $user['role_name'];
             echo json_encode(['success' => true, 'user' => $user['id']]);
 
         } else {

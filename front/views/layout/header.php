@@ -28,29 +28,46 @@
             <ul class="menu__listing menu__listing--none">
                 <?php 
                 if(!empty($_SESSION['user_id'])) {
-                    echo '
-                    <li>
-                        <a href="../back/router.php?action=shop-view">
-                            <i class="fa-solid fa-shop"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="../back/router.php?action=profile-view">
-                            <i class="fa-solid fa-user"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="../back/router.php?action=caddie-view">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                            <span id="caddie-count">' . $caddieCount . '</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" id="logout">
-                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                        </a>
-                    </li>
-                    ';
+                    if ($_SESSION['role_name'] === 'admin') {
+                        echo '
+                        <li>
+                            <a href="../back/router.php?action=admin-view">
+                                <i class="fa-solid fa-users-gear"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" id="logout">
+                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            </a>
+                        </li>
+                        ';
+
+                    } else {
+                        echo '
+                        <li>
+                            <a href="../back/router.php?action=shop-view">
+                                <i class="fa-solid fa-shop"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../back/router.php?action=profile-view">
+                                <i class="fa-solid fa-user"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../back/router.php?action=caddie-view">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                <span id="caddie-count">' . $caddieCount . '</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" id="logout">
+                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            </a>
+                        </li>
+                        ';
+
+                    }
                 } else {
                     echo '
                     <li>
@@ -75,29 +92,46 @@
             <ul class="menu__listing menu__listing--burger">
                 <?php
                 if(!empty($_SESSION['user_id'])) {
-                    echo '
-                    <li>
-                        <a href="../back/router.php?action=shop-view">
-                            <i class="fa-solid fa-shop"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="../back/router.php?action=profile-view">
-                            <i class="fa-solid fa-user"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="../back/router.php?action=caddie-view">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                            <span id="caddie-count">' . $caddieCount . '</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" id="logout">
-                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                        </a>
-                    </li>
-                    ';
+                    if ($_SESSION['role_name'] === 'admin') {
+                        echo '
+                        <li>
+                            <a href="../back/router.php?action=admin-view">
+                                <i class="fa-solid fa-users-gear"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" id="logout">
+                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            </a>
+                        </li>
+                        ';
+
+                    } else {
+                        echo '
+                        <li>
+                            <a href="../back/router.php?action=shop-view">
+                                <i class="fa-solid fa-shop"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../back/router.php?action=profile-view">
+                                <i class="fa-solid fa-user"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../back/router.php?action=caddie-view">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                <span id="caddie-count">' . $caddieCount . '</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" id="logout">
+                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            </a>
+                        </li>
+                        ';
+
+                    }
                 } else {
                     echo '
                     <li>

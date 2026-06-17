@@ -8,8 +8,9 @@ use App\Models\Order;
 
 class ProfileController
 {
-    private $product;
+    private $user;
     private $favorite;
+    private $order;
 
     public function __construct()
     {
@@ -23,6 +24,11 @@ class ProfileController
 
          if (empty($_SESSION['user_id'])) {
             header("Location: router.php?action=login-view");
+            exit;
+        }
+
+        if ($_SESSION['role_name'] === "admin") {
+            header("Location: router.php?action=admin-view");
             exit;
         }
 
