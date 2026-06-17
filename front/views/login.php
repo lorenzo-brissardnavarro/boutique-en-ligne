@@ -10,7 +10,7 @@ require_once "layout/header.php";
         </div>
 
         <h1 class="auth-page__title">Bon retour !</h1>
-        <p class="auth-page__subtitle">Connectez-vous à votre compte</p>
+        <h2 class="auth-page__subtitle">Connectez-vous à votre compte</h2>
 
         <form action="" method="get" autocomplete="on" id="loginForm">
 
@@ -24,7 +24,7 @@ require_once "layout/header.php";
 
                 <input type="password" name="password" id="password" required />
 
-                <button type="button" class="input-password__toggle">
+                <button type="button" class="input-password__toggle" aria-label="Bouton pour afficher ou masquer le mot de passe">
                     <i class="fa-solid fa-eye-slash" id="icon"></i>
                 </button>
             </div>

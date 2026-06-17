@@ -19,7 +19,7 @@ require_once "layout/header.php";
                             <div>
                                 <p class="cart-item__badge">' . $product['category_name'] . '</p>
                                 <h2 class="cart-item__name">' . $product['product_name'] . '</h2>
-                                <p class="cart-item__price">' . $product['price'] . ' €</p>
+                                <span class="cart-item__price">' . $product['price'] . ' €</span>
                             </div>
                         </div>
                         <div class="cart-item__controls">

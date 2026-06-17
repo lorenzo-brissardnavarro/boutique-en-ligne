@@ -15,11 +15,11 @@ require_once "layout/header.php";
                 <?php echo '<img src="../public/images/' . $product['image'] . '" alt="' . $product['product_name'] . '" class="product-detail__main-img" id="mainImage"> '?>
             </div>
             <div class="product-detail__thumbs">
-                <?php echo '<img src="../public/images/' . $product['image'] . '" alt="' . $product['product_name'] . '" class="product-detail__thumb product-detail__thumb--active">'?>
+                <?php echo '<img src="../public/images/' . $product['image'] . '" alt="' . $product['product_name'] . ' Vue 1" class="product-detail__thumb product-detail__thumb--active">'?>
                 <?php
-                foreach ($additionalImages as $image) {
+                foreach ($additionalImages as $index => $image) {
                     echo '
-                        <img src="../public/images/' . $image['image'] . '" alt="' . $product['product_name'] . '" class="product-detail__thumb">
+                        <img src="../public/images/' . $image['image'] . '" alt="' . $product['product_name'] . ' Vue ' . ($index + 2) . '" class="product-detail__thumb">
                     ';
                 } 
                 ?>
@@ -30,7 +30,7 @@ require_once "layout/header.php";
             <span class="product-detail__badge"><?php echo $product['category_name'] ?></span>
 
             <h1 class="product-detail__name"><?php echo $product['product_name'] ?></h1>
-            <p class="product-detail__price"><?php echo $product['price'] ?> €</p>
+            <span class="product-detail__price"><?php echo $product['price'] ?> €</span>
             <p class="product-detail__desc"><?php echo $product['description'] ?></p>
 
             <div class="product-detail__stock">

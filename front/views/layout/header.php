@@ -31,12 +31,12 @@
                     if ($_SESSION['role_name'] === 'admin') {
                         echo '
                         <li>
-                            <a href="../back/router.php?action=admin-view">
+                            <a href="../back/router.php?action=admin-view" aria-label="Dashboard Admin">
                                 <i class="fa-solid fa-users-gear"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="#" id="logout">
+                            <a href="#" id="logout" aria-label="Déconnexion">
                                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
                             </a>
                         </li>
@@ -45,23 +45,23 @@
                     } else {
                         echo '
                         <li>
-                            <a href="../back/router.php?action=shop-view">
+                            <a href="../back/router.php?action=shop-view" aria-label="Boutique">
                                 <i class="fa-solid fa-shop"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="../back/router.php?action=profile-view">
+                            <a href="../back/router.php?action=profile-view" aria-label="Profil utilisateur">
                                 <i class="fa-solid fa-user"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="../back/router.php?action=caddie-view">
+                            <a href="../back/router.php?action=caddie-view" aria-label="Panier">
                                 <i class="fa-solid fa-cart-shopping"></i>
                                 <span id="caddie-count">' . $caddieCount . '</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#" id="logout">
+                            <a href="#" id="logout" aria-label="Déconnexion">
                                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
                             </a>
                         </li>
@@ -71,7 +71,7 @@
                 } else {
                     echo '
                     <li>
-                        <a href="../index.php">Accueil</a>
+                        <a href="../back/router.php?action=home">Accueil</a>
                     </li>
                     <li>
                         <a href="../back/router.php?action=shop-view">Boutique</a>
@@ -95,12 +95,12 @@
                     if ($_SESSION['role_name'] === 'admin') {
                         echo '
                         <li>
-                            <a href="../back/router.php?action=admin-view">
+                            <a href="../back/router.php?action=admin-view" aria-label="Dashboard Admin">
                                 <i class="fa-solid fa-users-gear"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="#" id="logout">
+                            <a href="#" id="logout" aria-label="Déconnexion">
                                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
                             </a>
                         </li>
@@ -109,23 +109,23 @@
                     } else {
                         echo '
                         <li>
-                            <a href="../back/router.php?action=shop-view">
+                            <a href="../back/router.php?action=shop-view" aria-label="Boutique">
                                 <i class="fa-solid fa-shop"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="../back/router.php?action=profile-view">
+                            <a href="../back/router.php?action=profile-view" aria-label="Profil utilisateur">
                                 <i class="fa-solid fa-user"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="../back/router.php?action=caddie-view">
+                            <a href="../back/router.php?action=caddie-view" aria-label="Panier">
                                 <i class="fa-solid fa-cart-shopping"></i>
                                 <span id="caddie-count">' . $caddieCount . '</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#" id="logout">
+                            <a href="#" id="logout" aria-label="Déconnexion">
                                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
                             </a>
                         </li>
@@ -135,7 +135,7 @@
                 } else {
                     echo '
                     <li>
-                        <a href="../index.php">Accueil</a>
+                        <a href="../back/router.php?action=home.php">Accueil</a>
                     </li>
                     <li>
                         <a href="../back/router.php?action=shop-view">Boutique</a>

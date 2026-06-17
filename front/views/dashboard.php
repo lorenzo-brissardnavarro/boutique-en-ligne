@@ -71,15 +71,15 @@ require_once "layout/header.php";
                 <div id="existingImages"></div>
                 <input type="file" id="files" name="files[]" accept="image/*" multiple>
 
-                <input type="text" name="name" placeholder="Nom du produit" maxlength="100" required>
-                <textarea name="description" placeholder="Description du produit" rows="3" required></textarea>
+                <input type="text" name="name" placeholder="Nom du produit" maxlength="100" required aria-label="Champ pour saisir le nom du produit">
+                <textarea name="description" placeholder="Description du produit" rows="3" required aria-label="Champ pour saisir la description du produit"></textarea>
                 <div>
-                    <input type="number" name="price" placeholder="Prix" min="0" step="0.01" required>
-                    <input type="number" name="stock" placeholder="Stock disponible" min="0" step="1" required>
+                    <input type="number" name="price" placeholder="Prix" min="0" step="0.01" required aria-label="Champ pour saisir le prix du produit">
+                    <input type="number" name="stock" placeholder="Stock disponible" min="0" step="1" required aria-label="Champ pour saisir la quantité de stock disponible d'un produit">
                 </div>
                 
-                <label for="category">Catégorie</label>
-                <select name="category_id" id="category" required>
+                <label for="addCategory">Catégorie</label>
+                <select name="category_id" id="addCategory" required>
                     <option value="">-- Sélectionner une catégorie --</option>
                     <?php 
                     foreach ($categories as $category){
@@ -108,15 +108,15 @@ require_once "layout/header.php";
                 <input type="hidden" name="product_idInfo" id="product_idInfo">
                 <h3>Modifier les informations</h3>
 
-                <input type="text" name="nameInfo" placeholder="Nom du produit" required>
-                <textarea name="descriptionInfo" placeholder="Description du produit" rows="3" required></textarea>
+                <input type="text" name="nameInfo" placeholder="Nom du produit" required aria-label="Champ pour modifier le nom du produit">
+                <textarea name="descriptionInfo" placeholder="Description du produit" rows="3" required aria-label="Champ pour modifier la description du produit"></textarea>
                 <div>
-                    <input type="number" name="priceInfo" placeholder="Prix" min="0" step="0.01" required>
-                    <input type="number" name="stockInfo" placeholder="Stock disponible" min="0" step="1" required>
+                    <input type="number" name="priceInfo" placeholder="Prix" min="0" step="0.01" required aria-label="Champ pour modifier le prix du produit">
+                    <input type="number" name="stockInfo" placeholder="Stock disponible" min="0" step="1" required aria-label="Champ pour modifier la quantité de stock disponible d'un produit">
                 </div>
                 
-                <label for="category">Catégorie</label>
-                <select name="category_idInfo" id="category" required>
+                <label for="editCategory">Catégorie</label>
+                <select name="category_idInfo" id="editCategory" required>
                     <option value="">-- Sélectionner une catégorie --</option>
                     <?php 
                     foreach ($categories as $category){
@@ -146,12 +146,12 @@ require_once "layout/header.php";
             <input type="hidden" id="images_product_id">
             <input type="hidden" id="images_product_name">
             <h4>Image de couverture</h4>
-            <img id="previewCover">
-            <input type="file" id="coverInput" name="cover" accept="image/*">
+            <img id="previewCover" alt="image de couverture">
+            <input type="file" id="coverInput" name="cover" accept="image/*" aria-label="Champ pour sélectionner le fichier image pour la couverture du produit">
 
             <h4>Images supplémentaires</h4>
             <div id="galleryContainer"></div>
-            <input type="file" id="galleryInput" name="files[]" multiple accept="image/*">
+            <input type="file" id="galleryInput" name="files[]" multiple accept="image/*" aria-label="Champ pour sélectionner le fichiers pour les images liées au produit">
 
             <button id="saveImagesBtn" class="input-button">Enregistrer les images</button>
 
@@ -211,7 +211,7 @@ require_once "layout/header.php";
 
                 <h3>Ajout d'une nouvelle catégorie</h3>
 
-                <input type="text" name="categoryName" placeholder="Nom de la catégorie" required>
+                <input type="text" name="categoryName" placeholder="Nom de la catégorie" required aria-label="Champ pour saisir le nom de la catégorie">
 
                 <input type="submit" value="Ajouter la catégorie" class="input-button">
             </form>
@@ -226,7 +226,7 @@ require_once "layout/header.php";
             <form action="" method="post" id="updateCategoryForm">
                 <input type="hidden" id="category_id">
                 <h3>Modification de la catégorie</h3>
-                <input type="text" name="updateCategoryName" placeholder="Nom de la catégorie" required>
+                <input type="text" name="updateCategoryName" placeholder="Nom de la catégorie" required aria-label="Champ pour saisir le nouveau nom de la catégorie">
                 <input type="submit" value="Modifier la catégorie" class="input-button">
             </form>
 

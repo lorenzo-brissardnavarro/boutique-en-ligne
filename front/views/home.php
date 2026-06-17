@@ -38,7 +38,7 @@ require_once "layout/header.php";
                 <i class="fa-regular fa-heart"></i>
             </div>
 
-            <h3>Fait Main</h3>
+            <h2>Fait Main</h2>
             <p>Chaque pièce est unique</p>
         </article>
 
@@ -47,7 +47,7 @@ require_once "layout/header.php";
                 <i class="fa-solid fa-shield"></i>
             </div>
 
-            <h3>Qualité premium</h3>
+            <h2>Qualité premium</h2>
             <p>Matériaux sélectionnés</p>
         </article>
 
@@ -56,7 +56,7 @@ require_once "layout/header.php";
                 <i class="fa-solid fa-truck"></i>
             </div>
 
-            <h3>Livraison soignée</h3>
+            <h2>Livraison soignée</h2>
             <p>Emballage élégant</p>
         </article>
 
@@ -65,7 +65,7 @@ require_once "layout/header.php";
                 <i class="fa-regular fa-star"></i>
             </div>
 
-            <h3>Satisfaction garantie</h3>
+            <h2>Satisfaction garantie</h2>
             <p>Service client dédié</p>
         </article>
 
@@ -98,7 +98,7 @@ require_once "layout/header.php";
                                 <h3>' . $product['product_name'] . '</h3>
 
                                 <div class="product-card__bottom">
-                                    <p class="product-card__price">' . $product['price'] . ' €</p>
+                                    <span class="product-card__price">' . $product['price'] . ' €</span>
                                 </div>
 
                             </div>
@@ -142,7 +142,7 @@ require_once "layout/header.php";
                                 <h3>' . $product['product_name'] . '</h3>
 
                                 <div class="product-card__bottom">
-                                    <p class="product-card__price">' . $product['price'] . ' €</p>
+                                    <span class="product-card__price">' . $product['price'] . ' €</span>
                                 </div>
 
                             </div>
@@ -244,7 +244,7 @@ require_once "layout/header.php";
 
         <h2>Recevez nos nouveautés en avant-première</h2>
 
-        <p>Inscrivez-vous à notre newsletter pour recevoir en avant-première nos nouvelles créations et offres exclusives</p>
+        <label for="email">Inscrivez-vous à notre newsletter pour recevoir en avant-première nos nouvelles créations et offres exclusives</label>
 
         <form action="" method="get">
             <input type="email" name="email" id="email" placeholder="Votre adresse mail"/>

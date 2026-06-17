@@ -32,8 +32,8 @@ async function loadShop() {
                     <div class="product-card__content product-card__content--beige">
                         <h3>${product.product_name}</h3>
                         <div class="product-card__bottom">
-                            <p class="product-card__price">${product.price} €</p>
-                            <button class="product-card__cart" data-id="${product.id}">
+                            <span class="product-card__price">${product.price} €</span>
+                            <button class="product-card__cart" data-id="${product.id}" aria-label="Bouton pour ajouter le produit au panier">
                                 <i class="fa-solid fa-cart-shopping"></i>
                             </button>
                         </div>

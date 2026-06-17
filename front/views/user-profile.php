@@ -94,9 +94,9 @@ require_once "layout/header.php";
                                     <h3>' . $favorite['product_name'] . '</h3>
 
                                     <div class="product-card__bottom">
-                                        <p class="product-card__price">' . $favorite['price'] . ' €</p>
+                                        <span class="product-card__price">' . $favorite['price'] . ' €</span>
 
-                                        <button class="product-card__cart" type="button">
+                                        <button class="product-card__cart" type="button" aria-label="Bouton pour ajouter le produit au panier">
                                             <i class="fa-solid fa-cart-shopping"></i>
                                         </button>
                                     </div>
@@ -176,12 +176,12 @@ require_once "layout/header.php";
                         <h3>Modifier mes informations</h3>
 
                         <form id="editProfileForm">
-                            <input type="text" name="firstname" value="<?php echo htmlspecialchars($user['firstname']) ?>" required />
-                            <input type="text" name="name" value="<?php echo htmlspecialchars($user['surname']) ?>" required />
-                            <input type="email" name="email" value="<?php echo htmlspecialchars($user['email']) ?>" required />
-                            <input type="tel" name="tel" value="<?php echo htmlspecialchars($user['phone']) ?>" required />
-                            <input type="date" name="birthday" value="<?php echo htmlspecialchars($user['birthday']) ?>" required />
-                            <input type="text" name="address" value="<?php echo htmlspecialchars($user['address']) ?>" required />
+                            <input type="text" name="firstname" value="<?php echo htmlspecialchars($user['firstname']) ?>" required aria-label="Champ pour modifier le prénom"/>
+                            <input type="text" name="name" value="<?php echo htmlspecialchars($user['surname']) ?>" required aria-label="Champ pour modifier le nom"/>
+                            <input type="email" name="email" value="<?php echo htmlspecialchars($user['email']) ?>" required aria-label="Champ pour modifier l'email"/>
+                            <input type="tel" name="tel" value="<?php echo htmlspecialchars($user['phone']) ?>" required aria-label="Champ pour modifier le numéro de téléphone"/>
+                            <input type="date" name="birthday" value="<?php echo htmlspecialchars($user['birthday']) ?>" required aria-label="Champ pour modifier la date de naissance"/>
+                            <input type="text" name="address" value="<?php echo htmlspecialchars($user['address']) ?>" required aria-label="Champ pour modifier l'adresse"/>
                             <input type="submit" value="Enregistrer" class="input-button" />
                         </form>
 
