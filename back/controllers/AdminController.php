@@ -140,6 +140,11 @@ class AdminController
             return;
         }
 
+        if ($_SESSION['role_name'] !== "admin") {
+            echo json_encode(['success' => false, 'message' => 'Autorisation refusée']);
+            return;
+        }
+
         if (!$data) {
             echo json_encode(['success' => false, 'message' => 'Données invalides']);
             return;
@@ -165,6 +170,11 @@ class AdminController
 
         if (empty($_SESSION['user_id'])) {
             echo json_encode(['success' => false, 'message' => 'Non connecté']);
+            return;
+        }
+
+        if ($_SESSION['role_name'] !== "admin") {
+            echo json_encode(['success' => false, 'message' => 'Autorisation refusée']);
             return;
         }
 
@@ -208,6 +218,16 @@ class AdminController
     }
 
     public function deleteImage(){
+        if (empty($_SESSION['user_id'])) {
+            echo json_encode(['success' => false, 'message' => 'Non connecté']);
+            return;
+        }
+
+        if ($_SESSION['role_name'] !== "admin") {
+            echo json_encode(['success' => false, 'message' => 'Autorisation refusée']);
+            return;
+        }
+
         $data = json_decode(file_get_contents("php://input"), true);
 
         $imageId = $data['image_id'];
@@ -224,6 +244,95 @@ class AdminController
         $this->product->deleteImage($imageId);
 
         echo json_encode(['success' => true]);
+    }
+
+    // Ajouter une catégorie
+    public function addCategory(){
+
+        if (empty($_SESSION['user_id'])) {
+            echo json_encode(['success' => false, 'message' => 'Non connecté']);
+            return;
+        }
+
+        if ($_SESSION['role_name'] !== "admin") {
+            echo json_encode(['success' => false, 'message' => 'Autorisation refusée']);
+            return;
+        }
+
+        $data = json_decode(file_get_contents("php://input"), true);
+
+        $name = $data['name'];
+
+        if (!$name) {
+            echo json_encode(['success' => false, 'message' => 'Nom non reconnu']);
+            return;
+        }
+
+        $success = $this->product->addCategory($name);
+
+        echo json_encode(['success' => $success]);
+    }
+
+    // Modifier une catégorie
+    public function updateCategory(){
+
+        if (empty($_SESSION['user_id'])) {
+            echo json_encode(['success' => false, 'message' => 'Non connecté']);
+            return;
+        }
+
+        if ($_SESSION['role_name'] !== "admin") {
+            echo json_encode(['success' => false, 'message' => 'Autorisation refusée']);
+            return;
+        }
+
+        $data = json_decode(file_get_contents("php://input"), true);
+
+        if (!$data) {
+            echo json_encode(['success' => false, 'message' => 'Données invalides']);
+            return;
+        }
+
+        $id = $data['id'];
+        $name = $data['name'];
+
+        $success = $this->product->updateCategory($id, $name);
+
+        echo json_encode(['success' => $success]);
+    }
+
+    // Supprimer une catégorie
+    public function deleteCategory(){
+
+        if (empty($_SESSION['user_id'])) {
+            echo json_encode(['success' => false, 'message' => 'Non connecté']);
+            return;
+        }
+
+        if ($_SESSION['role_name'] !== "admin") {
+            echo json_encode(['success' => false, 'message' => 'Autorisation refusée']);
+            return;
+        }
+
+        $data = json_decode(file_get_contents("php://input"), true);
+
+        if (!$data) {
+            echo json_encode(['success' => false, 'message' => 'Données invalides']);
+            return;
+        }
+
+        $id = $data['id'];
+
+        $count = $this->product->getProductByCategory($id);
+
+        if($count <= 0){
+            $success = $this->product->deleteCategory($id);
+        } else {
+            echo json_encode(['success' => false, 'message' => "Suppression impossible car $count produit(s) appartiennent à cette catégorie"]);
+            return;
+        }
+
+        echo json_encode(['success' => $success]);
     }
 
     

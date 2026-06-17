@@ -138,6 +138,21 @@ switch ($action) {
             $Admincontroller->deleteImage();
         }
         break;
+    case 'add-category':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $Admincontroller->addCategory();
+        }
+        break;
+    case 'update-category':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $Admincontroller->updateCategory();
+        }
+        break;
+    case 'delete-category':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $Admincontroller->deleteCategory();
+        }
+        break;
     default:
         echo json_encode(['success' => false, 'message' => 'Action inconnue']);
 }

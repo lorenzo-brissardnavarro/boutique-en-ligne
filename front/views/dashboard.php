@@ -17,7 +17,7 @@ require_once "layout/header.php";
             if(!empty($products)){
                 foreach ($products as $product) {
                     echo '
-                    <article class="admin-product-card">
+                    <article class="admin-product-card" data-id="' . $product['id'] . '">
                         <img src="../public/images/' . $product['image'] . '" alt="' . $product['product_name'] . '" class="admin-product-card__img">
 
                         <div class="admin-product-card__info">
@@ -37,10 +37,6 @@ require_once "layout/header.php";
 
                                 <button class="admin-product-card__icon-btn admin-product-card__icon-btn--edit edit-images-btn" aria-label="Modifier les images du produit" data-id="' . $product['id'] . '" data-cover="' . $product['image'] . '" data-images="' . htmlspecialchars(json_encode($product["images"])) . '" data-name="' . htmlspecialchars($product['product_name']) . '">
                                     <i class="fa-solid fa-file-image"></i>
-                                </button>
-
-                                <button class="admin-product-card__icon-btn admin-product-card__icon-btn--delete" aria-label="Supprimer le produit">
-                                    <i class="fa-solid fa-trash-can"></i>
                                 </button>
 
                             </div>
@@ -166,7 +162,7 @@ require_once "layout/header.php";
 
         <div class="admin-page__section-header">
             <h2 class="admin-page__section-title">Gestion des catégories</h2>
-            <button class="admin-btn">AJOUTER UNE CATÉGORIE</button>
+            <button class="admin-btn" id="addCategoryBtn">AJOUTER UNE CATÉGORIE</button>
         </div>
 
         <div class="admin-categories">
@@ -174,14 +170,14 @@ require_once "layout/header.php";
             if(!empty($categories)) {
                 foreach ($categories as $category) {
                     echo '
-                        <article class="admin-category-tag">
+                        <article class="admin-category-tag" data-id="' . $category['id'] .'">
                             <h3>' . $category['category_name'] . '</h3>
                             <div>
-                                <button class="admin-product-card__icon-btn admin-product-card__icon-btn--edit" aria-label="Modifier la catégorie">
+                                <button class="admin-product-card__icon-btn admin-product-card__icon-btn--edit edit-category-btn" aria-label="Modifier la catégorie" data-id="' . $category['id'] .'" data-name="' . htmlspecialchars($category['category_name']) . '">
                                     <i class="fa-solid fa-pen"></i>
                                 </button>
 
-                                <button class="admin-product-card__icon-btn admin-product-card__icon-btn--delete" aria-label="Supprimer la catégorie">
+                                <button class="admin-product-card__icon-btn admin-product-card__icon-btn--delete delete-category-btn" aria-label="Supprimer la catégorie" data-id="' . $category['id'] .'">
                                     <i class="fa-solid fa-trash-can"></i>
                                 </button>
                             </div>
@@ -194,6 +190,48 @@ require_once "layout/header.php";
             ?>
         </div>
     </section>
+
+    <div class="modal" id="deleteCategoryModal">
+        <div class="modal__content">
+            <h3>Supprimer la catégorie</h3>
+            <p>Cette action est irréversible.</p>
+            <div class="modal__actions">
+                <button id="cancelDelete" class="settings-card__actions--edit">Annuler</button>
+                <button id="confirmDelete" class="settings-card__danger--delete">Oui, supprimer la catégorie</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal" id="AddCategoryModal">
+        <div class="modal__content modal__content--product">
+            <i class="fa-solid fa-xmark" id="closeBtnModalAddCategory"></i>
+
+            <form action="" method="post" id="addCategoryForm">
+
+                <h3>Ajout d'une nouvelle catégorie</h3>
+
+                <input type="text" name="categoryName" placeholder="Nom de la catégorie" required>
+
+                <input type="submit" value="Ajouter la catégorie" class="input-button">
+            </form>
+
+        </div>
+    </div>
+
+    <div class="modal" id="updateCategoryModal">
+        <div class="modal__content modal__content--product">
+            <i class="fa-solid fa-xmark" id="closeBtnModalUpdateCategory"></i>
+
+            <form action="" method="post" id="updateCategoryForm">
+                <input type="hidden" id="category_id">
+                <h3>Modification de la catégorie</h3>
+                <input type="text" name="updateCategoryName" placeholder="Nom de la catégorie" required>
+                <input type="submit" value="Modifier la catégorie" class="input-button">
+            </form>
+
+        </div>
+    </div>
 </section>
 
 <script src="../front/js/functions.js"></script>

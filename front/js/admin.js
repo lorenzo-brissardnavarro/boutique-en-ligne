@@ -1,6 +1,7 @@
 // Gestion des clics pour faire apparaitre / disparaitre les modales d'ajout, de modification ou de suppression
 const addProductModal = document.getElementById("addProductModal");
 const addProductBtn = document.getElementById("addProductBtn");
+const deleteProductModal = document.getElementById("deleteProductModal"); 
 const closeBtn = document.getElementById("closeBtn");
 
 addProductBtn.addEventListener("click", () => {
@@ -20,10 +21,14 @@ document.getElementById("closeBtnModalImages").addEventListener("click", () => {
 })
 
 window.addEventListener('click', (event) => {
-    if (event.target === addProductModal || event.target === infoModal || event.target === imagesModal) {
+    if (event.target === addProductModal || event.target === infoModal || event.target === imagesModal || event.target === deleteProductModal || event.target === AddCategoryModal || event.target === updateCategoryModal || event.target === deleteCategoryModal) {
         addProductModal.classList.remove("visible");
         infoModal.classList.remove("visible");
         imagesModal.classList.remove("visible");
+        // deleteProductModal.classList.remove("visible");
+        AddCategoryModal.classList.remove("visible");
+        updateCategoryModal.classList.remove("visible");
+        deleteCategoryModal.classList.remove("visible");
     }
 });
 
@@ -264,6 +269,161 @@ document.getElementById("saveImagesBtn").addEventListener("click", async () => {
             setTimeout(() => {
                 location.reload();
             }, 1000);
+
+        } else {
+            showNotification(result.message, "red");
+        }
+
+    } catch (error) {
+        console.error(error);
+    }
+});
+
+
+// Ajout d'une catégorie
+
+const addCategoryBtn = document.getElementById("addCategoryBtn");
+const AddCategoryModal = document.getElementById("AddCategoryModal");
+const closeBtnModalAddCategory = document.getElementById("closeBtnModalAddCategory");
+
+addCategoryBtn.addEventListener("click", () => {
+    AddCategoryModal.classList.add("visible");
+})
+
+closeBtnModalAddCategory.addEventListener("click", () => {
+    AddCategoryModal.classList.remove("visible");
+})
+
+
+document.getElementById("addCategoryForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const name = e.target.categoryName.value.trim();
+
+    try {
+        const response = await fetch("../back/router.php?action=add-category", {
+            method: "POST",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ name: name })
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            showNotification("Catégorie ajoutée", "green");
+
+            setTimeout(() => {
+                location.reload();
+            }, 1000);
+
+        } else {
+            showNotification(result.message, "red");
+        }
+
+    } catch (error) {
+        console.error(error);
+    }
+});
+
+
+// Modification d'une catégorie existante
+const updateCategoryModal = document.getElementById("updateCategoryModal");
+const closeBtnModalUpdateCategory = document.getElementById("closeBtnModalUpdateCategory");
+
+closeBtnModalUpdateCategory.addEventListener("click", () => {
+    updateCategoryModal.classList.remove("visible");
+})
+
+document.querySelectorAll(".edit-category-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+        document.getElementById("category_id").value = btn.dataset.id;
+        document.querySelector('[name="updateCategoryName"]').value = btn.dataset.name;
+        updateCategoryModal.classList.add("visible");
+    });
+
+});
+
+document.getElementById("updateCategoryForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const id = e.target.category_id.value;
+    const name = e.target.updateCategoryName.value.trim();
+
+    const data = {id, name};
+
+    try {
+        const response = await fetch("../back/router.php?action=update-category", {
+            method: "POST",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            showNotification("Catégorie mises à jour", "green");
+
+            setTimeout(() => {
+                location.reload();
+            }, 1000);
+
+        } else {
+            showNotification(result.message, "red");
+        }
+
+    } catch (error) {
+        console.error(error);
+    }
+});
+
+
+// Suppression d'une catégorie
+
+const cancelDelete = document.getElementById("cancelDelete");
+const confirmDelete = document.getElementById("confirmDelete");
+const deleteCategoryModal = document.getElementById("deleteCategoryModal"); 
+
+cancelDelete.addEventListener("click", () => {
+    deleteCategoryModal.classList.remove("visible");
+})
+
+let categoryIdDelete = null;
+
+document.querySelectorAll('.admin-product-card__icon-btn--delete').forEach(button => {
+    button.addEventListener('click', () => {
+        categoryIdDelete = button.dataset.id;
+        deleteCategoryModal.classList.add("visible");
+    });
+});
+
+confirmDelete.addEventListener("click", async () => {
+    try {
+        const response = await fetch("../back/router.php?action=delete-category", {
+            method: "POST",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ id: categoryIdDelete })
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            const categoryItem = document.querySelector(`.admin-category-tag[data-id="${categoryIdDelete}"]`);
+
+            if (categoryItem) {
+                categoryItem.remove();
+            }
+
+            deleteCategoryModal.classList.remove("visible");
+            categoryIdDelete = null;
 
         } else {
             showNotification(result.message, "red");

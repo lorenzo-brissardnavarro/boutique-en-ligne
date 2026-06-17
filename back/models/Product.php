@@ -14,7 +14,7 @@ class Product
 
     // Récupération des produits phares
     public function topProducts() {
-        $sql = "SELECT product.*, category.category_name FROM product INNER JOIN category on product.category_id = category.id LIMIT 4";
+        $sql = "SELECT product.*, category.category_name FROM product INNER JOIN category on product.category_id = category.id WHERE product.is_active = 1 LIMIT 4";
         $query = $this->pdo->prepare($sql);
         $query->execute();
         return $query->fetchAll(PDO::FETCH_ASSOC);
@@ -22,7 +22,7 @@ class Product
 
     // Récupération des nouveaux produits
     public function newProducts() {
-        $sql = "SELECT product.*, category.category_name FROM product INNER JOIN category on product.category_id = category.id ORDER BY id DESC LIMIT 4";
+        $sql = "SELECT product.*, category.category_name FROM product INNER JOIN category on product.category_id = category.id WHERE product.is_active = 1 ORDER BY id DESC LIMIT 4";
         $query = $this->pdo->prepare($sql);
         $query->execute();
         return $query->fetchAll(PDO::FETCH_ASSOC);
@@ -187,5 +187,42 @@ class Product
         $query = $this->pdo->prepare($sql);
         return $query->execute([':id' => $id]);
     }
+
+    // Récupération des images additonnelles d'un produit
+    public function getAllAdditionalImage($productId){
+        $sql = "SELECT image FROM additional_image WHERE product_id = :product_id";
+        $query = $this->pdo->prepare($sql);
+        $query->execute([':product_id' => $productId]);
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // Ajout d'une catégorie
+    public function addCategory($name){
+        $sql = "INSERT INTO category (category_name) VALUES (:category_name)";
+        $query = $this->pdo->prepare($sql);
+        return $query->execute([':category_name' => $name]);
+    }
+
+    // Modification d'une catégorie
+    public function updateCategory($id, $name){
+        $sql = "UPDATE category SET category_name = :category_name WHERE id = :id";
+        $query = $this->pdo->prepare($sql);
+        return $query->execute([':category_name' => $name, ':id' => $id]);
+    }
     
+    // Compter le nombre de produits qui appartiennent à une catégorie
+    public function getProductByCategory($id){
+        $sql = "SELECT COUNT(*) AS count_products FROM product WHERE category_id = :category_id";
+        $query = $this->pdo->prepare($sql);
+        $query->execute([':category_id' => $id]);
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        return (int)$result['count_products'];
+    }
+
+    // Suppression d'une catégorie en particulier
+    public function deleteCategory($id){
+        $sql = "DELETE FROM category WHERE id = :id";
+        $query = $this->pdo->prepare($sql);
+        return $query->execute([':id' => $id]);
+    }
 }
