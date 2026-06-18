@@ -1990,7 +1990,8 @@ input::-o-inner-spin-button {
   display: block;
   margin-top: 6px;
   font-style: italic;
-  color: #E8B7C0;
+  color: #A68389;
+  font-weight: bold;
 }
 .page-404__desc {
   font-size: 1rem;

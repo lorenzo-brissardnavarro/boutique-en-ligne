@@ -154,5 +154,5 @@ switch ($action) {
         }
         break;
     default:
-        echo json_encode(['success' => false, 'message' => 'Action inconnue']);
+        $Authcontroller->error404();
 }

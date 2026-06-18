@@ -138,4 +138,10 @@ class AuthController
         echo json_encode(['success' => true]);
     }
 
+    // Redirection vers page 404
+    public function error404() {
+        $caddieCount = (new CaddieController())->getCaddieCount();
+        require '../front/views/404.php';
+    }
+
 }

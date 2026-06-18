@@ -146,7 +146,7 @@ require_once "layout/header.php";
                     <div class="settings-card__row">
                         <span class="settings-card__label">Téléphone :</span>
                         <span class="settings-card__value">
-                            <?php echo htmlspecialchars($user['phone']) ?>
+                            <?php echo htmlspecialchars(chunk_split($user['phone'], 2, ' ')) ?>
                         </span>
                     </div>
 
