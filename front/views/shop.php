@@ -18,7 +18,7 @@ require_once "layout/header.php";
         <div class="shop-page__search">
             <i class="fa-solid fa-magnifying-glass"></i>
             <input type="search" name="search" placeholder="Rechercher un produit..." id="myKeyword" aria-label="Barre de recherche pour les produits">
-            <div class="shop-page__autocomplete" id="autocomplete"></div>
+            <ul class="shop-page__autocomplete" id="autocomplete"></ul>
         </div>
 
         <select name="sort" id="sort-select" class="shop-page__sort" aria-label="Filtres pour les produits (ordre alphabétique et tri par prix croissant ou décroissant)">

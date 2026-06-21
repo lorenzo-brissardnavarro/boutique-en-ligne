@@ -53,7 +53,7 @@ require_once "layout/header.php";
         </div>
     </section>
 
-    <div class="modal" id="addProductModal">
+    <div class="modal" id="addProductModal" role="dialog" aria-modal="true">
         <div class="modal__content modal__content--product">
             <i class="fa-solid fa-xmark" id="closeBtn"></i>
 
@@ -102,7 +102,7 @@ require_once "layout/header.php";
         </div>
     </div>
 
-    <div class="modal" id="editProductInfoModal">
+    <div class="modal" id="editProductInfoModal" role="dialog" aria-modal="true">
         <div class="modal__content modal__content--product">
             <i class="fa-solid fa-xmark" id="closeBtnModalInfo"></i>
 
@@ -139,7 +139,7 @@ require_once "layout/header.php";
         </div>
     </div>
 
-    <div class="modal" id="editProductImagesModal">
+    <div class="modal" id="editProductImagesModal" role="dialog" aria-modal="true">
         <div class="modal__content modal__content--product">
             <i class="fa-solid fa-xmark" id="closeBtnModalImages"></i>
 
@@ -193,7 +193,7 @@ require_once "layout/header.php";
         </div>
     </section>
 
-    <div class="modal" id="deleteCategoryModal">
+    <div class="modal" id="deleteCategoryModal" role="dialog" aria-modal="true">
         <div class="modal__content">
             <h3>Supprimer la catégorie</h3>
             <p>Cette action est irréversible.</p>
@@ -205,7 +205,7 @@ require_once "layout/header.php";
         </div>
     </div>
 
-    <div class="modal" id="AddCategoryModal">
+    <div class="modal" id="AddCategoryModal" role="dialog" aria-modal="true">
         <div class="modal__content modal__content--product">
             <i class="fa-solid fa-xmark" id="closeBtnModalAddCategory"></i>
 
@@ -221,7 +221,7 @@ require_once "layout/header.php";
         </div>
     </div>
 
-    <div class="modal" id="updateCategoryModal">
+    <div class="modal" id="updateCategoryModal" role="dialog" aria-modal="true">
         <div class="modal__content modal__content--product">
             <i class="fa-solid fa-xmark" id="closeBtnModalUpdateCategory"></i>
 

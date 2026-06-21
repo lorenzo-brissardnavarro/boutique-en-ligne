@@ -26,7 +26,7 @@ require_once "layout/header.php";
 
                 <input type="password" name="password" id="password" required />
 
-                <button type="button" class="input-password__toggle" aria-label="Bouton pour afficher ou masquer le mot de passe">
+                <button type="button" class="input-password__toggle" id="btnIcon" aria-label="Bouton pour afficher ou masquer le mot de passe">
                     <i class="fa-solid fa-eye-slash" id="icon"></i>
                 </button>
             </div>

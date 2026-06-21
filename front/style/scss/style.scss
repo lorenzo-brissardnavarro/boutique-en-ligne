@@ -1145,15 +1145,17 @@ input{
     border-radius: 10px;
     z-index: 100;
 
-    div {
+    li {
       padding: 10px;
       cursor: pointer;
       border: 1px solid $color-accent-gold;
       border-radius: 10px;
       transition: background-color 0.2s ease;
 
-      &:hover{
+      &:hover,
+      &.active {
         background: $color-accent-gold;
+        color: $color-primary;
       }
     }
   }

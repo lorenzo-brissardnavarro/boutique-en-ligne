@@ -944,15 +944,16 @@ input::-o-inner-spin-button {
   border-radius: 10px;
   z-index: 100;
 }
-.shop-page__autocomplete div {
+.shop-page__autocomplete li {
   padding: 10px;
   cursor: pointer;
   border: 1px solid #806B43;
   border-radius: 10px;
   transition: background-color 0.2s ease;
 }
-.shop-page__autocomplete div:hover {
+.shop-page__autocomplete li:hover, .shop-page__autocomplete li.active {
   background: #806B43;
+  color: #F8F6F4;
 }
 .shop-page__sort {
   display: flex;
