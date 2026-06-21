@@ -32,8 +32,8 @@ async function loadShop() {
                     <div class="product-card__content product-card__content--beige">
                         <h3>${product.product_name}</h3>
                         <div class="product-card__bottom">
-                            <p class="product-card__price">${product.price} €</p>
-                            <button class="product-card__cart" data-id="${product.id}">
+                            <span class="product-card__price">${product.price} €</span>
+                            <button class="product-card__cart" data-id="${product.id}" aria-label="Bouton pour ajouter le produit au panier">
                                 <i class="fa-solid fa-cart-shopping"></i>
                             </button>
                         </div>
@@ -111,29 +111,101 @@ btns.forEach(btn => {
 
 const autocomplete = document.getElementById("autocomplete");
 
+// document.getElementById("myKeyword").addEventListener("input", async (e) => {
+//     const keyword = e.target.value.trim();
+
+//     if (keyword.length < 2) {
+//         autocomplete.innerHTML = "";
+//         return;
+//     }
+
+//     const response = await fetch(`../back/router.php?action=autocomplete&keyword=${keyword}`);
+//     const result = await response.json();
+
+//     autocomplete.innerHTML = "";
+
+//     result.data.forEach(product => {
+//         const div = document.createElement("div");
+//         div.textContent = product.product_name;
+
+//         div.addEventListener("click", () => {
+//             document.getElementById("myKeyword").value = product.product_name;
+//             filters.keyword = product.product_name;
+//             autocomplete.innerHTML = "";
+//             loadShop();
+//         });
+//         autocomplete.appendChild(div);
+//     });
+// });
+
 document.getElementById("myKeyword").addEventListener("input", async (e) => {
     const keyword = e.target.value.trim();
 
     if (keyword.length < 2) {
         autocomplete.innerHTML = "";
+        items = [];
+        index = -1;
         return;
     }
 
-    const request = await fetch(`../back/router.php?action=autocomplete&keyword=${keyword}`);
-    const outcome = await request.json();
+    const response = await fetch(`../back/router.php?action=autocomplete&keyword=${keyword}`);
+    const result = await response.json();
 
     autocomplete.innerHTML = "";
+    items = result.data;
+    index = -1;
 
-    outcome.data.forEach(product => {
-        const div = document.createElement("div");
-        div.textContent = product.product_name;
+    result.data.forEach(product => {
+        const li = document.createElement("li");
+        li.textContent = product.product_name;
 
-        div.addEventListener("click", () => {
+        li.addEventListener("click", () => {
             document.getElementById("myKeyword").value = product.product_name;
             filters.keyword = product.product_name;
             autocomplete.innerHTML = "";
+            index = -1;
             loadShop();
         });
-        autocomplete.appendChild(div);
+
+        autocomplete.appendChild(li);
     });
 });
+
+document.getElementById("myKeyword").addEventListener("keydown", (e) => {
+    const lis = autocomplete.querySelectorAll("li");
+    if (!lis.length) return;
+
+    if (e.key === "ArrowDown") {
+        e.preventDefault();
+        index = index + 1;
+        if (index > lis.length - 1) {
+            index = lis.length - 1;
+        }
+        update(lis);
+    }
+
+    if (e.key === "ArrowUp") {
+        e.preventDefault();
+        index = index - 1;
+        if (index < 0) {
+            index = 0;
+        }
+        update(lis);
+    }
+
+    if (e.key === "Enter" && index >= 0) {
+        e.preventDefault();
+        lis[index].click();
+    }
+
+    if (e.key === "Escape") {
+        autocomplete.innerHTML = "";
+        index = -1;
+    }
+});
+
+function update(lis) {
+    lis.forEach((el, i) => {
+        el.classList.toggle("active", i === index);
+    });
+}

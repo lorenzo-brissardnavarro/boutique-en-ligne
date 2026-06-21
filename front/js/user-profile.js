@@ -38,6 +38,12 @@ closeBtn.addEventListener("click", () => {
     editProfileModal.classList.remove("visible");
 })
 
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+        editProfileModal.classList.remove("visible");
+    }
+});
+
 window.addEventListener('click', (event) => {
     if (event.target === editProfileModal || event.target === deleteAccountModal) {
         editProfileModal.classList.remove("visible");
@@ -129,6 +135,12 @@ form.addEventListener("submit", async function (e) {
 cancelDelete.addEventListener("click", () => {
     deleteAccountModal.classList.remove("visible");
 })
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+        deleteAccountModal.classList.remove("visible");
+    }
+});
 
 // Suppression confirmée + redirection après suppression dans BDD
 confirmDelete.addEventListener("click", async (e) => {

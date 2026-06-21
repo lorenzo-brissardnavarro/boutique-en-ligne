@@ -20,7 +20,7 @@ class Caddie
         return $query->fetch(PDO::FETCH_ASSOC);
     }
 
-    // Ajout d'un article dans le panier
+    // Création du panier d'un utilisateur
     public function createCaddie($userId){
         $sql = "INSERT INTO caddie (user_id) VALUES (:user_id)";
         $query = $this->pdo->prepare($sql);

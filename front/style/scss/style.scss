@@ -3,9 +3,11 @@
 $color-primary: #F8F6F4;
 $color-secondary: #1F2A3A;
 $color-secondary-hover: #263347;
-$color-accent-gold: #C6A86E;
+// $color-accent-gold: #C6A86E;
+$color-accent-gold: #806B43;
 $color-accent-pink: #E8B7C0;
-$color-accent-grey: #70757E;
+// $color-accent-grey: #70757E;
+$color-accent-grey: #666B73;
 
 $black: #000000;
 $white: #FFFFFF;
@@ -466,7 +468,7 @@ input{
       font-size: 1rem;
     }
 
-    h3 {
+    h2 {
       font-size: 0.95rem;
       font-weight: 600;
     }
@@ -635,7 +637,7 @@ input{
 
   &__left {
     &--content {
-      color: $color-accent-gold;
+      color: $color-accent-pink;
       text-transform: uppercase;
       letter-spacing: 2px;
       font-size: 0.8rem;
@@ -710,7 +712,7 @@ input{
     font-weight: 100;
   }
 
-  p {
+  label {
     color: $color-secondary;
     margin-bottom: 2rem;
   }
@@ -720,6 +722,7 @@ input{
     flex-direction: column;
     align-items: center;
     gap: 0.8rem;
+    margin-top: 2em;
   }
 
   input {
@@ -773,7 +776,7 @@ input{
             font-size: 1.4rem;
         }
 
-        h3 {
+        h2 {
             font-size: 1.1rem;
         }
 
@@ -843,7 +846,7 @@ input{
         font-size: 1.8rem;
     }
 
-    p {
+    label {
         font-size: 1.2rem;
     }
 
@@ -963,6 +966,7 @@ input{
     color: $color-secondary-hover;
     text-align: center;
     margin-bottom: 28px;
+    font-weight: 400;
   }
 }
 
@@ -1091,6 +1095,7 @@ input{
   &__desc {
     font-size: 0.82rem;
     color: $color-accent-grey;
+    font-weight: 400;
   }
 
   &__toolbar {
@@ -1140,15 +1145,17 @@ input{
     border-radius: 10px;
     z-index: 100;
 
-    div {
+    li {
       padding: 10px;
       cursor: pointer;
       border: 1px solid $color-accent-gold;
       border-radius: 10px;
       transition: background-color 0.2s ease;
 
-      &:hover{
+      &:hover,
+      &.active {
         background: $color-accent-gold;
+        color: $color-primary;
       }
     }
   }
@@ -1374,7 +1381,7 @@ input{
     display: inline-block;
     background-color: $color-accent-pink;
     color: $color-secondary;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     font-weight: 500;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -1404,7 +1411,7 @@ input{
     color: $color-accent-grey;
     line-height: 1.8;
     margin-bottom: 24px;
-    text-align: justify;
+    margin-top: 1em;
   }
 
   &__stock {
@@ -1413,7 +1420,7 @@ input{
     margin-bottom: 20px;
 
     &--green{
-      color: #5a9e6e;
+      color: #3F734E;
       font-weight: 600;
     }
 
@@ -2232,7 +2239,7 @@ input{
     font-size: 0.8rem;
 
     &--green{
-      color: #5a9e6e;
+      color: #3F734E;
       font-weight: 600;
     }
 
@@ -2386,7 +2393,8 @@ input{
       display: block;
       margin-top: 6px;
       font-style: italic;
-      color: $color-accent-pink;
+      color: #A68389;
+      font-weight: bold;
     }
   }
 

@@ -6,9 +6,10 @@ const passwordDiv = document.getElementById("div-password");
 
 
 // Afficher et masquer le mot de passe
+const btnIcon = document.getElementById("btnIcon");
 const icon = document.getElementById("icon");
 let isVisible = false;
-icon.addEventListener("click", () => {
+btnIcon.addEventListener("click", () => {
     if(isVisible) {
         icon.classList.remove("fa-eye");
         icon.classList.add("fa-eye-slash");

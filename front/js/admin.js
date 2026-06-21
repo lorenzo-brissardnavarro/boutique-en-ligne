@@ -25,7 +25,6 @@ window.addEventListener('click', (event) => {
         addProductModal.classList.remove("visible");
         infoModal.classList.remove("visible");
         imagesModal.classList.remove("visible");
-        // deleteProductModal.classList.remove("visible");
         AddCategoryModal.classList.remove("visible");
         updateCategoryModal.classList.remove("visible");
         deleteCategoryModal.classList.remove("visible");
@@ -181,6 +180,7 @@ document.querySelectorAll(".edit-images-btn").forEach(btn => {
         document.getElementById("images_product_id").value = btn.dataset.id;
         document.getElementById("images_product_name").value = btn.dataset.name;
         document.getElementById("previewCover").src = "../public/images/" + btn.dataset.cover;
+        document.getElementById("previewCover").alt = "Image de couverture pour le produit";
 
         const container = document.getElementById("galleryContainer");
         container.innerHTML = "";
@@ -188,8 +188,8 @@ document.querySelectorAll(".edit-images-btn").forEach(btn => {
         images.forEach(img => {
             container.innerHTML += `
                 <div class="gallery-item" data-id="${img.id}">
-                    <img src="../public/images/${img.image}">
-                    <button class="delete-image" data-id="${img.id}">
+                    <img src="../public/images/${img.image}" alt="Image additionnelle n°${img.id}">
+                    <button class="delete-image" data-id="${img.id}" aria-label="Bouton pour supprimer une image liée au produit">
                         <i class="fa-solid fa-trash-can"></i>
                     </button>
                 </div>

@@ -1,4 +1,6 @@
 <?php
+$pageTitle = 'Inscription';
+$pageDescription = 'Créez votre compte Sakura Moon pour accéder à la boutique, suivre vos commandes et profiter d’une expérience personnalisée.';
 require_once "layout/header.php";
 ?>
 
@@ -10,7 +12,7 @@ require_once "layout/header.php";
         </div>
 
         <h1 class="auth-page__title">Créer un compte</h1>
-        <p class="auth-page__subtitle">Rejoignez la maison Sakura Moon</p>
+        <h2 class="auth-page__subtitle">Rejoignez la maison Sakura Moon</h2>
 
         <form action="" method="get" autocomplete="on" id="registerForm">
 
