@@ -188,7 +188,7 @@ document.querySelectorAll(".edit-images-btn").forEach(btn => {
         images.forEach(img => {
             container.innerHTML += `
                 <div class="gallery-item" data-id="${img.id}">
-                    <img src="../public/images/${img.image}" alt="Image additionnelle n°${img.id}">
+                    <img src="../public/images/${img.image}" alt="Image additionnelle n°${img.id}" loading="lazy">
                     <button class="delete-image" data-id="${img.id}" aria-label="Bouton pour supprimer une image liée au produit">
                         <i class="fa-solid fa-trash-can"></i>
                     </button>

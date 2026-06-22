@@ -26,7 +26,7 @@ async function loadShop() {
                     <div class="product-card__badge">${product.category_name}</div>
 
                     <div class="product-card__image">
-                        <img src="../public/images/${product.image}" alt="${product.product_name}">
+                        <img src="../public/images/${product.image}" alt="${product.product_name} - création artisanale japonaise" loading="lazy">
                     </div>
 
                     <div class="product-card__content product-card__content--beige">
@@ -110,33 +110,6 @@ btns.forEach(btn => {
 
 
 const autocomplete = document.getElementById("autocomplete");
-
-// document.getElementById("myKeyword").addEventListener("input", async (e) => {
-//     const keyword = e.target.value.trim();
-
-//     if (keyword.length < 2) {
-//         autocomplete.innerHTML = "";
-//         return;
-//     }
-
-//     const response = await fetch(`../back/router.php?action=autocomplete&keyword=${keyword}`);
-//     const result = await response.json();
-
-//     autocomplete.innerHTML = "";
-
-//     result.data.forEach(product => {
-//         const div = document.createElement("div");
-//         div.textContent = product.product_name;
-
-//         div.addEventListener("click", () => {
-//             document.getElementById("myKeyword").value = product.product_name;
-//             filters.keyword = product.product_name;
-//             autocomplete.innerHTML = "";
-//             loadShop();
-//         });
-//         autocomplete.appendChild(div);
-//     });
-// });
 
 document.getElementById("myKeyword").addEventListener("input", async (e) => {
     const keyword = e.target.value.trim();

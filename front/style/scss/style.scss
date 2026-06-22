@@ -412,7 +412,8 @@ input{
 
     &:hover {
       transform: translateY(-3px);
-      background: $color-secondary-hover;
+      background: $color-accent-pink;
+      color: $color-secondary;
     }
 
     div {
@@ -1044,7 +1045,8 @@ input{
   font-weight: 300;
 
   &:hover {
-    background: $color-secondary-hover;
+    background: $color-accent-pink;
+    color: $color-secondary;
   }
 }
 

@@ -20,7 +20,7 @@ require_once "layout/header.php";
                 foreach ($products as $product) {
                     echo '
                     <article class="admin-product-card" data-id="' . $product['id'] . '">
-                        <img src="../public/images/' . $product['image'] . '" alt="' . $product['product_name'] . '" class="admin-product-card__img">
+                        <img src="../public/images/' . $product['image'] . '" alt="' . $product['product_name'] . ' - création artisanale japonaise" loading="lazy" class="admin-product-card__img">
 
                         <div class="admin-product-card__info">
                             <h3 class="admin-product-card__name">' . $product['product_name'] . '</h3>
@@ -236,8 +236,8 @@ require_once "layout/header.php";
     </div>
 </section>
 
-<script src="../front/js/functions.js"></script>
-<script src="../front/js/admin.js"></script>
+<script src="../front/js/functions.js" defer></script>
+<script src="../front/js/admin.js" defer></script>
 
 <?php
 require_once "layout/footer.php";

@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../front/style/css/style.css">
-    <link rel="icon" type="image/png" href="../front/images/favicon.png">
+    <link rel="icon" type="image/webp" href="../front/images/favicon.webp">
     <script src="../front/js/menu.js" defer></script>
     <script src="../front/js/logout.js" defer></script>
 </head>
@@ -22,7 +22,7 @@
         <nav class="header__bar">
 
             <a href="../index.php" class="menu__logo">
-                <img src="../front/images/logo.png" alt="Logo de Sakura Moon">
+                <img src="../front/images/logo.webp" alt="Logo de Sakura Moon">
             </a>
 
             <i class="fa-solid fa-bars" id="toggler"></i>

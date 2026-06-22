@@ -17,7 +17,7 @@ require_once "layout/header.php";
                     echo '
                     <article class="cart-item" data-id="' . $product['id'] . '">
                         <div class="cart-item__info">
-                            <img src="../public/images/' . $product['image'] . '" alt="' . $product['product_name'] . '" class="cart-item__img">
+                            <img src="../public/images/' . $product['image'] . '" alt="' . $product['product_name'] . ' - création artisanale japonaise" class="cart-item__img">
                             <div>
                                 <p class="cart-item__badge">' . $product['category_name'] . '</p>
                                 <h2 class="cart-item__name">' . $product['product_name'] . '</h2>
@@ -87,15 +87,14 @@ require_once "layout/header.php";
             }
 
             ?>
-        </section>
 
     </div>
 
 </section>
 
-<script src="../front/js/functions.js"></script>
-<script src="../front/js/shopping-basket.js"></script>
-<script src="../front/js/order.js"></script>
+<script src="../front/js/functions.js" defer></script>
+<script src="../front/js/shopping-basket.js" defer></script>
+<script src="../front/js/order.js" defer></script>
 
 <?php
 require_once "layout/footer.php";

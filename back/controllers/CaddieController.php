@@ -28,6 +28,12 @@ class CaddieController
 
         $userId = $_SESSION['user_id'];
         $caddie = $this->caddie->getByUser($userId);
+
+        if (!$caddie) {
+            $this->caddie->createCaddie($userId);
+            $caddie = $this->caddie->getByUser($userId);
+        }
+
         $data = $this->caddie->getCaddieByUser($userId, $caddie['id']);
         $total = (float) $this->caddie->totalAmount($caddie['id']);
         if($total > 50){
@@ -39,7 +45,6 @@ class CaddieController
         $deliveryMissing = round(50 - $total, 2);
         $finalTotal = round($total + $delivery, 2);
 
-        $caddie = $this->caddie->getByUser($userId);
         $caddieId = $caddie['id'];
         $caddieCount = $this->caddie->countItems($caddieId);
 

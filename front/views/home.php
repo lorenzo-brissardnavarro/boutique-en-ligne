@@ -25,7 +25,7 @@ require_once "layout/header.php";
         </div>
 
         <div class="hero__image">
-            <img src="../front/images/hero.png" alt="Image illustrant l'univers et les produits proposés par l'entreprise">
+            <img src="../front/images/hero.webp" alt="Image illustrant l'univers et les produits proposés par l'entreprise" fetchpriority="high">
         </div>
 
     </div>
@@ -92,7 +92,7 @@ require_once "layout/header.php";
                         <div class="product-card__badge">' . $product['category_name'] . '</div>
 
                             <div class="product-card__image">
-                                <img src="../public/images/' . $product['image'] . '" alt="' . $product['product_name'] . '">
+                                <img src="../public/images/' . $product['image'] . '" alt="' . $product['product_name'] . ' - création artisanale japonaise" loading="lazy">
                             </div>
 
                             <div class="product-card__content product-card__content--beige">
@@ -136,7 +136,7 @@ require_once "layout/header.php";
                         <div class="product-card__badge">' . $product['category_name'] . '</div>
 
                             <div class="product-card__image">
-                                <img src="../public/images/' . $product['image'] . '" alt="' . $product['product_name'] . '">
+                                <img src="../public/images/' . $product['image'] . '" alt="' . $product['product_name'] . ' - création artisanale japonaise" loading="lazy">
                             </div>
 
                             <div class="product-card__content product-card__content--beige">

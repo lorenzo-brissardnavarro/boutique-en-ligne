@@ -90,14 +90,27 @@ class AdminController
             return null;
         }
 
+        // Vérification taille image
         if ($file["size"] > 5 * 1024 * 1024) {
             return null;
         }
 
+        // Vérification extension image
         $allowedExtensions = ['jpg', 'jpeg', 'png', 'webp'];
 
         $file_extension = pathinfo($file["name"], PATHINFO_EXTENSION);
         if (!in_array($file_extension, $allowedExtensions)) {
+            return null;
+        }
+
+        // Vérification du MIME type réel du fichier
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        $mimeType = finfo_file($finfo, $file["tmp_name"]);
+        finfo_close($finfo);
+
+        $allowedMimeTypes = ['image/jpeg', 'image/png', 'image/webp'];
+
+        if (!in_array($mimeType, $allowedMimeTypes)) {
             return null;
         }
 

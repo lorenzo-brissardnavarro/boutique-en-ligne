@@ -4,7 +4,7 @@
     <section class="footer__grid">
 
         <div>
-            <img src="../front/images/logo.png" alt="Logo de l'entreprise" class="footer__logo">
+            <img src="../front/images/logo.webp" alt="Logo de l'entreprise" class="footer__logo">
             <p>
                 Créations artisanales inspirées de l'Asie. Chaque pièce est imaginée et cousue à la main dans notre atelier, avec des tissus choisis pour leur beauté et leur tenue dans le temps.
             </p>
