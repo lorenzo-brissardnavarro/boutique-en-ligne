@@ -38,7 +38,9 @@ switch ($action) {
         }
         break;
     case 'register-view':
-        $Authcontroller->registerView();
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $Authcontroller->registerView();
+        }
         break;
     case 'register':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -46,7 +48,9 @@ switch ($action) {
         }
         break;
     case 'login-view':
-        $Authcontroller->loginView();
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $Authcontroller->loginView();
+        }
         break;
     case 'login':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -69,10 +73,14 @@ switch ($action) {
         }
         break;
     case 'shop-view':
-        $Productcontroller->shopView();
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $Productcontroller->shopView();
+        }
         break;
     case 'product-details':
-        $Productcontroller->productDetails();
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $Productcontroller->productDetails();
+        }
         break;
     case 'toggle-favorite':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -80,20 +88,24 @@ switch ($action) {
         }
         break;
     case 'profile-view':
-        $Profilecontroller->profileView();
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $Profilecontroller->profileView();
+        }
         break;
     case 'update-profile':
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'PATCH') {
             $Profilecontroller->updateProfile();
         }
         break;
     case 'delete-account':
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
             $Profilecontroller->deleteAccount();
         }
         break;
     case 'caddie-view':
-        $Caddiecontroller->caddieView();
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $Caddiecontroller->caddieView();
+        }
         break;
     case 'add-caddie':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -101,12 +113,12 @@ switch ($action) {
         }
         break;
     case 'update-caddie':
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'PATCH') {
             $Caddiecontroller->updateCaddie();
         }
         break;
     case 'delete-caddie':
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
             $Caddiecontroller->deleteCaddie();
         }
         break;
@@ -116,7 +128,9 @@ switch ($action) {
         }
         break;
     case 'admin-view':
-        $Admincontroller->adminView();
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $Admincontroller->adminView();
+        }
         break;
     case 'add-product':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -124,17 +138,17 @@ switch ($action) {
         }
         break;
     case 'update-product-infos':
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'PATCH') {
             $Admincontroller->updateProductInfos();
         }
         break;
     case 'update-product-images':
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'PATCH') {
             $Admincontroller->updateProductImages();
         }
         break;
     case 'delete-image':
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
             $Admincontroller->deleteImage();
         }
         break;
@@ -144,12 +158,12 @@ switch ($action) {
         }
         break;
     case 'update-category':
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'PATCH') {
             $Admincontroller->updateCategory();
         }
         break;
     case 'delete-category':
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
             $Admincontroller->deleteCategory();
         }
         break;

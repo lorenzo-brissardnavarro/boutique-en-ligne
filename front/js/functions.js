@@ -22,3 +22,9 @@ function showNotification(message, classe) {
     body.appendChild(notif);
     setTimeout(() => notif.remove(), 2000);
 }
+
+
+// Récupérer le token de la balise méta
+function getCsrfToken() {
+    return document.querySelector('meta[name="csrf-token"]').content;
+}

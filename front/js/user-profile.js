@@ -104,10 +104,11 @@ form.addEventListener("submit", async function (e) {
 
     try {
         const response = await fetch("../back/router.php?action=update-profile", {
-            method: "POST",
+            method: "PATCH",
             credentials: "same-origin",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": getCsrfToken()
             },
             body: JSON.stringify(data)
         });
@@ -146,8 +147,12 @@ document.addEventListener("keydown", (e) => {
 confirmDelete.addEventListener("click", async (e) => {
     try {
         const response = await fetch("../back/router.php?action=delete-account", {
-            method: "POST",
-            credentials: "same-origin"
+            method: "DELETE",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": getCsrfToken()
+            },
         });
 
         const result = await response.json();

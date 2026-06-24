@@ -5,7 +5,11 @@ if(OrderBtn){
         try {
             const response = await fetch("../back/router.php?action=add-order", {
                 method: "POST",
-                credentials: "same-origin"
+                credentials: "same-origin",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": getCsrfToken()
+                },
             });
 
             const result = await response.json();

@@ -18,7 +18,8 @@ shopGrid.addEventListener("click", async (e) => {
         method: "POST",
         credentials: "same-origin",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "X-CSRF-TOKEN": getCsrfToken()
         },
         body: JSON.stringify({ productId, quantity:1 })
         });

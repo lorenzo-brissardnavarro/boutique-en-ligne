@@ -53,6 +53,12 @@ class CaddieController
 
     public function addToCaddie(){
 
+        $headersToken = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
+        if (!$headersToken || $headersToken !== $_SESSION['csrf_token']) {
+            echo json_encode(['success' => false, 'message' => 'Erreur token']);
+            return;
+        }
+
         if (empty($_SESSION['user_id'])) {
             echo json_encode(["success" => false, "message" => "Connexion requise"]);
             return;
@@ -96,6 +102,13 @@ class CaddieController
     }
 
     public function updateCaddie() {
+
+        $headersToken = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
+        if (!$headersToken || $headersToken !== $_SESSION['csrf_token']) {
+            echo json_encode(['success' => false, 'message' => 'Erreur token']);
+            return;
+        }
+
         if (empty($_SESSION['user_id'])) {
             echo json_encode(["success" => false, "message" => "Connexion requise"]);
             return;
@@ -137,6 +150,13 @@ class CaddieController
     }
 
     public function deleteCaddie() {
+
+        $headersToken = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
+        if (!$headersToken || $headersToken !== $_SESSION['csrf_token']) {
+            echo json_encode(['success' => false, 'message' => 'Erreur token']);
+            return;
+        }
+
         if (empty($_SESSION['user_id'])) {
             echo json_encode(["success" => false, "message" => "Connexion requise"]);
             return;

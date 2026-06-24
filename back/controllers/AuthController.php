@@ -121,6 +121,7 @@ class AuthController
         if (password_verify($data["password"], $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['role_name'] = $user['role_name'];
+            $_SESSION['csrf_token'] = bin2hex(random_bytes(32)); // création du token CSRF
             echo json_encode(['success' => true, 'user' => $user['id']]);
 
         } else {
