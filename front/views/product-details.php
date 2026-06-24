@@ -14,14 +14,14 @@ require_once "layout/header.php";
     <div class="product-detail__inner">
         <div class="product-detail__gallery">
             <div>
-                <?php echo '<img src="../public/images/' . $product['image'] . '" alt="' . $product['product_name'] . '" class="product-detail__main-img" id="mainImage"> '?>
+                <?php echo '<img src="../public/images/' . $product['image'] . '" alt="' . $product['product_name'] . ' - création artisanale japonaise" class="product-detail__main-img" id="mainImage"> '?>
             </div>
             <div class="product-detail__thumbs">
-                <?php echo '<img src="../public/images/' . $product['image'] . '" alt="' . $product['product_name'] . ' Vue 1" class="product-detail__thumb product-detail__thumb--active">'?>
+                <?php echo '<img src="../public/images/' . $product['image'] . '" alt="' . $product['product_name'] . ' - création artisanale japonaise - vue 1" class="product-detail__thumb product-detail__thumb--active">'?>
                 <?php
                 foreach ($additionalImages as $index => $image) {
                     echo '
-                        <img src="../public/images/' . $image['image'] . '" alt="' . $product['product_name'] . ' Vue ' . ($index + 2) . '" class="product-detail__thumb">
+                        <img src="../public/images/' . $image['image'] . '" alt="' . $product['product_name'] . ' - création artisanale japonaise - vue ' . ($index + 2) . '" loading="lazy" class="product-detail__thumb">
                     ';
                 } 
                 ?>
@@ -72,10 +72,10 @@ require_once "layout/header.php";
     </div>
 </section>
 
-<script src="../front/js/functions.js"></script>
-<script src="../front/js/product-details.js"></script>
-<script src="../front/js/caddie-details.js"></script>
-<script src="../front/js/like.js"></script>
+<script src="../front/js/functions.js" defer></script>
+<script src="../front/js/product-details.js" defer></script>
+<script src="../front/js/caddie-details.js" defer></script>
+<script src="../front/js/like.js" defer></script>
 
 <?php
 require_once "layout/footer.php";

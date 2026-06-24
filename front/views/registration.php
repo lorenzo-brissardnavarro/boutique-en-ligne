@@ -8,7 +8,7 @@ require_once "layout/header.php";
     <div class="auth-page__card">
 
         <div class="auth-page__logo">
-            <img src="../front/images/logo.png" alt="Logo Sakura Moon">
+            <img src="../front/images/logo.webp" alt="Logo Sakura Moon">
         </div>
 
         <h1 class="auth-page__title">Créer un compte</h1>
@@ -72,8 +72,8 @@ require_once "layout/header.php";
     </div>
 </section>
 
-<script src="../front/js/functions.js"></script>
-<script src="../front/js/register.js"></script>
+<script src="../front/js/functions.js" defer></script>
+<script src="../front/js/register.js" defer></script>
 
 <?php
 require_once "layout/footer.php";

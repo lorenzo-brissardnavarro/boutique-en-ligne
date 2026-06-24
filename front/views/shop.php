@@ -73,9 +73,9 @@ require_once "layout/header.php";
     </div>
 </section>
 
-<script src="../front/js/shop.js"></script>
-<script src="../front/js/functions.js"></script>
-<script src="../front/js/caddie-shop.js"></script>
+<script src="../front/js/shop.js" defer></script>
+<script src="../front/js/functions.js" defer></script>
+<script src="../front/js/caddie-shop.js" defer></script>
 
 <?php
 require_once "layout/footer.php";

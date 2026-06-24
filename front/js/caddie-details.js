@@ -41,7 +41,8 @@ addBtn.addEventListener("click", async () => {
         const response = await fetch("../back/router.php?action=add-caddie", {
         method: "POST",
         headers: { 
-            "Content-Type": "application/json" 
+            "Content-Type": "application/json",
+            "X-CSRF-TOKEN": getCsrfToken()
         },
         body: JSON.stringify({ productId, quantity })
         });

@@ -28,6 +28,12 @@ class CaddieController
 
         $userId = $_SESSION['user_id'];
         $caddie = $this->caddie->getByUser($userId);
+
+        if (!$caddie) {
+            $this->caddie->createCaddie($userId);
+            $caddie = $this->caddie->getByUser($userId);
+        }
+
         $data = $this->caddie->getCaddieByUser($userId, $caddie['id']);
         $total = (float) $this->caddie->totalAmount($caddie['id']);
         if($total > 50){
@@ -39,7 +45,6 @@ class CaddieController
         $deliveryMissing = round(50 - $total, 2);
         $finalTotal = round($total + $delivery, 2);
 
-        $caddie = $this->caddie->getByUser($userId);
         $caddieId = $caddie['id'];
         $caddieCount = $this->caddie->countItems($caddieId);
 
@@ -47,6 +52,12 @@ class CaddieController
     }
 
     public function addToCaddie(){
+
+        $headersToken = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
+        if (!$headersToken || $headersToken !== $_SESSION['csrf_token']) {
+            echo json_encode(['success' => false, 'message' => 'Erreur token']);
+            return;
+        }
 
         if (empty($_SESSION['user_id'])) {
             echo json_encode(["success" => false, "message" => "Connexion requise"]);
@@ -91,6 +102,13 @@ class CaddieController
     }
 
     public function updateCaddie() {
+
+        $headersToken = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
+        if (!$headersToken || $headersToken !== $_SESSION['csrf_token']) {
+            echo json_encode(['success' => false, 'message' => 'Erreur token']);
+            return;
+        }
+
         if (empty($_SESSION['user_id'])) {
             echo json_encode(["success" => false, "message" => "Connexion requise"]);
             return;
@@ -132,6 +150,13 @@ class CaddieController
     }
 
     public function deleteCaddie() {
+
+        $headersToken = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
+        if (!$headersToken || $headersToken !== $_SESSION['csrf_token']) {
+            echo json_encode(['success' => false, 'message' => 'Erreur token']);
+            return;
+        }
+
         if (empty($_SESSION['user_id'])) {
             echo json_encode(["success" => false, "message" => "Connexion requise"]);
             return;

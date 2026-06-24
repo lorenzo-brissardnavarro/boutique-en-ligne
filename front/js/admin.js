@@ -85,6 +85,10 @@ document.getElementById("addProductForm").addEventListener("submit", async funct
         const response = await fetch("../back/router.php?action=add-product", {
             method: "POST",
             credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": getCsrfToken()
+            },
             body: formData
         });
 
@@ -141,10 +145,11 @@ document.getElementById("editProductInfoForm").addEventListener("submit", async 
 
     try {
         const response = await fetch("../back/router.php?action=update-product-infos", {
-            method: "POST",
+            method: "PATCH",
             credentials: "same-origin",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": getCsrfToken()
             },
             body: JSON.stringify(data)
         });
@@ -188,7 +193,7 @@ document.querySelectorAll(".edit-images-btn").forEach(btn => {
         images.forEach(img => {
             container.innerHTML += `
                 <div class="gallery-item" data-id="${img.id}">
-                    <img src="../public/images/${img.image}" alt="Image additionnelle n°${img.id}">
+                    <img src="../public/images/${img.image}" alt="Image additionnelle n°${img.id}" loading="lazy">
                     <button class="delete-image" data-id="${img.id}" aria-label="Bouton pour supprimer une image liée au produit">
                         <i class="fa-solid fa-trash-can"></i>
                     </button>
@@ -202,10 +207,11 @@ document.querySelectorAll(".edit-images-btn").forEach(btn => {
                 const imageId = e.currentTarget.dataset.id;
                 try {
                     const response = await fetch("../back/router.php?action=delete-image", {
-                    method: "POST",
+                    method: "DELETE",
                     credentials: "same-origin",
                     headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
+                        "X-CSRF-TOKEN": getCsrfToken()
                     },
                     body: JSON.stringify({ image_id: imageId })
                     });
@@ -256,8 +262,12 @@ document.getElementById("saveImagesBtn").addEventListener("click", async () => {
 
     try {
         const response = await fetch("../back/router.php?action=update-product-images", {
-            method: "POST",
+            method: "PATCH",
             credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": getCsrfToken()
+            },
             body: formData
         });
 
@@ -305,7 +315,8 @@ document.getElementById("addCategoryForm").addEventListener("submit", async func
             method: "POST",
             credentials: "same-origin",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": getCsrfToken()
             },
             body: JSON.stringify({ name: name })
         });
@@ -356,10 +367,11 @@ document.getElementById("updateCategoryForm").addEventListener("submit", async f
 
     try {
         const response = await fetch("../back/router.php?action=update-category", {
-            method: "POST",
+            method: "PATCH",
             credentials: "same-origin",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": getCsrfToken()
             },
             body: JSON.stringify(data)
         });
@@ -405,10 +417,11 @@ document.querySelectorAll('.admin-product-card__icon-btn--delete').forEach(butto
 confirmDelete.addEventListener("click", async () => {
     try {
         const response = await fetch("../back/router.php?action=delete-category", {
-            method: "POST",
+            method: "DELETE",
             credentials: "same-origin",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": getCsrfToken()
             },
             body: JSON.stringify({ id: categoryIdDelete })
         });

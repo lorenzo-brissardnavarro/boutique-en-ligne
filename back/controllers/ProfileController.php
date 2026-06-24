@@ -57,6 +57,13 @@ class ProfileController
 
     // Modification informations utilisateur
     public function updateProfile(){
+
+        $headersToken = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
+        if (!$headersToken || $headersToken !== $_SESSION['csrf_token']) {
+            echo json_encode(['success' => false, 'message' => 'Erreur token']);
+            return;
+        }
+
         $data = json_decode(file_get_contents("php://input"), true);
 
         if (empty($_SESSION['user_id'])) {
@@ -115,6 +122,12 @@ class ProfileController
 
     // Suppression du compte utilisateur
     public function deleteAccount() {
+        $headersToken = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
+        if (!$headersToken || $headersToken !== $_SESSION['csrf_token']) {
+            echo json_encode(['success' => false, 'message' => 'Erreur token']);
+            return;
+        }
+
         if (empty($_SESSION['user_id'])) {
             header("Location: router.php?action=login-view");
             exit;

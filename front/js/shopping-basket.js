@@ -41,9 +41,10 @@ cartItems.forEach(item => {
 async function updateItem(productId, quantity) {
     try {
         const response = await fetch("../back/router.php?action=update-caddie", {
-        method: "POST",
+        method: "PATCH",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "X-CSRF-TOKEN": getCsrfToken()
         },
         body: JSON.stringify({ productId, quantity })
         });
@@ -81,9 +82,10 @@ document.querySelectorAll(".cart-item__delete").forEach(button => {
         const productId = button.dataset.id;
 
         const response = await fetch("../back/router.php?action=delete-caddie", {
-        method: "POST",
+        method: "DELETE",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "X-CSRF-TOKEN": getCsrfToken()
         },
         body: JSON.stringify({ productId })
         });

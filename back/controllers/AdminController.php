@@ -41,6 +41,13 @@ class AdminController
     }
 
     public function addProduct(){
+
+        $headersToken = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
+        if (!$headersToken || $headersToken !== $_SESSION['csrf_token']) {
+            echo json_encode(['success' => false, 'message' => 'Erreur token']);
+            return;
+        }
+
         if (empty($_SESSION['user_id'])) {
             echo json_encode(['success' => false, 'message' => 'Non connecté']);
             return;
@@ -90,14 +97,27 @@ class AdminController
             return null;
         }
 
+        // Vérification taille image
         if ($file["size"] > 5 * 1024 * 1024) {
             return null;
         }
 
+        // Vérification extension image
         $allowedExtensions = ['jpg', 'jpeg', 'png', 'webp'];
 
         $file_extension = pathinfo($file["name"], PATHINFO_EXTENSION);
         if (!in_array($file_extension, $allowedExtensions)) {
+            return null;
+        }
+
+        // Vérification du MIME type réel du fichier
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        $mimeType = finfo_file($finfo, $file["tmp_name"]);
+        finfo_close($finfo);
+
+        $allowedMimeTypes = ['image/jpeg', 'image/png', 'image/webp'];
+
+        if (!in_array($mimeType, $allowedMimeTypes)) {
             return null;
         }
 
@@ -133,6 +153,13 @@ class AdminController
 
     // Modification informations utilisateur
     public function updateProductInfos(){
+
+        $headersToken = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
+        if (!$headersToken || $headersToken !== $_SESSION['csrf_token']) {
+            echo json_encode(['success' => false, 'message' => 'Erreur token']);
+            return;
+        }
+
         $data = json_decode(file_get_contents("php://input"), true);
 
         if (empty($_SESSION['user_id'])) {
@@ -167,6 +194,12 @@ class AdminController
     }
 
     public function updateProductImages(){
+
+        $headersToken = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
+        if (!$headersToken || $headersToken !== $_SESSION['csrf_token']) {
+            echo json_encode(['success' => false, 'message' => 'Erreur token']);
+            return;
+        }
 
         if (empty($_SESSION['user_id'])) {
             echo json_encode(['success' => false, 'message' => 'Non connecté']);
@@ -218,6 +251,13 @@ class AdminController
     }
 
     public function deleteImage(){
+
+        $headersToken = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
+        if (!$headersToken || $headersToken !== $_SESSION['csrf_token']) {
+            echo json_encode(['success' => false, 'message' => 'Erreur token']);
+            return;
+        }
+
         if (empty($_SESSION['user_id'])) {
             echo json_encode(['success' => false, 'message' => 'Non connecté']);
             return;
@@ -249,6 +289,12 @@ class AdminController
     // Ajouter une catégorie
     public function addCategory(){
 
+        $headersToken = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
+        if (!$headersToken || $headersToken !== $_SESSION['csrf_token']) {
+            echo json_encode(['success' => false, 'message' => 'Erreur token']);
+            return;
+        }
+
         if (empty($_SESSION['user_id'])) {
             echo json_encode(['success' => false, 'message' => 'Non connecté']);
             return;
@@ -275,6 +321,12 @@ class AdminController
 
     // Modifier une catégorie
     public function updateCategory(){
+
+        $headersToken = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
+        if (!$headersToken || $headersToken !== $_SESSION['csrf_token']) {
+            echo json_encode(['success' => false, 'message' => 'Erreur token']);
+            return;
+        }
 
         if (empty($_SESSION['user_id'])) {
             echo json_encode(['success' => false, 'message' => 'Non connecté']);
@@ -303,6 +355,12 @@ class AdminController
 
     // Supprimer une catégorie
     public function deleteCategory(){
+
+        $headersToken = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
+        if (!$headersToken || $headersToken !== $_SESSION['csrf_token']) {
+            echo json_encode(['success' => false, 'message' => 'Erreur token']);
+            return;
+        }
 
         if (empty($_SESSION['user_id'])) {
             echo json_encode(['success' => false, 'message' => 'Non connecté']);

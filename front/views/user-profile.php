@@ -88,7 +88,7 @@ require_once "layout/header.php";
                             <div class="product-card__badge">' . $favorite['category_name'] . '</div>
 
                                 <div class="product-card__image">
-                                    <img src="../public/images/' . $favorite['image'] . '" alt="' . $favorite['product_name'] . '">
+                                    <img src="../public/images/' . $favorite['image'] . '" alt="' . $favorite['product_name'] . ' - création artisanale japonaise" loading="lazy">
                                 </div>
 
                                 <div class="product-card__content product-card__content--beige">
@@ -214,8 +214,8 @@ require_once "layout/header.php";
     </div>
 </section>
 
-<script src="../front/js/functions.js"></script>
-<script src="../front/js/user-profile.js"></script>
+<script src="../front/js/functions.js" defer></script>
+<script src="../front/js/user-profile.js" defer></script>
 
 <?php
 require_once "layout/footer.php";

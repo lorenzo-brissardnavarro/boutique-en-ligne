@@ -338,7 +338,8 @@ input::-o-inner-spin-button {
 }
 .hero__btn:hover {
   transform: translateY(-3px);
-  background: #263347;
+  background: #E8B7C0;
+  color: #1F2A3A;
 }
 .hero__btn div {
   display: flex;
@@ -859,7 +860,8 @@ input::-o-inner-spin-button {
   font-weight: 300;
 }
 .input-button:hover {
-  background: #263347;
+  background: #E8B7C0;
+  color: #1F2A3A;
 }
 
 .input-password {
