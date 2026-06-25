@@ -151,7 +151,7 @@ class AdminController
         return $new_image_name;
     }
 
-    // Modification informations utilisateur
+    // Modification informations produits
     public function updateProductInfos(){
 
         $data = json_decode(file_get_contents("php://input"), true);
@@ -182,7 +182,7 @@ class AdminController
             return;
         }
 
-        if (empty($data["name"]) || empty($data["description"]) || empty($data["price"]) || empty($data["stock"]) || empty($data["category_id"]) || !isset($data["is_active"])) {
+        if (empty($data["name"]) || empty($data["description"]) || empty($data["price"]) || !isset($data["stock"]) || empty($data["category_id"]) || !isset($data["is_active"])) {
             echo json_encode(['success' => false, 'message' => 'Champs requis manquants']);
             return;
         }
