@@ -56,11 +56,11 @@ require_once "layout/header.php";
 
                     <div class="cart-summary__line">
                         <span>Livraison</span>
-                        <span id="delivery">' . (htmlspecialchars($delivery) === 0 ? 'Offerte' : htmlspecialchars($delivery) . ' €') . '</span>
+                        <span id="delivery">' . ($delivery === 0 ? 'Offerte' : $delivery . ' €') . '</span>
                     </div>
 
                     <p class="cart-summary__note" id="comment">' .
-                        (htmlspecialchars($delivery) === 0 ? '' : "Plus que $deliveryMissing € pour la livraison offerte.") .
+                        ($delivery === 0 ? '' : "Plus que $deliveryMissing € pour la livraison offerte.") .
                     '</p>
 
                     <div class="cart-summary__line cart-summary__line--total">
