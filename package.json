@@ -1,8 +1,15 @@
 {
   "scripts": {
-    "sass": "sass --watch front/style/scss:front/style/css"
+    "sass": "sass --watch front/style/scss:front/style/css",
+
+    "build-css": "sass front/style/scss/style.scss front/style/css/style.min.css --style=compressed",
+
+    "build-js": "terser front/js/admin.js -o front/js/admin.min.js -c -m && terser front/js/caddie-details.js -o front/js/caddie-details.min.js -c -m && terser front/js/caddie-shop.js -o front/js/caddie-shop.min.js -c -m && terser front/js/functions.js -o front/js/functions.min.js -c -m && terser front/js/like.js -o front/js/like.min.js -c -m && terser front/js/login.js -o front/js/login.min.js -c -m && terser front/js/logout.js -o front/js/logout.min.js -c -m && terser front/js/menu.js -o front/js/menu.min.js -c -m && terser front/js/order.js -o front/js/order.min.js -c -m && terser front/js/product-details.js -o front/js/product-details.min.js -c -m && terser front/js/register.js -o front/js/register.min.js -c -m && terser front/js/shop.js -o front/js/shop.min.js -c -m && terser front/js/shopping-basket.js -o front/js/shopping-basket.min.js -c -m && terser front/js/user-profile.js -o front/js/user-profile.min.js -c -m",
+
+    "build": "npm run build-css && npm run build-js"
   },
   "devDependencies": {
-    "sass": "^1.99.0"
+    "sass": "^1.99.0",
+    "terser": "^5.48.0"
   }
 }
