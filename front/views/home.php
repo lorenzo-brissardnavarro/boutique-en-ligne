@@ -87,20 +87,20 @@ require_once "layout/header.php";
             <?php
             foreach ($top as $product) {
                 echo '
-                <a href="../back/router.php?action=product-details&id=' . $product['id'] . '" class="product-card">
+                <a href="../back/router.php?action=product-details&id=' . htmlspecialchars($product['id']) . '" class="product-card">
                     <article>
-                        <div class="product-card__badge">' . $product['category_name'] . '</div>
+                        <div class="product-card__badge">' . htmlspecialchars($product['category_name']) . '</div>
 
                             <div class="product-card__image">
-                                <img src="../public/images/' . $product['image'] . '" alt="' . $product['product_name'] . ' - création artisanale japonaise" loading="lazy">
+                                <img src="../public/images/' . htmlspecialchars($product['image']) . '" alt="' . htmlspecialchars($product['product_name']) . ' - création artisanale japonaise" loading="lazy">
                             </div>
 
                             <div class="product-card__content product-card__content--beige">
 
-                                <h3>' . $product['product_name'] . '</h3>
+                                <h3>' . htmlspecialchars($product['product_name']) . '</h3>
 
                                 <div class="product-card__bottom">
-                                    <span class="product-card__price">' . $product['price'] . ' €</span>
+                                    <span class="product-card__price">' . htmlspecialchars($product['price']) . ' €</span>
                                 </div>
 
                             </div>
@@ -131,20 +131,20 @@ require_once "layout/header.php";
             <?php
             foreach ($news as $product) {
                 echo '
-                <a href="../back/router.php?action=product-details&id=' . $product['id'] . '" class="product-card">
+                <a href="../back/router.php?action=product-details&id=' . htmlspecialchars($product['id']) . '" class="product-card">
                     <article>
-                        <div class="product-card__badge">' . $product['category_name'] . '</div>
+                        <div class="product-card__badge">' . htmlspecialchars($product['category_name']) . '</div>
 
                             <div class="product-card__image">
-                                <img src="../public/images/' . $product['image'] . '" alt="' . $product['product_name'] . ' - création artisanale japonaise" loading="lazy">
+                                <img src="../public/images/' . htmlspecialchars($product['image']) . '" alt="' . htmlspecialchars($product['product_name']) . ' - création artisanale japonaise" loading="lazy">
                             </div>
 
                             <div class="product-card__content product-card__content--beige">
 
-                                <h3>' . $product['product_name'] . '</h3>
+                                <h3>' . htmlspecialchars($product['product_name']) . '</h3>
 
                                 <div class="product-card__bottom">
-                                    <span class="product-card__price">' . $product['price'] . ' €</span>
+                                    <span class="product-card__price">' . htmlspecialchars($product['price']) . ' €</span>
                                 </div>
 
                             </div>

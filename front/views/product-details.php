@@ -14,14 +14,14 @@ require_once "layout/header.php";
     <div class="product-detail__inner">
         <div class="product-detail__gallery">
             <div>
-                <?php echo '<img src="../public/images/' . $product['image'] . '" alt="' . $product['product_name'] . ' - création artisanale japonaise" class="product-detail__main-img" id="mainImage"> '?>
+                <?php echo '<img src="../public/images/' . htmlspecialchars($product['image']) . '" alt="' . htmlspecialchars($product['product_name']) . ' - création artisanale japonaise" class="product-detail__main-img" id="mainImage"> '?>
             </div>
             <div class="product-detail__thumbs">
-                <?php echo '<img src="../public/images/' . $product['image'] . '" alt="' . $product['product_name'] . ' - création artisanale japonaise - vue 1" class="product-detail__thumb product-detail__thumb--active">'?>
+                <?php echo '<img src="../public/images/' . htmlspecialchars($product['image']) . '" alt="' . htmlspecialchars($product['product_name']) . ' - création artisanale japonaise - vue 1" class="product-detail__thumb product-detail__thumb--active">'?>
                 <?php
                 foreach ($additionalImages as $index => $image) {
                     echo '
-                        <img src="../public/images/' . $image['image'] . '" alt="' . $product['product_name'] . ' - création artisanale japonaise - vue ' . ($index + 2) . '" loading="lazy" class="product-detail__thumb">
+                        <img src="../public/images/' . htmlspecialchars($image['image']) . '" alt="' . htmlspecialchars($product['product_name']) . ' - création artisanale japonaise - vue ' . ($index + 2) . '" loading="lazy" class="product-detail__thumb">
                     ';
                 } 
                 ?>
@@ -29,17 +29,17 @@ require_once "layout/header.php";
         </div>
 
         <div class="product-detail__content">
-            <span class="product-detail__badge"><?php echo $product['category_name'] ?></span>
+            <span class="product-detail__badge"><?php echo htmlspecialchars($product['category_name']) ?></span>
 
-            <h1 class="product-detail__name"><?php echo $product['product_name'] ?></h1>
-            <span class="product-detail__price"><?php echo $product['price'] ?> €</span>
-            <p class="product-detail__desc"><?php echo $product['description'] ?></p>
+            <h1 class="product-detail__name"><?php echo htmlspecialchars($product['product_name']) ?></h1>
+            <span class="product-detail__price"><?php echo htmlspecialchars($product['price']) ?> €</span>
+            <p class="product-detail__desc"><?php echo nl2br(htmlspecialchars($product["description"])) ?></p>
 
             <div class="product-detail__stock">
                 <p>Disponibilité :
                     <?php
-                    echo $product['stock'] > 0
-                        ? '<span class="product-detail__stock--green">' . $product['stock'] . ' en stock</span>'
+                    echo htmlspecialchars($product['stock']) > 0
+                        ? '<span class="product-detail__stock--green">' . htmlspecialchars($product['stock']) . ' en stock</span>'
                         : '<span class="product-detail__stock--red">Ce produit revient bientôt !</span>';
                     ?>
                 </p>
@@ -49,7 +49,7 @@ require_once "layout/header.php";
                 <button aria-label="Diminuer la quantité" id="decrease">
                     <i class="fa-solid fa-minus"></i>
                 </button>
-                <input type="number" value="1" min="1" max="<?php echo $product['stock']; ?>" aria-label="Quantité" id="qty">
+                <input type="number" value="1" min="1" max="<?php echo htmlspecialchars($product['stock']); ?>" aria-label="Quantité" id="qty">
 
                 <button aria-label="Augmenter la quantité" id="add">
                     <i class="fa-solid fa-plus"></i>
@@ -59,13 +59,13 @@ require_once "layout/header.php";
 
             <div class="product-detail__actions">
 
-                <button class="product-detail__add-to-cart" id="addCaddie" data-id="<?php echo $product['id'] ?>">
+                <button class="product-detail__add-to-cart" id="addCaddie" data-id="<?php echo htmlspecialchars($product['id']) ?>">
                     <i class="fa-solid fa-cart-shopping"></i>
                     Ajouter au panier
                 </button>
 
-                <button class="product-detail__wishlist  <?php echo $isFavorite ? 'product-detail__wishlist--liked' : '' ?>" id="favoriteBtn" aria-label="Ajouter aux favoris" data-id="<?php echo $product['id'] ?>">
-                    <i id="favoriteIcon" class="<?php echo $isFavorite ? 'fa-solid' : 'fa-regular' ?> fa-heart"></i>
+                <button class="product-detail__wishlist  <?php echo htmlspecialchars($isFavorite) ? 'product-detail__wishlist--liked' : '' ?>" id="favoriteBtn" aria-label="Ajouter aux favoris" data-id="<?php echo htmlspecialchars($product['id']) ?>">
+                    <i id="favoriteIcon" class="<?php echo htmlspecialchars($isFavorite) ? 'fa-solid' : 'fa-regular' ?> fa-heart"></i>
                 </button>
             </div>
         </div>

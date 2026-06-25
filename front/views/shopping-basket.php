@@ -15,13 +15,13 @@ require_once "layout/header.php";
 
                 foreach ($data as $product) {
                     echo '
-                    <article class="cart-item" data-id="' . $product['id'] . '">
+                    <article class="cart-item" data-id="' . htmlspecialchars($product['id']) . '">
                         <div class="cart-item__info">
-                            <img src="../public/images/' . $product['image'] . '" alt="' . $product['product_name'] . ' - création artisanale japonaise" class="cart-item__img">
+                            <img src="../public/images/' . htmlspecialchars($product['image']) . '" alt="' . htmlspecialchars($product['product_name']) . ' - création artisanale japonaise" class="cart-item__img">
                             <div>
-                                <p class="cart-item__badge">' . $product['category_name'] . '</p>
-                                <h2 class="cart-item__name">' . $product['product_name'] . '</h2>
-                                <span class="cart-item__price">' . $product['price'] . ' €</span>
+                                <p class="cart-item__badge">' . htmlspecialchars($product['category_name']) . '</p>
+                                <h2 class="cart-item__name">' . htmlspecialchars($product['product_name']) . '</h2>
+                                <span class="cart-item__price">' . htmlspecialchars($product['price']) . ' €</span>
                             </div>
                         </div>
                         <div class="cart-item__controls">
@@ -29,13 +29,13 @@ require_once "layout/header.php";
                                 <button aria-label="Diminuer la quantité" class="decrease">
                                     <i class="fa-solid fa-minus"></i>
                                 </button>
-                                <input type="number" value="' . $product['quantity'] . '" min="1" max="' . $product['stock'] . '" aria-label="Quantité" class="qty">
+                                <input type="number" value="' . htmlspecialchars($product['quantity']) . '" min="1" max="' . htmlspecialchars($product['stock']) . '" aria-label="Quantité" class="qty">
                                 <button aria-label="Augmenter la quantité" class="add">
                                     <i class="fa-solid fa-plus"></i>
                                 </button>
                             </div>
 
-                            <button class="cart-item__delete" aria-label="Supprimer l’article" data-id="' . $product['id'] . '">
+                            <button class="cart-item__delete" aria-label="Supprimer l’article" data-id="' . htmlspecialchars($product['id']) . '">
                                 <i class="fa-solid fa-trash-can"></i>
                             </button>
                         </div>
@@ -51,21 +51,21 @@ require_once "layout/header.php";
 
                     <div class="cart-summary__line">
                         <span>Sous-total</span>
-                        <span id="total">' . $total . ' €</span>
+                        <span id="total">' . htmlspecialchars($total) . ' €</span>
                     </div>
 
                     <div class="cart-summary__line">
                         <span>Livraison</span>
-                        <span id="delivery">' . ($delivery === 0 ? 'Offerte' : $delivery . ' €') . '</span>
+                        <span id="delivery">' . (htmlspecialchars($delivery) === 0 ? 'Offerte' : htmlspecialchars($delivery) . ' €') . '</span>
                     </div>
 
                     <p class="cart-summary__note" id="comment">' .
-                        ($delivery === 0 ? '' : "Plus que $deliveryMissing € pour la livraison offerte.") .
+                        (htmlspecialchars($delivery) === 0 ? '' : "Plus que $deliveryMissing € pour la livraison offerte.") .
                     '</p>
 
                     <div class="cart-summary__line cart-summary__line--total">
                         <span>Total</span>
-                        <span id="finalTotal">' . $finalTotal . ' €</span>
+                        <span id="finalTotal">' . htmlspecialchars($finalTotal) . ' €</span>
                     </div>
 
                     <div class="cart-summary__checkout">
