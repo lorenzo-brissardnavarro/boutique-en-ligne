@@ -22,14 +22,14 @@ class OrderController
 
    public function addOrder(){
 
-        $headersToken = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
-        if (!$headersToken || $headersToken !== $_SESSION['csrf_token']) {
-            echo json_encode(['success' => false, 'message' => 'Erreur token']);
+        if (empty($_SESSION['user_id'])) {
+            echo json_encode(["success" => false, "message" => "Connexion requise"]);
             return;
         }
 
-        if (empty($_SESSION['user_id'])) {
-            echo json_encode(["success" => false, "message" => "Connexion requise"]);
+        $headersToken = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
+        if (!$headersToken || $headersToken !== $_SESSION['csrf_token']) {
+            echo json_encode(['success' => false, 'message' => 'Erreur token']);
             return;
         }
 
