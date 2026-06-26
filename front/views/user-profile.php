@@ -13,8 +13,8 @@ require_once "layout/header.php";
                 <i class="fa-solid fa-user"></i>
             </div>
 
-            <h2 class="profile-sidebar__name"><?php echo $user['firstname'] . ' ' . $user['surname'] ?></h2>
-            <p class="profile-sidebar__email"><?php echo $user['email'] ?></p>
+            <h2 class="profile-sidebar__name"><?php echo htmlspecialchars($user['firstname']) . ' ' . htmlspecialchars($user['surname']) ?></h2>
+            <p class="profile-sidebar__email"><?php echo htmlspecialchars($user['email']) ?></p>
 
             <nav class="profile-sidebar__nav">
                 <button class="active" data-tab="orders">
@@ -40,10 +40,10 @@ require_once "layout/header.php";
                     echo '
                     <article class="order-item">
                         <div class="order-item__header">
-                            <h3 class="order-item__num">Commande N° ' . $order['number'] . '</h3>
+                            <h3 class="order-item__num">Commande N° ' . htmlspecialchars($order['number']) . '</h3>
                             <div>
-                                <span class="order-item__count">' . $order['count'] . ' article' . ($order['count'] > 1 ? 's' : '') . '</span>
-                                <span class="order-item__total">' . $order['total_price'] . ' €</span>
+                                <span class="order-item__count">' . htmlspecialchars($order['count']) . ' article' . (htmlspecialchars($order['count']) > 1 ? 's' : '') . '</span>
+                                <span class="order-item__total">' . htmlspecialchars($order['total_price']) . ' €</span>
                             </div>
                             
                         </div>
@@ -52,12 +52,12 @@ require_once "layout/header.php";
                             foreach ($order['products'] as $product) {
                                 echo '
                                 <div class="order-item__line">
-                                    <p>' . $product['product_name'] . ' ×' . $product['quantity'] . '</p>
-                                    <span>' . $product['quantity'] * $product['unit_price'] . ' €</span>
+                                    <p>' . htmlspecialchars($product['product_name']) . ' ×' . htmlspecialchars($product['quantity']) . '</p>
+                                    <span>' . htmlspecialchars($product['quantity']) * htmlspecialchars($product['unit_price']) . ' €</span>
                                 </div>
                                 ';
                             }
-                            if($order['total_price'] < 50){
+                            if(htmlspecialchars($order['total_price']) < 50){
                                 echo '
                                 <div class="order-item__line">
                                     <p>Livraison</p>
@@ -78,27 +78,27 @@ require_once "layout/header.php";
 
         <section class="profile-content" id="favorites">
             <h2 class="orders__title">Mes favoris</h2>
-            <div class="shop-grid">
+            <div class="shop-grid" id="shop-grid">
             <?php
             if(!empty($favorites)) {
                 foreach ($favorites as $favorite) {
                     echo '
-                    <a href="../back/router.php?action=product-details&id=' . $favorite['id'] . '" class="product-card">
+                    <a href="../back/router.php?action=product-details&id=' . htmlspecialchars($favorite['id']) . '" class="product-card">
                         <article>
-                            <div class="product-card__badge">' . $favorite['category_name'] . '</div>
+                            <div class="product-card__badge">' . htmlspecialchars($favorite['category_name']) . '</div>
 
                                 <div class="product-card__image">
-                                    <img src="../public/images/' . $favorite['image'] . '" alt="' . $favorite['product_name'] . ' - création artisanale japonaise" loading="lazy">
+                                    <img src="../public/images/' . htmlspecialchars($favorite['image']) . '" alt="' . htmlspecialchars($favorite['product_name']) . ' - création artisanale japonaise" loading="lazy">
                                 </div>
 
                                 <div class="product-card__content product-card__content--beige">
 
-                                    <h3>' . $favorite['product_name'] . '</h3>
+                                    <h3>' . htmlspecialchars($favorite['product_name']) . '</h3>
 
                                     <div class="product-card__bottom">
-                                        <span class="product-card__price">' . $favorite['price'] . ' €</span>
+                                        <span class="product-card__price">' . htmlspecialchars($favorite['price']) . ' €</span>
 
-                                        <button class="product-card__cart" type="button" aria-label="Bouton pour ajouter le produit au panier">
+                                        <button class="product-card__cart" type="button" data-id="' . htmlspecialchars($favorite['id']) . '" aria-label="Bouton pour ajouter le produit au panier">
                                             <i class="fa-solid fa-cart-shopping"></i>
                                         </button>
                                     </div>
@@ -214,8 +214,9 @@ require_once "layout/header.php";
     </div>
 </section>
 
-<script src="../front/js/functions.js" defer></script>
-<script src="../front/js/user-profile.js" defer></script>
+<script src="../front/js/min/functions.min.js" defer></script>
+<script src="../front/js/min/user-profile.min.js" defer></script>
+<script src="../front/js/min/caddie-shop.min.js" defer></script>
 
 <?php
 require_once "layout/footer.php";

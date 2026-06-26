@@ -42,12 +42,6 @@ class AdminController
 
     public function addProduct(){
 
-        $headersToken = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
-        if (!$headersToken || $headersToken !== $_SESSION['csrf_token']) {
-            echo json_encode(['success' => false, 'message' => 'Erreur token']);
-            return;
-        }
-
         if (empty($_SESSION['user_id'])) {
             echo json_encode(['success' => false, 'message' => 'Non connecté']);
             return;
@@ -55,6 +49,12 @@ class AdminController
 
         if ($_SESSION['role_name'] !== "admin") {
             echo json_encode(['success' => false, 'message' => 'Autorisation refusée']);
+            return;
+        }
+
+        $headersToken = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
+        if (!$headersToken || $headersToken !== $_SESSION['csrf_token']) {
+            echo json_encode(['success' => false, 'message' => 'Erreur token']);
             return;
         }
 
@@ -151,14 +151,8 @@ class AdminController
         return $new_image_name;
     }
 
-    // Modification informations utilisateur
+    // Modification informations produits
     public function updateProductInfos(){
-
-        $headersToken = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
-        if (!$headersToken || $headersToken !== $_SESSION['csrf_token']) {
-            echo json_encode(['success' => false, 'message' => 'Erreur token']);
-            return;
-        }
 
         $data = json_decode(file_get_contents("php://input"), true);
 
@@ -172,6 +166,12 @@ class AdminController
             return;
         }
 
+        $headersToken = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
+        if (!$headersToken || $headersToken !== $_SESSION['csrf_token']) {
+            echo json_encode(['success' => false, 'message' => 'Erreur token']);
+            return;
+        }
+
         if (!$data) {
             echo json_encode(['success' => false, 'message' => 'Données invalides']);
             return;
@@ -182,7 +182,7 @@ class AdminController
             return;
         }
 
-        if (empty($data["name"]) || empty($data["description"]) || empty($data["price"]) || empty($data["stock"]) || empty($data["category_id"]) || !isset($data["is_active"])) {
+        if (empty($data["name"]) || empty($data["description"]) || empty($data["price"]) || !isset($data["stock"]) || empty($data["category_id"]) || !isset($data["is_active"])) {
             echo json_encode(['success' => false, 'message' => 'Champs requis manquants']);
             return;
         }
@@ -195,12 +195,6 @@ class AdminController
 
     public function updateProductImages(){
 
-        $headersToken = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
-        if (!$headersToken || $headersToken !== $_SESSION['csrf_token']) {
-            echo json_encode(['success' => false, 'message' => 'Erreur token']);
-            return;
-        }
-
         if (empty($_SESSION['user_id'])) {
             echo json_encode(['success' => false, 'message' => 'Non connecté']);
             return;
@@ -208,6 +202,12 @@ class AdminController
 
         if ($_SESSION['role_name'] !== "admin") {
             echo json_encode(['success' => false, 'message' => 'Autorisation refusée']);
+            return;
+        }
+
+        $headersToken = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
+        if (!$headersToken || $headersToken !== $_SESSION['csrf_token']) {
+            echo json_encode(['success' => false, 'message' => 'Erreur token']);
             return;
         }
 
@@ -252,12 +252,6 @@ class AdminController
 
     public function deleteImage(){
 
-        $headersToken = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
-        if (!$headersToken || $headersToken !== $_SESSION['csrf_token']) {
-            echo json_encode(['success' => false, 'message' => 'Erreur token']);
-            return;
-        }
-
         if (empty($_SESSION['user_id'])) {
             echo json_encode(['success' => false, 'message' => 'Non connecté']);
             return;
@@ -265,6 +259,12 @@ class AdminController
 
         if ($_SESSION['role_name'] !== "admin") {
             echo json_encode(['success' => false, 'message' => 'Autorisation refusée']);
+            return;
+        }
+
+        $headersToken = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
+        if (!$headersToken || $headersToken !== $_SESSION['csrf_token']) {
+            echo json_encode(['success' => false, 'message' => 'Erreur token']);
             return;
         }
 
@@ -289,12 +289,6 @@ class AdminController
     // Ajouter une catégorie
     public function addCategory(){
 
-        $headersToken = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
-        if (!$headersToken || $headersToken !== $_SESSION['csrf_token']) {
-            echo json_encode(['success' => false, 'message' => 'Erreur token']);
-            return;
-        }
-
         if (empty($_SESSION['user_id'])) {
             echo json_encode(['success' => false, 'message' => 'Non connecté']);
             return;
@@ -302,6 +296,12 @@ class AdminController
 
         if ($_SESSION['role_name'] !== "admin") {
             echo json_encode(['success' => false, 'message' => 'Autorisation refusée']);
+            return;
+        }
+
+        $headersToken = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
+        if (!$headersToken || $headersToken !== $_SESSION['csrf_token']) {
+            echo json_encode(['success' => false, 'message' => 'Erreur token']);
             return;
         }
 
@@ -322,12 +322,6 @@ class AdminController
     // Modifier une catégorie
     public function updateCategory(){
 
-        $headersToken = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
-        if (!$headersToken || $headersToken !== $_SESSION['csrf_token']) {
-            echo json_encode(['success' => false, 'message' => 'Erreur token']);
-            return;
-        }
-
         if (empty($_SESSION['user_id'])) {
             echo json_encode(['success' => false, 'message' => 'Non connecté']);
             return;
@@ -335,6 +329,12 @@ class AdminController
 
         if ($_SESSION['role_name'] !== "admin") {
             echo json_encode(['success' => false, 'message' => 'Autorisation refusée']);
+            return;
+        }
+
+        $headersToken = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
+        if (!$headersToken || $headersToken !== $_SESSION['csrf_token']) {
+            echo json_encode(['success' => false, 'message' => 'Erreur token']);
             return;
         }
 
@@ -356,12 +356,6 @@ class AdminController
     // Supprimer une catégorie
     public function deleteCategory(){
 
-        $headersToken = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
-        if (!$headersToken || $headersToken !== $_SESSION['csrf_token']) {
-            echo json_encode(['success' => false, 'message' => 'Erreur token']);
-            return;
-        }
-
         if (empty($_SESSION['user_id'])) {
             echo json_encode(['success' => false, 'message' => 'Non connecté']);
             return;
@@ -369,6 +363,12 @@ class AdminController
 
         if ($_SESSION['role_name'] !== "admin") {
             echo json_encode(['success' => false, 'message' => 'Autorisation refusée']);
+            return;
+        }
+
+        $headersToken = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null;
+        if (!$headersToken || $headersToken !== $_SESSION['csrf_token']) {
+            echo json_encode(['success' => false, 'message' => 'Erreur token']);
             return;
         }
 

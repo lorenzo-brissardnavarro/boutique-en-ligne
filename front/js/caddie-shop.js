@@ -1,6 +1,6 @@
 const caddieCount = document.getElementById("caddie-count");
 
-shopGrid.addEventListener("click", async (e) => {
+document.getElementById("shop-grid").addEventListener("click", async (e) => {
     const button = e.target.closest(".product-card__cart");
 
     if (!button) {

@@ -26,5 +26,6 @@ function showNotification(message, classe) {
 
 // Récupérer le token de la balise méta
 function getCsrfToken() {
-    return document.querySelector('meta[name="csrf-token"]').content;
+    const meta = document.querySelector('meta[name="csrf-token"]');
+    return meta ? meta.content : "";
 }

@@ -19,25 +19,25 @@ require_once "layout/header.php";
             if(!empty($products)){
                 foreach ($products as $product) {
                     echo '
-                    <article class="admin-product-card" data-id="' . $product['id'] . '">
-                        <img src="../public/images/' . $product['image'] . '" alt="' . $product['product_name'] . ' - création artisanale japonaise" loading="lazy" class="admin-product-card__img">
+                    <article class="admin-product-card" data-id="' . htmlspecialchars($product['id']) . '">
+                        <img src="../public/images/' . htmlspecialchars($product['image']) . '" alt="' . htmlspecialchars($product['product_name']) . ' - création artisanale japonaise" loading="lazy" class="admin-product-card__img">
 
                         <div class="admin-product-card__info">
-                            <h3 class="admin-product-card__name">' . $product['product_name'] . '</h3>
-                            <p class="admin-product-card__meta">' . $product['category_name'] . ' - <span>' . $product['price'] . ' €</span></p>';
-                            echo $product['stock'] > 0
-                                ? '<span class="admin-product-card__stock admin-product-card__stock--green">' . $product['stock'] . ' en stock</span>'
+                            <h3 class="admin-product-card__name">' . htmlspecialchars($product['product_name']) . '</h3>
+                            <p class="admin-product-card__meta">' . htmlspecialchars($product['category_name']) . ' - <span>' . htmlspecialchars($product['price']) . ' €</span></p>';
+                            echo htmlspecialchars($product['stock']) > 0
+                                ? '<span class="admin-product-card__stock admin-product-card__stock--green">' . htmlspecialchars($product['stock']) . ' en stock</span>'
                                 : '<span class="admin-product-card__stock admin-product-card__stock--red">Rupture de stock</span>';
 
                             echo '
-                            <p class="admin-product-card__desc">' . $product['description'] . '</p>
+                            <p class="admin-product-card__desc">' . nl2br(htmlspecialchars($product["description"])) . '</p>
 
                             <div class="admin-product-card__actions">
-                                <button class="admin-product-card__icon-btn admin-product-card__icon-btn--edit edit-info-btn" aria-label="Modifier le produit" data-id="' . $product['id'] .'" data-name="' . htmlspecialchars($product['product_name']) . '" data-description="' . htmlspecialchars($product['description']) . '" data-price="' . $product['price'] . '" data-stock="' . $product['stock'] . '" data-category="' . $product['category_id'] . '" data-active="' . $product['is_active'] . '">
+                                <button class="admin-product-card__icon-btn admin-product-card__icon-btn--edit edit-info-btn" aria-label="Modifier le produit" data-id="' . htmlspecialchars($product['id']) .'" data-name="' . htmlspecialchars($product['product_name']) . '" data-description="' . htmlspecialchars($product['description']) . '" data-price="' . htmlspecialchars($product['price']) . '" data-stock="' . htmlspecialchars($product['stock']) . '" data-category="' . htmlspecialchars($product['category_id']) . '" data-active="' . htmlspecialchars($product['is_active']) . '">
                                     <i class="fa-solid fa-pen"></i>
                                 </button>
 
-                                <button class="admin-product-card__icon-btn admin-product-card__icon-btn--edit edit-images-btn" aria-label="Modifier les images du produit" data-id="' . $product['id'] . '" data-cover="' . $product['image'] . '" data-images="' . htmlspecialchars(json_encode($product["images"])) . '" data-name="' . htmlspecialchars($product['product_name']) . '">
+                                <button class="admin-product-card__icon-btn admin-product-card__icon-btn--edit edit-images-btn" aria-label="Modifier les images du produit" data-id="' . htmlspecialchars($product['id']) . '" data-cover="' . htmlspecialchars($product['image']) . '" data-images="' . htmlspecialchars(json_encode($product["images"])) . '" data-name="' . htmlspecialchars($product['product_name']) . '">
                                     <i class="fa-solid fa-file-image"></i>
                                 </button>
 
@@ -172,14 +172,14 @@ require_once "layout/header.php";
             if(!empty($categories)) {
                 foreach ($categories as $category) {
                     echo '
-                        <article class="admin-category-tag" data-id="' . $category['id'] .'">
-                            <h3>' . $category['category_name'] . '</h3>
+                        <article class="admin-category-tag" data-id="' . htmlspecialchars($category['id']) .'">
+                            <h3>' . htmlspecialchars($category['category_name']) . '</h3>
                             <div>
-                                <button class="admin-product-card__icon-btn admin-product-card__icon-btn--edit edit-category-btn" aria-label="Modifier la catégorie" data-id="' . $category['id'] .'" data-name="' . htmlspecialchars($category['category_name']) . '">
+                                <button class="admin-product-card__icon-btn admin-product-card__icon-btn--edit edit-category-btn" aria-label="Modifier la catégorie" data-id="' . htmlspecialchars($category['id']) .'" data-name="' . htmlspecialchars($category['category_name']) . '">
                                     <i class="fa-solid fa-pen"></i>
                                 </button>
 
-                                <button class="admin-product-card__icon-btn admin-product-card__icon-btn--delete delete-category-btn" aria-label="Supprimer la catégorie" data-id="' . $category['id'] .'">
+                                <button class="admin-product-card__icon-btn admin-product-card__icon-btn--delete delete-category-btn" aria-label="Supprimer la catégorie" data-id="' . htmlspecialchars($category['id']) .'">
                                     <i class="fa-solid fa-trash-can"></i>
                                 </button>
                             </div>
@@ -236,8 +236,8 @@ require_once "layout/header.php";
     </div>
 </section>
 
-<script src="../front/js/functions.js" defer></script>
-<script src="../front/js/admin.js" defer></script>
+<script src="../front/js/min/functions.min.js" defer></script>
+<script src="../front/js/min/admin.min.js" defer></script>
 
 <?php
 require_once "layout/footer.php";

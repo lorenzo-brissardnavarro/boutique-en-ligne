@@ -6,16 +6,20 @@
     <meta name="description" content=<?php echo $pageDescription ?>>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="all" />
-    <meta name="csrf-token" content="<?php echo $_SESSION['csrf_token'] ?>">
+    <?php
+    if(!empty($_SESSION['user_id'])){
+        echo '<meta name="csrf-token" content="' . $_SESSION['csrf_token'] . '">';
+    }
+    ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../front/style/css/style.css">
+    <link rel="stylesheet" href="../front/style/css/style.min.css">
     <link rel="icon" type="image/webp" href="../front/images/favicon.webp">
-    <script src="../front/js/menu.js" defer></script>
-    <script src="../front/js/logout.js" defer></script>
+    <script src="../front/js/min/menu.min.js" defer></script>
+    <script src="../front/js/min/logout.min.js" defer></script>
 </head>
 
 <body id="body">
