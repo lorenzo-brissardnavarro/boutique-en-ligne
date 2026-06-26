@@ -72,7 +72,7 @@ class Caddie
 
     // Compter le nombre d'articles différents dans le panier
     public function countItems($caddieId) {
-        $sql = "SELECT COUNT(*) AS count_item FROM caddie_content INNER JOIN product ON caddie_content.product_id = product.id WHERE caddie_id = :caddie_id AND product.is_active = 1";
+        $sql = "SELECT COUNT(*) AS count_item FROM caddie_content INNER JOIN product ON caddie_content.product_id = product.id WHERE caddie_id = :caddie_id AND product.is_active = 1 AND product.stock > 0";
         $query = $this->pdo->prepare($sql);
         $query->execute([':caddie_id' => $caddieId]);
         $result = $query->fetch(PDO::FETCH_ASSOC);
@@ -81,7 +81,7 @@ class Caddie
 
     // Montant total du panier
     public function totalAmount($caddieId){
-        $sql = "SELECT SUM(product.price * caddie_content.quantity) AS total FROM caddie_content INNER JOIN product ON caddie_content.product_id = product.id  WHERE caddie_content.caddie_id = :caddie_id AND product.is_active = 1";
+        $sql = "SELECT SUM(product.price * caddie_content.quantity) AS total FROM caddie_content INNER JOIN product ON caddie_content.product_id = product.id  WHERE caddie_content.caddie_id = :caddie_id AND product.is_active = 1 AND product.stock > 0";
         $query = $this->pdo->prepare($sql);
         $query->execute([':caddie_id' => $caddieId]);
         $result = $query->fetch(PDO::FETCH_ASSOC);
@@ -90,7 +90,7 @@ class Caddie
 
     // Récupérer l'ensemble des articles présents dans le panier d'un utilisateur
     public function getCaddieByUser($userId, $caddieId){
-        $sql = "SELECT caddie_content.quantity, product.*, category.category_name FROM caddie_content INNER JOIN caddie ON caddie_content.caddie_id = caddie.id INNER JOIN product ON caddie_content.product_id = product.id INNER JOIN category ON product.category_id = category.id WHERE caddie.id = :caddie_id AND caddie.user_id = :user_id AND product.is_active = 1";
+        $sql = "SELECT caddie_content.quantity, product.*, category.category_name FROM caddie_content INNER JOIN caddie ON caddie_content.caddie_id = caddie.id INNER JOIN product ON caddie_content.product_id = product.id INNER JOIN category ON product.category_id = category.id WHERE caddie.id = :caddie_id AND caddie.user_id = :user_id AND product.is_active = 1 AND product.stock > 0";
         $query = $this->pdo->prepare($sql);
         $query->execute([':caddie_id' => $caddieId, ':user_id' => $userId]);
         return $query->fetchAll(PDO::FETCH_ASSOC);
@@ -119,7 +119,7 @@ class Caddie
 
     // Suppression de l'ensemble du panier de l'utilisateur si la commande est passée
     public function clearCaddie($caddieId){
-        $sql = "DELETE caddie_content FROM caddie_content INNER JOIN product ON caddie_content.product_id = product.id WHERE caddie_content.caddie_id = :caddie_id AND product.is_active = 1";
+        $sql = "DELETE caddie_content FROM caddie_content INNER JOIN product ON caddie_content.product_id = product.id WHERE caddie_content.caddie_id = :caddie_id AND product.is_active = 1 AND product.stock > 0";
         $query = $this->pdo->prepare($sql);
         return $query->execute([':caddie_id' => $caddieId]);
     }

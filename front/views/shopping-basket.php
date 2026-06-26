@@ -92,9 +92,9 @@ require_once "layout/header.php";
 
 </section>
 
-<script src="../front/js/functions.js" defer></script>
-<script src="../front/js/shopping-basket.js" defer></script>
-<script src="../front/js/order.js" defer></script>
+<script src="../front/js/min/functions.min.js" defer></script>
+<script src="../front/js/min/shopping-basket.min.js" defer></script>
+<script src="../front/js/min/order.min.js" defer></script>
 
 <?php
 require_once "layout/footer.php";

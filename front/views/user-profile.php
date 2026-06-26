@@ -214,9 +214,9 @@ require_once "layout/header.php";
     </div>
 </section>
 
-<script src="../front/js/functions.js" defer></script>
-<script src="../front/js/user-profile.js" defer></script>
-<script src="../front/js/caddie-shop.js" defer></script>
+<script src="../front/js/min/functions.min.js" defer></script>
+<script src="../front/js/min/user-profile.min.js" defer></script>
+<script src="../front/js/min/caddie-shop.min.js" defer></script>
 
 <?php
 require_once "layout/footer.php";

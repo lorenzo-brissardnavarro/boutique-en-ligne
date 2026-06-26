@@ -236,8 +236,8 @@ require_once "layout/header.php";
     </div>
 </section>
 
-<script src="../front/js/functions.js" defer></script>
-<script src="../front/js/admin.js" defer></script>
+<script src="../front/js/min/functions.min.js" defer></script>
+<script src="../front/js/min/admin.min.js" defer></script>
 
 <?php
 require_once "layout/footer.php";

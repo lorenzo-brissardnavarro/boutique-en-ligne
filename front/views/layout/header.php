@@ -16,10 +16,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../front/style/css/style.css">
+    <link rel="stylesheet" href="../front/style/css/style.min.css">
     <link rel="icon" type="image/webp" href="../front/images/favicon.webp">
-    <script src="../front/js/menu.js" defer></script>
-    <script src="../front/js/logout.js" defer></script>
+    <script src="../front/js/min/menu.min.js" defer></script>
+    <script src="../front/js/min/logout.min.js" defer></script>
 </head>
 
 <body id="body">
