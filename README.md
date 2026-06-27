@@ -80,6 +80,30 @@ DB_PASS=mdpUtilisateur
 
 ---
 
+### Installation de Composer
+Assurez-vous d’avoir Composer installé sur votre machine :
+https://getcomposer.org/download/
+
+### Installer les dépendances
+Une fois Composer installé, exécuter :
+
+```bash
+composer install
+```
+
+Cela génère automatiquement le dossier :
+
+```bash
+/vendor
+```
+
+### 🔄 Regénérer l’autoload
+Après toute modification de l’autoload dans composer.json, exécuter :
+
+```bash
+composer dump-autoload
+```
+
 ## 4. Lancer le projet en local
 
 ### Installer un serveur local
@@ -99,4 +123,3 @@ Mettre le projet dans le dossier du serveur (ex. `htdocs`).
 ```bash
 http://localhost/Boutique_en_ligne
 ```
-
