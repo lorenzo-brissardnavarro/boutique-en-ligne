@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title><?php echo $pageTitle ?> - Sakura Moon Créations</title>
-    <meta name="description" content=<?php echo $pageDescription ?>>
+    <meta name="description" content="<?php echo $pageDescription ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="all" />
+    <meta name="robots" content="all">
     <?php
     if(!empty($_SESSION['user_id'])){
         echo '<meta name="csrf-token" content="' . $_SESSION['csrf_token'] . '">';
@@ -43,7 +43,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" id="logout" aria-label="Déconnexion">
+                            <a href="#" class="logout" aria-label="Déconnexion">
                                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
                             </a>
                         </li>
@@ -68,7 +68,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" id="logout" aria-label="Déconnexion">
+                            <a href="#" class="logout" aria-label="Déconnexion">
                                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
                             </a>
                         </li>
@@ -107,7 +107,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" id="logout" aria-label="Déconnexion">
+                            <a href="#" class="logout" aria-label="Déconnexion">
                                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
                             </a>
                         </li>
@@ -132,7 +132,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" id="logout" aria-label="Déconnexion">
+                            <a href="#" class="logout" aria-label="Déconnexion">
                                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
                             </a>
                         </li>
@@ -142,7 +142,7 @@
                 } else {
                     echo '
                     <li>
-                        <a href="../back/router.php?action=home.php">Accueil</a>
+                        <a href="../back/router.php?action=home">Accueil</a>
                     </li>
                     <li>
                         <a href="../back/router.php?action=shop-view">Boutique</a>

@@ -1,7 +1,7 @@
-const logoutBtn = document.getElementById("logout");
+const logoutBtns = document.querySelectorAll(".logout");
 
-if(logoutBtn) {
-    logoutBtn.addEventListener("click", async (e) => {
+logoutBtns.forEach(btn => {
+    btn.addEventListener("click", async (e) => {
         e.preventDefault();
 
         try {
@@ -19,4 +19,4 @@ if(logoutBtn) {
             console.error(error);
         }
     });
-}
+});

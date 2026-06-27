@@ -34,7 +34,7 @@ require_once "layout/header.php";
 
 <section class="services">
     <div class="container services__grid">
-
+        <h2 class="visually-hidden">Nos services</h2>
         <article class="services__item">
             <div class="icon">
                 <i class="fa-regular fa-heart"></i>
@@ -200,7 +200,7 @@ require_once "layout/header.php";
 
                 <p>« La pochette est encore plus belle en vrai. Le travail de broderie est incroyable, on sent l'amour mis dans chaque détail. »</p>
 
-                <strong>Marie L</strong>
+                <h3>Marie L</h3>
 
             </article>
 
@@ -216,7 +216,7 @@ require_once "layout/header.php";
 
                 <p>« L'attention aux détails est impressionnante. Chaque pièce est unique et soigneusement confectionnée. »</p>
 
-                <strong>Sophie D</strong>
+                <h3>Sophie D</h3>
 
             </article>
 
@@ -232,7 +232,7 @@ require_once "layout/header.php";
 
                 <p>« Un vrai coup de cœur pour cette boutique ! Les produits sont authentiques et le service impeccable. »</p>
 
-                <strong>Amélie R</strong>
+                <h3>Amélie R</h3>
 
             </article>
 
@@ -248,7 +248,7 @@ require_once "layout/header.php";
 
         <label for="email">Inscrivez-vous à notre newsletter pour recevoir en avant-première nos nouvelles créations et offres exclusives</label>
 
-        <form action="" method="get">
+        <form method="get">
             <input type="email" name="email" id="email" placeholder="Votre adresse mail"/>
             <button type="submit">S'inscrire</button>
         </form>

@@ -14,7 +14,7 @@ require_once "layout/header.php";
         <h1 class="auth-page__title">Bon retour !</h1>
         <h2 class="auth-page__subtitle">Connectez-vous à votre compte</h2>
 
-        <form action="" method="get" autocomplete="on" id="loginForm">
+        <form method="get" autocomplete="on" id="loginForm">
 
             <div class="form-group">
                 <label for="email">Email</label>

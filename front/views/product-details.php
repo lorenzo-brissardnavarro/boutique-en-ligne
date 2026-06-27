@@ -36,13 +36,13 @@ require_once "layout/header.php";
             <p class="product-detail__desc"><?php echo nl2br(htmlspecialchars($product["description"])) ?></p>
 
             <div class="product-detail__stock">
-                <p>Disponibilité :
+                <h2>Disponibilité :
                     <?php
                     echo htmlspecialchars($product['stock']) > 0
                         ? '<span class="product-detail__stock--green">' . htmlspecialchars($product['stock']) . ' en stock</span>'
                         : '<span class="product-detail__stock--red">Ce produit revient bientôt !</span>';
                     ?>
-                </p>
+                </h2>
             </div>
 
             <div class="product-detail__qty">

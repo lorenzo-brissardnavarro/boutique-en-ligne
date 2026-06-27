@@ -13,7 +13,7 @@ require_once "layout/header.php";
         </h2>
     </div>
 
-    <form action="" method="get" class="shop-page__toolbar">
+    <form method="get" class="shop-page__toolbar">
 
         <div class="shop-page__search">
             <i class="fa-solid fa-magnifying-glass"></i>
@@ -52,7 +52,7 @@ require_once "layout/header.php";
 
             <div class="filters__section">
                 <p class="filters__title">Prix</p>
-                <form action="" method="get" class="filters__price">
+                <form method="get" class="filters__price">
                     <input type="number" name="min" id="min" placeholder="Min" aria-label="Champ pour filtrer selon le prix minimum">
                     <span>—</span>
                     <input type="number" name="max" id="max" placeholder="Max" aria-label="Champ pour filtrer selon le prix maximum">

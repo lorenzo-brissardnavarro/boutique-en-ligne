@@ -16,6 +16,11 @@ class AuthController
 
     // View de la page d'inscription
     public function registerView(){
+        if (!empty($_SESSION['user_id'])) {
+            header("Location: router.php?action=shop-view");
+            exit;
+        }
+
         require '../front/views/registration.php';
     }
 
@@ -90,6 +95,11 @@ class AuthController
 
     // View de la page de connexion
     public function loginView(){
+        if (!empty($_SESSION['user_id'])) {
+            header("Location: router.php?action=shop-view");
+            exit;
+        }
+
         require '../front/views/login.php';
     }
 
