@@ -86,7 +86,6 @@ document.getElementById("addProductForm").addEventListener("submit", async funct
             method: "POST",
             credentials: "same-origin",
             headers: {
-                "Content-Type": "application/json",
                 "X-CSRF-TOKEN": getCsrfToken()
             },
             body: formData
@@ -262,10 +261,9 @@ document.getElementById("saveImagesBtn").addEventListener("click", async () => {
 
     try {
         const response = await fetch("../back/router.php?action=update-product-images", {
-            method: "PATCH",
+            method: "POST",
             credentials: "same-origin",
             headers: {
-                "Content-Type": "application/json",
                 "X-CSRF-TOKEN": getCsrfToken()
             },
             body: formData

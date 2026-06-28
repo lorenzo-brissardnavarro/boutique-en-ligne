@@ -145,7 +145,7 @@ switch ($action) {
         }
         break;
     case 'update-product-images':
-        if ($_SERVER['REQUEST_METHOD'] === 'PATCH') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $Admincontroller->updateProductImages();
         }
         break;
