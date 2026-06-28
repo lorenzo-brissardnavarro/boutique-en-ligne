@@ -248,13 +248,16 @@ require_once "layout/header.php";
 
         <label for="email">Inscrivez-vous à notre newsletter pour recevoir en avant-première nos nouvelles créations et offres exclusives</label>
 
-        <form method="get">
+        <form id="newsletterForm">
             <input type="email" name="email" id="email" placeholder="Votre adresse mail"/>
             <button type="submit">S'inscrire</button>
         </form>
 
     </div>
 </section>
+
+<script src="../front/js/min/functions.min.js" defer></script>
+<script src="../front/js/min/mail.min.js" defer></script>
 
 <?php
 require_once "layout/footer.php";

@@ -13,5 +13,7 @@
             "email": "lorenzo.brissardnavarro@laplateforme.io"
         }
     ],
-    "require": {}
+    "require": {
+        "phpmailer/phpmailer": "^7.1"
+    }
 }
