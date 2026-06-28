@@ -20,6 +20,7 @@ use App\Controllers\ProfileController;
 use App\Controllers\CaddieController;
 use App\Controllers\OrderController;
 use App\Controllers\AdminController;
+use App\Controllers\NewsletterController;
 
 $Authcontroller = new AuthController();
 $Productcontroller = new ProductController();
@@ -28,6 +29,7 @@ $Profilecontroller = new ProfileController();
 $Caddiecontroller = new CaddieController();
 $Ordercontroller = new OrderController();
 $Admincontroller = new AdminController();
+$Newslettercontroller = new NewsletterController();
 
 $action = $_GET['action'] ?? '';
 
@@ -165,6 +167,11 @@ switch ($action) {
     case 'delete-category':
         if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
             $Admincontroller->deleteCategory();
+        }
+        break;
+    case 'newsletter':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $Newslettercontroller->subscribe();
         }
         break;
     default:
